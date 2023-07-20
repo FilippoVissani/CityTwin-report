@@ -1,3 +1,10 @@
+## 1.0.0 (2023-07-20)
+
+
+### Documentation
+
+* add report structure ([ad1b25d](https://github.com/FilippoVissani/CityTwin-report/commit/ad1b25d6aa81fe0c13521108a55752d4decb19cd))
+
 ## [0.2.0](https://github.com/FilippoVissani/latex-template/compare/0.1.2+2023-03-14-16-45...0.2.0) (2023-04-04)
 
 

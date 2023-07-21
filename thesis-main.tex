@@ -45,18 +45,20 @@ All'interno della simulazione saranno presenti due tipologie di nodi: focal ed e
         \item Scambiano informazioni nodi entity.
         \item Rilevano i malfunzionamenti dei nodi entity.
         \item Si occupano di salvare in modo persistente le informazioni.
+        \item Non devono conoscere a prescindere le tipologie dei nodi entity.
     \end{enumerate}
-    \item I nodi entity rappresentano astrazioni di sensori, attuatori o entità più complesse.
-    \item I nodi entity interagiscono direttamente solo con i nodi focal per ottenere o comunicare informazioni.
-    \item Deve essere possibile aggiungere o rimuovere nodi entity in tempo reale.
-    \item Il sistema deve essere modulare:
+    \item I nodi entity:
     \begin{enumerate}
-        \item I nodi focal non devono conoscere a prescindere le tipologie dei nodi entity.
+        \item Rappresentano astrazioni di sensori, attuatori o entità più complesse.
+        \item Fanno riferimento ad uno dei nodi focal per ottenere o comunicare informazioni.
+        \item Possono essere aggiunti o rimossi in tempo reale.
     \end{enumerate}
-    \item Deve essere presente una GUI che presenti le seguenti informazioni:
+    \item Deve essere presente una GUI con le seguenti funzionalità:
     \begin{enumerate}
-        \item Lo stato attuale dei nodi focal ed entity del sistema.
-        \item Lo storico dei dati registrato dai nodi focal.
+        \item Deve interagire direttamente solo con i nodi focal.
+        \item Deve mostrare lo stato attuale dei nodi focal ed entity del sistema.
+        \item Deve mostrare lo storico dei dati registrato dai nodi focal.
+        \item Deve presentare alcune statistiche interessanti sulla base dei dati rilevati.
     \end{enumerate}
 \end{enumerate}
 

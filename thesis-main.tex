@@ -37,27 +37,32 @@
 
 \section{Requisiti Funzionali}
 
-All'interno della simulazione saranno presenti due tipologie di nodi: focal ed entity.
+All'interno della simulazione saranno presenti due tipologie di nodi: Mainstay e Resource.
 
 \begin{enumerate}
-    \item I nodi focal sono la struttura portante dell'intero sistema:
+    \item I nodi Mainstay sono la struttura portante dell'intero sistema:
     \begin{enumerate}
-        \item Scambiano informazioni con i nodi entity.
-        \item Rilevano i malfunzionamenti dei nodi entity.
+        \item Scambiano informazioni con i nodi Resource.
+        \item Rilevano i malfunzionamenti dei nodi Resource.
         \item Si occupano di salvare in modo persistente le informazioni.
-        \item Non devono conoscere a prescindere le tipologie dei nodi entity.
+        \item Non devono conoscere a prescindere le tipologie dei nodi Resource.
     \end{enumerate}
-    \item I nodi entity:
+    \item I nodi Resource:
     \begin{enumerate}
-        \item Rappresentano astrazioni di sensori, attuatori o entità più complesse.
-        \item Fanno riferimento ad uno dei nodi focal per ottenere o comunicare informazioni.
+        \item Rappresentano astrazioni di:
+        \begin{enumerate}
+            \item Sensori.
+            \item Attuatori.
+            \item Entità più complesse, come stazioni di controllo, che possono anche impiegare interfacce grafiche.
+        \end{enumerate}
+        \item Fanno riferimento ad uno dei nodi Mainstay per ottenere o comunicare informazioni.
         \item Possono essere aggiunti o rimossi in tempo reale.
     \end{enumerate}
-    \item Deve essere presente una GUI con le seguenti funzionalità:
+    \item Deve essere presente una GUI (distinta da quelle definite al punto 2.1.3) con le seguenti funzionalità:
     \begin{enumerate}
-        \item Deve interagire direttamente solo con i nodi focal.
-        \item Deve mostrare lo stato attuale dei nodi focal ed entity del sistema.
-        \item Deve mostrare lo storico dei dati registrato dai nodi focal.
+        \item Deve interagire direttamente solo con i nodi Mainstay.
+        \item Deve mostrare lo stato attuale dei nodi Mainstay ed Resource del sistema.
+        \item Deve mostrare lo storico dei dati registrato dai nodi Mainstay.
         \item Deve presentare alcune statistiche interessanti sulla base dei dati rilevati.
     \end{enumerate}
 \end{enumerate}

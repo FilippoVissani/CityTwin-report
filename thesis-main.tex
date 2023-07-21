@@ -31,12 +31,46 @@
 \mainmatter
 
 %----------------------------------------------------------------------------------------
-\chapter{Obiettivi del progetto}
+\chapter{Obiettivi del Progetto}
 \label{chap:goals}
 %----------------------------------------------------------------------------------------
 
+\section{Requisiti Funzionali}
+
+All'interno della simulazione saranno presenti due tipologie di nodi: focal ed entity.
+
+\begin{enumerate}
+    \item I nodi focal sono la struttura portante dell'intero sistema:
+    \begin{enumerate}
+        \item Scambiano informazioni nodi entity.
+        \item Rilevano i malfunzionamenti dei nodi entity.
+        \item Si occupano di salvare in modo persistente le informazioni.
+    \end{enumerate}
+    \item I nodi entity rappresentano astrazioni di sensori, attuatori o entità più complesse.
+    \item I nodi entity interagiscono direttamente solo con i nodi focal per ottenere o comunicare informazioni.
+    \item Deve essere possibile aggiungere o rimuovere nodi entity in tempo reale.
+    \item Il sistema deve essere modulare:
+    \begin{enumerate}
+        \item I nodi focal non devono conoscere a prescindere le tipologie dei nodi entity.
+    \end{enumerate}
+    \item Deve essere presente una GUI che presenti le seguenti informazioni:
+    \begin{enumerate}
+        \item Lo stato attuale dei nodi focal ed entity del sistema.
+        \item Lo storico dei dati registrato dai nodi focal.
+    \end{enumerate}
+\end{enumerate}
+
+\section{Tecnologie Utilizzate}
+
+\begin{itemize}
+    \item Scala + SBT
+    \item Akka
+    \item MongoDB
+    \item Docker
+\end{itemize}
+
 %----------------------------------------------------------------------------------------
-\chapter{Piano di lavoro previsto}
+\chapter{Piano di Lavoro Previsto}
 \label{chap:expectedWorkPlan}
 %----------------------------------------------------------------------------------------
 

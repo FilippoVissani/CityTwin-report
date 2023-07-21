@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.8...1.0.9) (2023-07-21)
+
+
+### Documentation
+
+* add Student ID ([6b66cd3](https://github.com/FilippoVissani/CityTwin-report/commit/6b66cd3d22aaac0e7e0fea1ccf0d338443fadf0c))
+
 ## [1.0.8](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.7...1.0.8) (2023-07-21)
 
 

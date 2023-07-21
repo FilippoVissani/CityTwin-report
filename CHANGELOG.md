@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.5...1.0.6) (2023-07-21)
+
+
+### Documentation
+
+* improve docs ([9fb52b8](https://github.com/FilippoVissani/CityTwin-report/commit/9fb52b8479c98fdde76b9ae5d7430a6f7b093847))
+
 ## [1.0.5](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.4...1.0.5) (2023-07-21)
 
 

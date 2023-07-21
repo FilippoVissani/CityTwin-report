@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.3...1.0.4) (2023-07-21)
+
+
+### Documentation
+
+* add chapter 'Piano di Lavoro Previsto' ([e5af767](https://github.com/FilippoVissani/CityTwin-report/commit/e5af7672ada8bf5b9862c8b4a3608b140f5ebc92))
+
 ## [1.0.3](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.2...1.0.3) (2023-07-21)
 
 

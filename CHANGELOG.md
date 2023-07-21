@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.2...1.0.3) (2023-07-21)
+
+
+### Documentation
+
+* improve requirements ([e40e4c8](https://github.com/FilippoVissani/CityTwin-report/commit/e40e4c84d0db83df61162dca23cdda80b1b05bb3))
+
 ## [1.0.2](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.1...1.0.2) (2023-07-21)
 
 

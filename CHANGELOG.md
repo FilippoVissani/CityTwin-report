@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.1...1.0.2) (2023-07-21)
+
+
+### Documentation
+
+* add chapter 'Requisiti Funzionali' ([6cce8a0](https://github.com/FilippoVissani/CityTwin-report/commit/6cce8a023acdec8835441fc9f24a89925828cb49))
+
 ## [1.0.1](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.0...1.0.1) (2023-07-21)
 
 

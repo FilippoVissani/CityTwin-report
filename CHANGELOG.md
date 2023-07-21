@@ -1,3 +1,15 @@
+## [1.0.1](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.0...1.0.1) (2023-07-21)
+
+
+### Bug Fixes
+
+* traduce subtitle ([5c619e9](https://github.com/FilippoVissani/CityTwin-report/commit/5c619e9221e2287738e9846ed7e1387db0880be7))
+
+
+### Documentation
+
+* add abstract ([7851ed4](https://github.com/FilippoVissani/CityTwin-report/commit/7851ed47f2a87142abfbc1f023164db5bcc99f8f))
+
 ## 1.0.0 (2023-07-20)
 
 

@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.7...1.0.8) (2023-07-21)
+
+
+### Documentation
+
+* change term ([8a7b394](https://github.com/FilippoVissani/CityTwin-report/commit/8a7b39403b7a32fc14005ac063c67414324f1ce0))
+
 ## [1.0.7](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.6...1.0.7) (2023-07-21)
 
 

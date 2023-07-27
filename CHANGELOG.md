@@ -1,3 +1,18 @@
+## [1.1.1](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.0...1.1.1) (2023-07-27)
+
+
+### General maintenance
+
+* define list style ([7f85a86](https://github.com/FilippoVissani/CityTwin-report/commit/7f85a86325d4b13a74079fc96d9cda015e250f4a))
+
+
+### Documentation
+
+* add group components and group number ([04dd700](https://github.com/FilippoVissani/CityTwin-report/commit/04dd7007e29cf18af61875123cbe20565f12192a))
+* add introduction ([2c9bf8b](https://github.com/FilippoVissani/CityTwin-report/commit/2c9bf8b69c93fa75dce9846a5beefc34f3bf45a6))
+* add project title ([5005f71](https://github.com/FilippoVissani/CityTwin-report/commit/5005f71014861f267482d93afd29dd70f9986f93))
+* add requirements ([69d89d7](https://github.com/FilippoVissani/CityTwin-report/commit/69d89d70046cb83aada30f4974b6b89f4fa6c568))
+
 ## [1.1.0](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.9...1.1.0) (2023-07-27)
 
 

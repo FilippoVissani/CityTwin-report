@@ -18,14 +18,20 @@ jobs:
           token: ${{ secrets.GH_ACCESS_TOKEN }}
           submodules: recursive
           
-      - name: Compile latex
+      - name: Compile sd report
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: |
-            distributed-systems/thesis-main.tex
-            smart-city/report.tex
+          working_directory: distributed-systems
+          root_file: thesis-main.tex
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape
-        
+
+      - name: Compile sc report
+        uses: xu-cheng/latex-action@v2
+        with:
+          working_directory: smart-city
+          root_file: report.tex
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape
+
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}

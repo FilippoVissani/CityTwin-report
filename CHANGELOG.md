@@ -1,3 +1,27 @@
+## [1.1.0](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.9...1.1.0) (2023-07-27)
+
+
+### Features
+
+* add sm report ([b08be2d](https://github.com/FilippoVissani/CityTwin-report/commit/b08be2d8d62f32c4a7c366197e1073043994f86a))
+
+
+### General maintenance
+
+* update .gitignore ([61ed1c9](https://github.com/FilippoVissani/CityTwin-report/commit/61ed1c92dc6f85ab8329fddd4dc22d976da20a00))
+
+
+### Refactoring
+
+* change sc report name ([a4468eb](https://github.com/FilippoVissani/CityTwin-report/commit/a4468eb6181382965b063b5c196637a1510715a8))
+* move sd report ([9c90f5b](https://github.com/FilippoVissani/CityTwin-report/commit/9c90f5bbcf50e8fe316bc17a8545ae33164b73a3))
+
+
+### Build and continuous integration
+
+* configure ci to build both reports ([d2e8d6c](https://github.com/FilippoVissani/CityTwin-report/commit/d2e8d6c1de77ed620c5d34410242ac5d3bb70e55))
+* fix ci ([e03f432](https://github.com/FilippoVissani/CityTwin-report/commit/e03f43298191b1af110afd633213034fd4fe105d))
+
 ## [1.0.9](https://github.com/FilippoVissani/CityTwin-report/compare/1.0.8...1.0.9) (2023-07-21)
 
 

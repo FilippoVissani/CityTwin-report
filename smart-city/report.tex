@@ -102,19 +102,35 @@ Vincoli circa la lunghezza della sezione (escluse didascalie, tabelle, testo nel
 
 \section{Analisi dei requisiti}
 
-In questa sezione esporre brevemente i requisiti a cui il sistema proposto deve rispondere, concentrando l'attenzione sugli aspetti più rilevanti e facendo eventualmente uso di opportuni diagrammi di alto livello.\\
+All'interno della simulazione saranno presenti due tipologie di nodi: Mainstay e Resource.
 
-Vincoli circa la lunghezza della sezione (escluse didascalie, tabelle, testo nelle immagini, schemi):
-
-\vspace{1cm}
-\begin{tabular}{l|rr}
- & Numero minimo di battute & Numero massimo di battute \\
- \hline
- 1 componente & 4000 & 6000 \\
- 2 componenti & 6000 & 8000 \\
- 3 componenti & 8000 & 10000 \\
- \hline
-\end{tabular}
+\begin{enumerate}
+    \item I nodi Mainstay sono la struttura portante dell'intero sistema:
+    \begin{enumerate}
+        \item Scambiano informazioni con i nodi Resource.
+        \item Rilevano i malfunzionamenti dei nodi Resource.
+        \item Si occupano di salvare in modo persistente le informazioni.
+        \item Non devono conoscere a prescindere le tipologie dei nodi Resource.
+    \end{enumerate}
+    \item I nodi Resource:
+    \begin{enumerate}
+        \item Rappresentano astrazioni di:
+        \begin{enumerate}
+            \item Sensori.
+            \item Attuatori.
+            \item Entità più complesse, come stazioni di controllo, che possono anche impiegare interfacce grafiche.
+        \end{enumerate}
+        \item Fanno riferimento ad uno dei nodi Mainstay per ottenere o comunicare informazioni.
+        \item Possono essere aggiunti o rimossi in tempo reale.
+    \end{enumerate}
+    \item Deve essere presente una GUI (distinta da quelle definite al punto 2.1.3) con le seguenti funzionalità:
+    \begin{enumerate}
+        \item Deve interagire direttamente solo con i nodi Mainstay.
+        \item Deve mostrare lo stato attuale dei nodi Mainstay e Resource del sistema.
+        \item Deve mostrare lo storico dei dati registrato dai nodi Mainstay.
+        \item Deve presentare alcune statistiche interessanti sulla base dei dati rilevati.
+    \end{enumerate}
+\end{enumerate}
 
 
 \newpage

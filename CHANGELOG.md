@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.1...1.1.2) (2023-08-14)
+
+
+### Documentation
+
+* add requirement ([4066efc](https://github.com/FilippoVissani/CityTwin-report/commit/4066efc1c93188ba15307c55b5d1cf88af2f72b8))
+
 ## [1.1.1](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.0...1.1.1) (2023-07-27)
 
 

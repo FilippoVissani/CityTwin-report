@@ -124,15 +124,22 @@ Vincoli circa la lunghezza della sezione (escluse didascalie, tabelle, testo nel
 
 \section{Analisi dei requisiti}
 
-All'interno della simulazione saranno presenti due tipologie di nodi: Mainstay e Resource.
+Di seguito viene riportato l'elenco dettagliato dei requisiti del sistema.
 
 \begin{enumerate}
     \item I nodi Mainstay sono la struttura portante dell'intero sistema:
     \begin{enumerate}
-        \item Scambiano informazioni con i nodi Resource.
+        \item Ricevono informazioni dai nodi Resource che modellano sensori.
+        \item Comunicano informazioni ai nodi Resource che modellano attuatori.
         \item Rilevano i malfunzionamenti dei nodi Resource.
-        \item Si occupano di salvare in modo persistente le informazioni.
+        \item Rilevano i malfunzionamenti degli altri nodi Mainstay.
+        \item Si occupano di salvare le informazioni contattando il servizio di persistenza.
         \item Non devono conoscere a prescindere le tipologie dei nodi Resource.
+        \item Devono disporre di una struttura dati distribuita che permetta di memorizzare le informazioni rilevanti:
+        \begin{enumerate}
+            \item La struttura dati deve essere sincronizzata tra i nodi Mainstay.
+            \item La struttura dati deve mantenere la consistenza dei dati nel tempo.
+        \end{enumerate}
     \end{enumerate}
     \item I nodi Resource:
     \begin{enumerate}
@@ -147,13 +154,30 @@ All'interno della simulazione saranno presenti due tipologie di nodi: Mainstay e
     \end{enumerate}
     \item Deve essere presente una GUI (distinta da quelle definite al punto 2.1.3) con le seguenti funzionalità:
     \begin{enumerate}
-        \item Deve interagire direttamente solo con i nodi Mainstay.
         \item Deve mostrare lo stato attuale dei nodi Mainstay e Resource del sistema.
-        \item Deve mostrare lo storico dei dati registrato dai nodi Mainstay.
-        \item Deve presentare alcune statistiche interessanti sulla base dei dati rilevati.
+        \item Deve mostrare la posizione delle risorse nella città.
+        \item Deve presentare alcune statistiche interessanti sulla base dei dati rilevati dal servizio di persistenza.
+    \end{enumerate}
+    \item Deve essere presente un servizio di persistenza dei dati che permetta di salvare in modo persistente:
+    \begin{enumerate}
+        \item Lo stato dei nodi Mainstay.
+        \item Lo stato dei nodi Resource.
+    \end{enumerate}
+    \item Il malfunzionamento di un nodo non deve compromettere il funzionamento del sistema.
+    \item Il sistema deve essere realizzato in moduli separati, in modo da poter essere facilmente estendibile.
+    \item Deve poter essere possibile introdurre nuovi moduli senza dover modificare i componenti esistenti.
+    \item Vengono previsti i seguenti moduli per i nodi Resource:
+    \begin{enumerate}
+        \item Sensore per la rilevazione di piogge acide.
+        \item Sensore per l'analisi della qualità dell'aria.
+        \item Sensore per la rilevazione dell'inquinamento acustico.
+        \item Modulo per la rilevazione del livello dell'acqua di un fiume e possibilità di intervento:
+        \begin{enumerate}
+            \item Sensore per la rilevazione degli allagamenti.
+            \item Pannello di controllo per l'intervento in caso di allagamento.
+        \end{enumerate}
     \end{enumerate}
 \end{enumerate}
-
 
 \newpage
 

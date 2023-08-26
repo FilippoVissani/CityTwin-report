@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.2...1.1.3) (2023-08-26)
+
+
+### Documentation
+
+* add paragraphs in "Introduzione" ([72d8ac0](https://github.com/FilippoVissani/CityTwin-report/commit/72d8ac0663b063e42c43800c50aef8ea77341aa5))
+
 ## [1.1.2](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.1...1.1.2) (2023-08-14)
 
 

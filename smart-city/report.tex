@@ -40,8 +40,6 @@
 \emph{Componenti del gruppo: Eddie Barzi, Filippo Vissani}\\[3cm]
 \end{flushleft}
 
-
-
 \end{titlepage}
 
 %----------------------------------------------------------------------------------------
@@ -58,16 +56,36 @@
 
 \section{Introduzione}
 
-L'obiettivo di CityTwin è quello di realizzare la simulazione di un sistema di digital twin nel contesto della smart city. In particolare, si vuole realizzare un sistema che sia in grado di catturare e rappresentare in formato digitale il comportamento delle varie entità presenti all'interno della città. Questo può portare ad una serie di benefici, alcuni dei quali vengono elencati di seguito:
-    \begin{itemize}
-        \item Rilevazione di possibili problematiche e intervento tempestivo/automatizzato.
-        \item Riduzione del consumo energetico.
-        \item Rilevazione della qualità dell'aria e dell'acqua.
-        \item Analisi dell'inquinamento acustico.
-        \item Ottimizzazione della mobilità urbana.
-    \end{itemize}
-\newpage
+Il progetto CityTwin si propone di realizzare la simulazione di un sistema di digital twin nel contesto della smart city. In particolare, si vuole realizzare un sistema che sia in grado di catturare e rappresentare in formato digitale il comportamento delle varie entità presenti all'interno della città. Questo può portare ad una serie di benefici, alcuni dei quali vengono elencati di seguito:
 
+\begin{itemize}
+    \item Rilevazione di possibili problematiche e intervento tempestivo/automatizzato.
+    \item Riduzione del consumo energetico.
+    \item Rilevazione della qualità dell'aria e dell'acqua.
+    \item Analisi dell'inquinamento acustico.
+    \item Ottimizzazione della mobilità urbana.
+\end{itemize}
+
+La simulazione sarà composta da due tipologie di nodi: i nodi Mainstay, che rappresentano la struttura portante del sistema, e i nodi Resource, che rappresentano astrazioni di sensori, attuatori o entità più complesse.
+
+I nodi Mainstay si occupano di scambiare informazioni con i nodi Resource, rilevare eventuali malfunzionamenti e salvare in modo persistente le informazioni rilevate dai nodi Resource. I nodi Resource, invece, si occupano di rilevare informazioni e comunicarle ai nodi Mainstay.
+
+L'utente potrà visualizzare lo stato attuale del sistema, lo storico dei dati ed eventuali statistiche, nonché interagire con il sistema tramite GUI, ad esempio per intervenire dopo la rilevazione di un incendio.
+
+Per la realizzazione del progetto verranno utilizzate le seguenti tecnologie:
+
+Akka è un toolkit open source e runtime che semplifica la costruzione di applicazioni concorrenti e distribuite sulla JVM. Questo toolkit supporta diversi modelli di programmazione per la concorrenza, ma enfatizza la concorrenza basata su attori.
+
+I componenti principali del progetto, quali Mainstay e Resource, verranno modellati sulla base del paradigma ad attori e verranno realizzati utilizzando Akka in combinazione con il linguaggio Scala 3.
+
+Per quanto riguarda il servizio di persistenza dei dati, utile per visualizzare le statistiche, verrà utilizzato MongoDB, un database non relazionale orientato ai documenti. Questo database verrà utilizzato per salvare in modo persistente i dati rilevati dai nodi Mainstay.
+Il servizio di persistenza verrà realizzato come modulo separato, per questo motivo si sceglie di implementare un layer scritto in JavaScript, che esponga delle API utilizzabili sia dai nodi Mainstay che da altri clienti.
+
+Sulla base dei linguaggi scelti, verranno adottati Simple Build Tool (SBT) per Scala 3 e Node Package Manager (NPM) per JavaScript per la gestione delle dipendenze e la compilazione del codice.
+
+Per semplificare l'avvio del sistema distribuito e garantire la scalabilità verrà utilizzato Docker, un progetto open source che automatizza il deployment di applicazioni all'interno di contenitori software.
+
+\newpage
 
 %----------------------------------------------------------------------------------------
 %	STATO DELL'ARTE

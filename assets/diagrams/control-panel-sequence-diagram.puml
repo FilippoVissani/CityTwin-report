@@ -1,0 +1,50 @@
+@startuml
+
+control ControlPanelActor
+control ResourceActor
+control MainstayActor
+control PersistenceServiceDriverActor
+control PersistenceService
+database city_twin_db
+
+activate ControlPanelActor
+activate ResourceActor
+activate MainstayActor
+activate PersistenceServiceDriverActor
+activate PersistenceService
+activate city_twin_db
+
+loop every X seconds
+
+ControlPanelActor --> ControlPanelActor : Tick()
+
+== Request current state ==
+
+ControlPanelActor --> ResourceActor : AskAllResourcesToMainstay()
+ResourceActor --> MainstayActor : AskResourcesState(resourceName)
+alt success
+MainstayActor --> ResourceActor : ResourceStatesResponse(resources)
+ResourceActor --> ResourceActor : AdaptedResourceStatesResponse(resources)
+ResourceActor --> ControlPanelActor : ResourcesFromMainstayResponse(resources)
+ControlPanelActor --> ControlPanelActor : AdaptedResourcesFromMainstayResponse(resources)
+else failure
+ResourceActor --> ResourceActor : AdaptedResourceStatesResponse()
+ControlPanelActor --> ControlPanelActor : AdaptedResourcesFromMainstayResponse()
+end
+
+== Request history ==
+
+ControlPanelActor --> PersistenceServiceDriverActor : AskResourcesHistory()
+PersistenceServiceDriverActor --> PersistenceService : GetResourcesHistory()
+PersistenceService --> city_twin_db : GetResourcesHistory()
+alt success
+city_twin_db --> PersistenceService : ResourcesHistory(resources)
+PersistenceService --> PersistenceServiceDriverActor : ResourcesHistory(resources)
+PersistenceServiceDriverActor --> ControlPanelActor : ResourcesHistoryResponse(resources)
+ControlPanelActor --> ControlPanelActor : AdaptedResourcesHistoryResponse(resources)
+else failure
+ControlPanelActor --> ControlPanelActor : AdaptedResourcesHistoryResponse()
+end
+end
+
+@enduml

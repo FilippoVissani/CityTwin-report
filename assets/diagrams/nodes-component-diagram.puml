@@ -1,0 +1,32 @@
+@startuml
+
+skinparam componentStyle rectangle
+
+node "Mainstay Node" as Mainstay {
+    component [Mainstay Actor (root)] as MainstayActor
+    component [Nodes Observer Actor] as NodesObserverActor
+    component [persistence Service Driver Actor] as persistenceServiceDriverActor
+    MainstayActor -- NodesObserverActor
+    MainstayActor -- persistenceServiceDriverActor
+}
+
+node "Resource Node" as Resource {
+    component [Concrete Resource Actor (root)] as ConcreteResourceActor
+    component [Resource Actor] as ResourceActor
+    ConcreteResourceActor -- ResourceActor
+}
+
+node "Persistence Service Node" as PersistenceService{
+    component [Persistence Service]
+}
+
+node "DBMS Node" as DBMS {
+    database "city_twin_db"
+}
+
+Mainstay --> Resource : akka
+Resource --> Mainstay : akka
+Mainstay --> PersistenceService : http
+PersistenceService --> DBMS : mongodb
+
+@enduml

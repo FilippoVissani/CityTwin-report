@@ -12,17 +12,17 @@ activate PersistenceServiceDriverActor
 activate PersistenceService
 activate city_twin_db
 
-ResourceActor -> MainstayActor : UpdateResources(resource)
-MainstayActor -> PersistenceServiceDriverActor : PostResource(resource)
-PersistenceServiceDriverActor -> PersistenceService : Insert(resource)
-PersistenceService -> city_twin_db : Insert(resource)
+ResourceActor --> MainstayActor : UpdateResources(resource)
+MainstayActor --> PersistenceServiceDriverActor : PostResource(resource)
+PersistenceServiceDriverActor --> PersistenceService : Insert(resource)
+PersistenceService --> city_twin_db : Insert(resource)
 
-ResourceActor -> MainstayActor : AskResourcesState(resourceName)
+ResourceActor --> MainstayActor : AskResourcesState(resourceName)
 alt success
-MainstayActor -> ResourceActor : ResourceStatesResponse(resources)
-ResourceActor -> ResourceActor : AdaptedResourceStatesResponse(resources)
+MainstayActor --> ResourceActor : ResourceStatesResponse(resources)
+ResourceActor --> ResourceActor : AdaptedResourceStatesResponse(resources)
 else failure
-ResourceActor -> ResourceActor : AdaptedResourceStatesResponse()
+ResourceActor --> ResourceActor : AdaptedResourceStatesResponse()
 end
 
 @enduml

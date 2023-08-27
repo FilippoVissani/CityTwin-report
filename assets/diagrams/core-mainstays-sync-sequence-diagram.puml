@@ -16,12 +16,12 @@ activate PersistenceServiceDriverActor
 activate PersistenceService
 activate city_twin_db
 
-ResourceActor -> MainstayActor1 : UpdateResources(resource)
-MainstayActor1 -> PersistenceServiceDriverActor : PostResource(resource)
-PersistenceServiceDriverActor -> PersistenceService : Insert(resource)
-PersistenceService -> city_twin_db : Insert(resource)
+ResourceActor --> MainstayActor1 : UpdateResources(resource)
+MainstayActor1 --> PersistenceServiceDriverActor : PostResource(resource)
+PersistenceServiceDriverActor --> PersistenceService : Insert(resource)
+PersistenceService --> city_twin_db : Insert(resource)
 
-MainstayActor1 -> MainstayActor2 : Sync(resources)
-MainstayActor1 -> MainstayActor3 : Sync(resources)
+MainstayActor1 --> MainstayActor2 : Sync(resources)
+MainstayActor1 --> MainstayActor3 : Sync(resources)
 
 @enduml

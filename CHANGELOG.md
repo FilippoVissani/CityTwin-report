@@ -1,3 +1,10 @@
+## [1.1.10](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.9...1.1.10) (2023-08-27)
+
+
+### Documentation
+
+* add captions to figures ([5bfe104](https://github.com/FilippoVissani/CityTwin-report/commit/5bfe104c095953e8be5ae230c0ebce4d724217f0))
+
 ## [1.1.9](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.8...1.1.9) (2023-08-27)
 
 

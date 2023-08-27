@@ -1,3 +1,11 @@
+## [1.1.8](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.7...1.1.8) (2023-08-27)
+
+
+### Documentation
+
+* add diagram ([c65942f](https://github.com/FilippoVissani/CityTwin-report/commit/c65942f6134e39399c0c693207f217860c2feb47))
+* rename diagram ([caf18b5](https://github.com/FilippoVissani/CityTwin-report/commit/caf18b58cf84bc12b6490dab382c4dbcb30b5ab9))
+
 ## [1.1.7](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.6...1.1.7) (2023-08-27)
 
 

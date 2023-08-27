@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.6...1.1.7) (2023-08-27)
+
+
+### Documentation
+
+* add diagrams ([8a598e1](https://github.com/FilippoVissani/CityTwin-report/commit/8a598e1bc993fd1c8417d21ba3efb1eb1be6d7c1))
+
 ## [1.1.6](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.5...1.1.6) (2023-08-26)
 
 

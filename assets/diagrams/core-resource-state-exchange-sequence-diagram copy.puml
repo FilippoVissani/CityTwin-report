@@ -1,0 +1,28 @@
+@startuml
+
+control ResourceActor
+control MainstayActor
+control PersistenceServiceDriverActor
+control PersistenceService
+database city_twin_db
+
+activate ResourceActor
+activate MainstayActor
+activate PersistenceServiceDriverActor
+activate PersistenceService
+activate city_twin_db
+
+ResourceActor -> MainstayActor : UpdateResources(resource)
+MainstayActor -> PersistenceServiceDriverActor : PostResource(resource)
+PersistenceServiceDriverActor -> PersistenceService : Insert(resource)
+PersistenceService -> city_twin_db : Insert(resource)
+
+ResourceActor -> MainstayActor : AskResourcesState(resourceName)
+alt success
+MainstayActor -> ResourceActor : ResourceStatesResponse(resources)
+ResourceActor -> ResourceActor : AdaptedResourceStatesResponse(resources)
+else failure
+ResourceActor -> ResourceActor : AdaptedResourceStatesResponse()
+end
+
+@enduml

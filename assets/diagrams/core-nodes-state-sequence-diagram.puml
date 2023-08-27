@@ -1,0 +1,31 @@
+@startuml
+
+control NodesObserverActor
+control MainstayActor
+control PersistenceServiceDriverActor
+control PersistenceService
+database city_twin_db
+
+activate MainstayActor
+activate NodesObserverActor
+activate PersistenceServiceDriverActor
+activate PersistenceService
+activate city_twin_db
+
+NodesObserverActor -> MainstayActor : SetMainstays(mainstay1, mainstay2)
+MainstayActor -> PersistenceServiceDriverActor : PostMainstay(mainstay1)
+PersistenceServiceDriverActor -> PersistenceService : Insert(mainstay1)
+PersistenceService -> city_twin_db : Insert(mainsta1)
+MainstayActor -> PersistenceServiceDriverActor : PostMainstay(mainstay2)
+PersistenceServiceDriverActor -> PersistenceService : Insert(mainstay2)
+PersistenceService -> city_twin_db : Insert(mainstay2)
+
+NodesObserverActor -> MainstayActor : UpdateResources(resource1, resource2)
+MainstayActor -> PersistenceServiceDriverActor : PostResource(resource1)
+PersistenceServiceDriverActor -> PersistenceService : Insert(resource1)
+PersistenceService -> city_twin_db : Insert(resource1)
+MainstayActor -> PersistenceServiceDriverActor : PostResource(resource2)
+PersistenceServiceDriverActor -> PersistenceService : Insert(resource2)
+PersistenceService -> city_twin_db : Insert(resource2)
+
+@enduml

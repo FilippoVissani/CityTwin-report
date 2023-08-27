@@ -1,0 +1,67 @@
+@startuml
+
+skinparam groupInheritance 2
+left to right direction
+
+package it.unibo.citytwin.core.actors {
+    class ResourceActor
+    class ResourceActorCommand
+    class AdaptedResourcesStateResponse
+    class SetMainstayActorsToResourceActor
+    class ResourceChanged
+    class AskResourcesToMainstay
+    class AskAllResourcesToMainstay
+    class AskMainstaysState
+
+    class MainstayActor
+    class MainstayActorCommand
+    class AskResourcesState
+    class AskAllResourcesState
+    class UpdateResources
+    class SetMainstays
+    class Sync
+
+    class NodesObserverActor
+    class NodesObserverActorCommand
+    class UpdateMainstayNodesState
+    class UpdateResourceNodesState
+
+    class PersistenceServiceDriverActor
+    class PersistenceServiceDriverActorCommand
+    class AskMainstaysHistory
+    class AskResourcesHistory
+    class PostResource
+}
+
+ResourceActorCommand <|-- AdaptedResourcesStateResponse
+ResourceActorCommand <|-- SetMainstayActorsToResourceActor
+ResourceActorCommand <|-- ResourceChanged
+ResourceActorCommand <|-- AskResourcesToMainstay
+ResourceActorCommand <|-- AskAllResourcesToMainstay
+ResourceActorCommand <|-- AskMainstaysState
+
+MainstayActorCommand <|-- AskResourcesState
+MainstayActorCommand <|-- AskAllResourcesState
+MainstayActorCommand <|-- UpdateResources
+MainstayActorCommand <|-- SetMainstays
+MainstayActorCommand <|-- Sync
+
+NodesObserverActorCommand <|-- UpdateMainstayNodesState
+NodesObserverActorCommand <|-- UpdateResourceNodesState
+
+PersistenceServiceDriverActorCommand <|-- AskMainstaysHistory
+PersistenceServiceDriverActorCommand <|-- AskResourcesHistory
+PersistenceServiceDriverActorCommand <|-- PostResource
+
+ResourceActor ..> ResourceActorCommand
+MainstayActor ..> MainstayActorCommand
+NodesObserverActor ..> NodesObserverActorCommand
+PersistenceServiceDriverActor ..> PersistenceServiceDriverActorCommand
+
+ResourceActor ..> MainstayActorCommand
+NodesObserverActor ..> MainstayActorCommand
+MainstayActor ..> PersistenceServiceDriverActorCommand
+MainstayActor ..> ResourceActorCommand
+NodesObserverActor ..> ResourceActorCommand
+
+@enduml

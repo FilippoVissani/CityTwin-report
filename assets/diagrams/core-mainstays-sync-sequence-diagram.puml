@@ -1,0 +1,27 @@
+@startuml
+
+control ResourceActor
+control MainstayActor1
+control MainstayActor2
+control MainstayActor3
+control PersistenceServiceDriverActor
+control PersistenceService
+database city_twin_db
+
+activate ResourceActor
+activate MainstayActor1
+activate MainstayActor2
+activate MainstayActor3
+activate PersistenceServiceDriverActor
+activate PersistenceService
+activate city_twin_db
+
+ResourceActor -> MainstayActor1 : UpdateResources(resource)
+MainstayActor1 -> PersistenceServiceDriverActor : PostResource(resource)
+PersistenceServiceDriverActor -> PersistenceService : Insert(resource)
+PersistenceService -> city_twin_db : Insert(resource)
+
+MainstayActor1 -> MainstayActor2 : Sync(resources)
+MainstayActor1 -> MainstayActor3 : Sync(resources)
+
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+
+left to right direction
+
+component [Core] as core
+component [Control Panel] as controlPanel
+component [Acid Rain Monitor] as acidRainMonitor
+component [Air Quality Monitor] as airQualityMonitor
+component [Noise Pollution Monitor] as noisePollutionMonitor
+component [River Monitor] as riverMonitor
+component [Persistence Service] as persistenceService
+
+interface "Mainstay Actor" as mainstayActor
+interface "Resource Actor" as resourceActor
+interface "Resource State" as resourceState
+interface "Mainstay State" as mainstayState
+
+interface "Get Resource" as getResource
+interface "Post Resource" as postResource
+interface "Get Mainstay" as getMainstay
+interface "Post Mainstay" as postMainstay
+
+getResource -- persistenceService
+postResource -- persistenceService
+getMainstay -- persistenceService
+postMainstay -- persistenceService
+
+resourceActor -- core
+resourceState -- core
+mainstayActor -- core
+mainstayState -- core
+
+core ..> postResource
+core ..> postMainstay
+
+controlPanel ..> getResource
+controlPanel ..> getMainstay
+
+controlPanel ..> resourceActor
+controlPanel ..> mainstayActor
+controlPanel ..> mainstayState
+controlPanel ..> resourceState
+
+acidRainMonitor ..> resourceActor
+acidRainMonitor ..> resourceState
+
+airQualityMonitor ..> resourceActor
+airQualityMonitor ..> resourceState
+
+noisePollutionMonitor ..> resourceActor
+noisePollutionMonitor ..> resourceState
+
+riverMonitor ..> resourceActor
+riverMonitor ..> resourceState
+
+@enduml

@@ -1,3 +1,15 @@
+## [1.1.9](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.8...1.1.9) (2023-08-27)
+
+
+### Bug Fixes
+
+* fix arrow in sequence diagrams ([bf56d77](https://github.com/FilippoVissani/CityTwin-report/commit/bf56d77020054971188cac21a58396d9b2cb9863))
+
+
+### Documentation
+
+* add control panel sequence diagram ([bbf9e0d](https://github.com/FilippoVissani/CityTwin-report/commit/bbf9e0d4033e3abf57f583de2d09396661502cea))
+
 ## [1.1.8](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.7...1.1.8) (2023-08-27)
 
 

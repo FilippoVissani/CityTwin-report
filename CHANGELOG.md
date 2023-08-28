@@ -1,3 +1,10 @@
+## [1.1.14](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.13...1.1.14) (2023-08-28)
+
+
+### Documentation
+
+* split paragraphs in subsections ([3ac4c6c](https://github.com/FilippoVissani/CityTwin-report/commit/3ac4c6c8ff015a416eaf71c0442a151418b2818f))
+
 ## [1.1.13](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.12...1.1.13) (2023-08-28)
 
 

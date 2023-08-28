@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[italian]{babel}
+\usepackage{listings}
 
 \linespread{1.2}
 \setlength{\parindent}{0pt}
@@ -399,21 +400,69 @@ MongoDB è un database NoSQL ampiamente utilizzato per gestire e archiviare gran
 
 Docker è una tecnologia di virtualizzazione leggera e di containerizzazione che consente di creare, distribuire e gestire applicazioni e servizi in ambienti isolati noti come "container". Questi container includono tutto ciò di cui un'applicazione ha bisogno per essere eseguita, come il codice, le librerie, le dipendenze e le variabili d'ambiente, il tutto condiviso su una base immutabile. Questo concetto di containerizzazione rende Docker un approccio efficace per sviluppare, testare e distribuire applicazioni in modo rapido e consistente su diverse piattaforme.
 
+\subsection{Problematiche Riscontrate e Soluzioni Adottate}
+
+\subsubsection{Serializzazione delle Strutture Dati}
+
+La serializzazione in Akka è il processo di convertire oggetti Scala in un formato che può essere trasmesso attraverso la rete e quindi ricostruito in un oggetto equivalente. Questo è particolarmente importante in un ambiente basato su attori, in cui i messaggi vengono inviati tra attori in diversi processi o nodi. Lo scambio di messaggi prevede l'utilizzo di strutture dati, che in un sistema distribuito devono essere serializzate prima di essere inviate. 
+
+Durante il processo di sviluppo si sono presentati problemi di serializzazione delle \verb|HashMap[A, B]| (dove \verb|A| e \verb|B| sono tipi generici), per questo motivo si è scelto di convertire le \verb|HashMap[A, B]| in \verb|Set[(A, B)]| per lo scambio di messaggi tra attori.
+
+Un altro tipo di struttura dati che non è possibile serializzare direttamente è l'enumerazione di Scala 3. Per questo motivo, si è scelto di utilizzare un'enumerazione di Scala 2, che è serializzabile.
+
+Esempio di enumerazione in Scala 3:
+
+\begin{lstlisting}[language=scala]
+    enum ResourceType:
+        case Act
+        case Sense
+\end{lstlisting}
+
+Esempio di enumerazione in Scala 2:
+
+\begin{lstlisting}[language=scala]
+    object ResourceType extends Enumeration:
+        type ResourceType = Value
+        val Act, Sense = Value
+\end{lstlisting}
+
+\subsubsection{Rappresentazione dello Stato delle Risorse}
+
+I nodi \textit{Mainstay} sono stati concepiti per essere generici e indipendenti dagli altri moduli del sistema. Per questo motivo non conoscono il tipo di risorse presenti a runtime e quindi non possono interpretarne lo stato. Questa risulta una problematica nel momento in cui lo stato della risorsa va serializzato per essere inviato ad un nodo \textit{Mainstay}.
+
+In origine il tipo dello stato della risorsa è stato definito come \verb|Any|, ma questo ha portato a problemi di serializzazione. Per risolvere questo problema, si è scelto di tipizzare lo stato come \verb|String|, in modo che esso possa essere definito in formato JSON.
+
+\subsection{Dettagli Salienti sull'Implementazione dei Moduli}
+
 \subsection{Control Panel}
+
+Il pannello di controllo è stato progettato per essere facilmente utilizzabile da qualsiasi tipo di utente. Le interazioni necessarie per visualizzare le informazioni desiderate sono state ridotte al minimo, in modo da rendere l'esperienza utente il più semplice possibile.
+
+Il pannello di controllo dispone di quattro schermate:
+
+\begin{itemize}
+    \item \textbf{Mappa della città} (Figura \ref{fig:control-panel-map}): visualizza la posizione delle risorse nella città, indicandone il nome e lo stato (online/offline).
+    \item \textbf{Pannello delle informazioni} (Figura \ref{fig:control-panel-info}): visualizza in tempo reale le informazioni sullo stato delle risorse e dei Mainstay.
+    \item \textbf{Pannello delle statistiche dei nodi Resource} (Figura \ref{fig:control-panel-resources-stats}): visualizza lo stato dei nodi Resource nel tempo.
+    \item \textbf{Pannello delle statistiche dei nodi Mainstay}: visualizza lo stato dei nodi Mainstay nel tempo.
+\end{itemize}
 
 \begin{figure}[H]
     \caption{Control Panel: schermata della mappa della città.}
     \includegraphics[width=\textwidth]{../assets/images/control-panel-map.png}
+    \label{fig:control-panel-map}
 \end{figure}
 
 \begin{figure}[H]
     \caption{Control Panel: schermata delle informazioni sullo stato dei nodi \textit{Resource} e dei nodi \textit{Mainstay}.}
     \includegraphics[width=\textwidth]{../assets/images/control-panel-info.png}
+    \label{fig:control-panel-info}
 \end{figure}
 
 \begin{figure}[H]
     \caption{Control Panel: schermata delle statistiche dei nodi \textit{Resource}.}
     \includegraphics[width=\textwidth]{../assets/images/control-panel-resources-stats.png}
+    \label{fig:control-panel-resources-stats}
 \end{figure}
 
 \newpage

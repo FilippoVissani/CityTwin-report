@@ -358,18 +358,61 @@ Il comportamento del \textit{Control Panel} (Figura \ref{fig:control-panel-seque
 
 \section{Implementazione}\label{sec:implementazione}
 
+\subsection{Tecnologie Utilizzate}
+
+\subsubsection{Scala 3}
+
+Scala 3 è una versione successiva del linguaggio di programmazione Scala, progettato per migliorare e semplificare ulteriormente l'esperienza di programmazione funzionale e orientata agli oggetti. È un linguaggio staticamente tipizzato che unisce caratteristiche provenienti da diversi paradigmi di programmazione, consentendo agli sviluppatori di scrivere codice conciso ed elegante mentre sfruttano la potenza dei tipi statici.
+
+\subsubsection{Akka}
+
+Akka è un toolkit open-source scritto in Scala che offre un modello di programmazione per costruire applicazioni distribuite, concorrenti e reattive basate su attori. Gli attori sono unità fondamentali di elaborazione in Akka e rappresentano entità concorrenti leggere che comunicano tra loro attraverso messaggi. Questo modello di programmazione facilita la gestione dell'elaborazione parallela e distribuita in modo efficiente.
+
+Alcuni concetti chiave all'interno del toolkit Akka:
+
+\begin{itemize}
+    \item Attori: Gli attori sono la base del modello di programmazione in Akka. Ogni attore è una singola unità di elaborazione che può ricevere messaggi, eseguire calcoli e inviare messaggi ad altri attori. Gli attori sono isolati e indipendenti, il che semplifica la gestione dei thread e delle risorse concorrenti.
+    \item Sistema di attori: Akka fornisce un sistema di attori che gestisce l'allocazione e la comunicazione degli attori. Il sistema di attori si occupa della gestione dei thread, del ciclo di vita degli attori e delle loro comunicazioni asincrone attraverso l'invio di messaggi.
+    \item Modello di messaggistica: In Akka, gli attori comunicano inviando messaggi asincroni. Questo modello di messaggistica facilita la creazione di applicazioni reattive in cui gli attori possono rispondere in modo efficiente ai messaggi ricevuti senza bloccare l'elaborazione.
+    \item Supervisione e gerarchia degli attori: Gli attori possono essere organizzati in una gerarchia, dove gli attori genitori supervisionano il comportamento dei loro figli. Questo consente una maggiore resilienza, in quanto gli errori in un attore possono essere gestiti in modo gerarchico, consentendo il ripristino o la terminazione controllata degli attori falliti.
+    \item Sistemi distribuiti: Akka facilita la costruzione di sistemi distribuiti attraverso l'implementazione di attori distribuiti. Gli attori distribuiti possono esistere su nodi separati in una rete e comunicare attraverso la rete stessa, consentendo la costruzione di applicazioni scalabili e resilienti.
+\end{itemize}
+
+\subsubsection{Node.js}
+
+Node.js è una piattaforma open-source basata sul motore JavaScript V8 di Google, progettata per consentire l'esecuzione di codice JavaScript lato server. Prima dell'avvento di Node.js, JavaScript era principalmente utilizzato all'interno dei browser per creare interazioni dinamiche nelle pagine web. Tuttavia, Node.js ha esteso il suo utilizzo consentendo di eseguire codice JavaScript anche sul server, aprendo la strada a numerose possibilità di sviluppo web e applicativo.
+
+Alcune delle caratteristiche chiave di Node.js:
+
+\begin{itemize}
+    \item Architettura asincrona e non bloccante: Node.js è noto per il suo modello asincrono e non bloccante, che permette di gestire molte connessioni contemporaneamente senza rallentamenti. Questo è particolarmente utile per le applicazioni in tempo reale, come le applicazioni di chat o di gioco online.
+    \item Moduli: Node.js utilizza un sistema di moduli per organizzare il codice in componenti riutilizzabili. I moduli possono essere creati per separare le funzionalità in file separati, rendendo il codice più gestibile e manutenibile.
+    \item NPM (Node Package Manager): NPM è un gestore di pacchetti che permette agli sviluppatori di installare, condividere e gestire librerie e pacchetti di terze parti. Questo ecosistema di pacchetti offre una vasta gamma di strumenti e librerie che semplificano lo sviluppo.
+    \item Server Web: Node.js può essere utilizzato per creare server web altamente scalabili ed efficienti. Molti framework, come Express.js, sono disponibili per semplificare la creazione di applicazioni web.
+\end{itemize}
+
+\subsubsection{MongoDB}
+
+MongoDB è un database NoSQL ampiamente utilizzato per gestire e archiviare grandi quantità di dati, inclusi dati non strutturati, semi-strutturati e strutturati. È progettato per essere flessibile, scalabile e performante, ed è particolarmente adatto per applicazioni che richiedono un'archiviazione e un accesso veloce a dati complessi e eterogenei.
+
+\subsubsection{Docker}
+
+Docker è una tecnologia di virtualizzazione leggera e di containerizzazione che consente di creare, distribuire e gestire applicazioni e servizi in ambienti isolati noti come "container". Questi container includono tutto ciò di cui un'applicazione ha bisogno per essere eseguita, come il codice, le librerie, le dipendenze e le variabili d'ambiente, il tutto condiviso su una base immutabile. Questo concetto di containerizzazione rende Docker un approccio efficace per sviluppare, testare e distribuire applicazioni in modo rapido e consistente su diverse piattaforme.
+
+\subsection{Control Panel}
+
 \begin{figure}[H]
-    \caption{Pannello di controllo: schermata della mappa della città.}
+    \caption{Control Panel: schermata della mappa della città.}
     \includegraphics[width=\textwidth]{../assets/images/control-panel-map.png}
 \end{figure}
 
 \begin{figure}[H]
-    \caption{Pannello di controllo: schermata delle informazioni sullo stato dei nodi \textit{Resource} e dei nodi \textit{Mainstay}.}
+    \caption{Control Panel: schermata delle informazioni sullo stato dei nodi \textit{Resource} e dei nodi \textit{Mainstay}.}
     \includegraphics[width=\textwidth]{../assets/images/control-panel-info.png}
 \end{figure}
 
 \begin{figure}[H]
-    \caption{Pannello di controllo: schermata delle statistiche dei nodi \textit{Resource}.}
+    \caption{Control Panel: schermata delle statistiche dei nodi \textit{Resource}.}
     \includegraphics[width=\textwidth]{../assets/images/control-panel-resources-stats.png}
 \end{figure}
 

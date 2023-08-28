@@ -174,16 +174,18 @@ Di seguito viene riportato l'elenco dettagliato dei requisiti del sistema.
 
 L'architettura del sistema, presentata in Figura \ref{fig:core-component-diagram}, è organizzata intorno a componenti interconnessi che consentono il monitoraggio e la gestione delle entità presenti all'interno della città. Ogni componente svolge ruoli specifici all'interno del sistema e interagisce attraverso interfacce ben definite.
 
-\subsection{Core}
+\subsection{Suddivisione dei Componenti}
+
+\subsubsection{Core}
 Il componente centrale del sistema è il \textit{Core}, responsabile della gestione dell'elaborazione dati, del coordinamento delle attività e della comunicazione tra gli altri componenti. Il Core funge da mediatore tra le varie risorse presenti all'interno della città, ricevendo dati dai sensori e inviandoli al servizio di persistenza. Inoltre.
 
-\subsection{Componenti Monitor}
+\subsubsection{Componenti Monitor}
 I diversi monitor ambientali, come l'\textit{Acid Rain Monitor}, l'\textit{Air Quality Monitor}, il \textit{Noise Pollution Monitor} e il \textit{River Monitor}, costituiscono le fonti primarie di dati. Ciascun monitor raccoglie misurazioni specifiche e invia queste informazioni al \textit{Core} tramite l'interfaccia \textit{Resource}. Questa comunicazione consente al \textit{Core} di elaborare i dati e fornire una visione completa delle condizioni ambientali.
 
-\subsection{Control Panel}
+\subsubsection{Control Panel}
 Il \textit{Control Panel} è l'interfaccia utente principale attraverso cui gli utenti interagiscono con il sistema. Comunica con il \textit{Core} per ottenere dati sullo stato ambientale e sul sistema nel suo complesso. Inoltre, il pannello di controllo richiede al servizio di persistenza lo storico dei dati in modo da poterli elaborare per ottenere delle statistiche.
 
-\subsection{Persistence Service}
+\subsubsection{Persistence Service}
 Il \textit{Persistence Service} gestisce la persistenza dei dati nel sistema. Comunica con il \textit{Core} attraverso le interfacce \textit{Post Resource} e \textit{Post Mainstay} per ricevere e salvare i dati relativi alle risorse. Analogamente, le interfacce \textit{Get Mainstay} e \textit{Get Resource }consentono di richiedere i dati al servizio di persistenza.
 
 \begin{figure}[H]

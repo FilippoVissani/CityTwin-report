@@ -1,3 +1,10 @@
+## [1.1.13](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.12...1.1.13) (2023-08-28)
+
+
+### Documentation
+
+* add paragraphs in "Progettazione" ([3de7ccf](https://github.com/FilippoVissani/CityTwin-report/commit/3de7ccf9b88c0c59ce57439d3260b036ac087d0a))
+
 ## [1.1.12](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.11...1.1.12) (2023-08-28)
 
 

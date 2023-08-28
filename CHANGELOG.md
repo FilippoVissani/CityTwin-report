@@ -1,3 +1,10 @@
+## [1.1.11](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.10...1.1.11) (2023-08-28)
+
+
+### Documentation
+
+* add control panel screenshots ([f809197](https://github.com/FilippoVissani/CityTwin-report/commit/f8091971b7f386e056684f5ce0a86c5489225f2a))
+
 ## [1.1.10](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.9...1.1.10) (2023-08-27)
 
 

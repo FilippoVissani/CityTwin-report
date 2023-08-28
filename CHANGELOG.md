@@ -1,3 +1,10 @@
+## [1.1.19](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.18...1.1.19) (2023-08-28)
+
+
+### Documentation
+
+* add section in "Implementazione" ([a1030c8](https://github.com/FilippoVissani/CityTwin-report/commit/a1030c8124adb3535a4b0be1906cb6a0184a4bed))
+
 ## [1.1.18](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.17...1.1.18) (2023-08-28)
 
 

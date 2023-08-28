@@ -1,3 +1,10 @@
+## [1.1.12](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.11...1.1.12) (2023-08-28)
+
+
+### Documentation
+
+* improve architecture diagram ([1aa64b3](https://github.com/FilippoVissani/CityTwin-report/commit/1aa64b34d1e9657d04e900a6e213f18218fa3cd6))
+
 ## [1.1.11](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.10...1.1.11) (2023-08-28)
 
 

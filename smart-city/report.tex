@@ -107,19 +107,19 @@ Per semplificare l'avvio del sistema distribuito e garantire la scalabilità ver
 %----------------------------------------------------------------------------------------
 
 \section{Analisi dei requisiti}
-In questa sezione, verranno delineati i vari requisiti del sistema "CityTwin" in base alle diverse categorie di requisiti identificate. Nella fase di analisi dei requisiti, abbiamo preso il ruolo di stakeholder per comprendere appieno le esigenze degli utenti e guidare lo sviluppo del sistema. Questo approccio ci ha permesso di metterci nei panni degli utilizzatori finali e di definire con precisione le azioni chiave che gli utenti avrebbero svolto all'interno dell'applicazione.
+In questa sezione verranno delineati i vari requisiti del sistema in base alle diverse categorie di requisiti identificate. Nella fase di analisi dei requisiti, abbiamo preso il ruolo di stakeholder per comprendere appieno le esigenze degli utenti e guidare lo sviluppo del sistema. Questo approccio ci ha permesso di metterci nei panni degli utilizzatori finali e di definire con precisione le azioni chiave che gli utenti avrebbero svolto all'interno del sistema.
 
-\subsection{Business Requirements}
-I requisiti aziendali definiscono gli obiettivi di alto livello e la motivazione dietro lo sviluppo del software. Rispondono alla domanda "perché" e definiscono l'importanza strategica del progetto:
+\subsection{Requisiti di Business}
+I requisiti aziendali definiscono gli obiettivi di alto livello e la motivazione dietro lo sviluppo del software. Rispondono alla domanda "perché?" e definiscono l'importanza strategica del progetto:
 \begin{enumerate}
-    \item Obiettivi Strategici: Il progetto "CityTwin" mira a creare una piattaforma di simulazione e monitoraggio delle smart cities per migliorare la gestione e l'ottimizzazione delle risorse urbane.
+    \item Obiettivi Strategici: Il progetto "CityTwin" mira a creare una piattaforma di simulazione e monitoraggio delle smart city per migliorare la gestione e l'ottimizzazione delle risorse urbane.
     \item Aumento dell'Efficienza Urbana: Il sistema mira a migliorare l'efficienza operativa delle città intelligenti attraverso la rappresentazione digitale delle entità e delle interazioni all'interno della città.
 \end{enumerate}
 
-\subsection{User Requirements}
+\subsection{Requisiti Utente}
 I requisiti utente si concentrano sull'esperienza dell'utente finale e sulla modalità di interazione con il sistema.
 Gli scenari d'uso hanno permesso di definire le azioni principali che gli utenti avrebbero potuto compiere all'interno dell'applicazione.
-Per rappresentare in modo efficace questi scenari e facilitare la comunicazione visiva di quello che il sistema offre all'utente, è stato disegnato un diagramma dei casi d'uso, mostrato in figura \ref{fig:use-cases-diagram}. Questo diagramma ha contribuito a visualizzare in modo chiaro ed esauriente le attività degli utenti e le interazioni con il sistema.
+Per rappresentare in modo efficace questi scenari e facilitare la comunicazione visiva di quello che il sistema offre all'utente, è stato definito un diagramma dei casi d'uso, mostrato in Figura \ref{fig:use-cases-diagram}. Questo diagramma ha contribuito a visualizzare in modo chiaro ed esauriente le attività degli utenti e le interazioni con il sistema.
 
 \begin{enumerate}
     \item L'utente deve avere a disposizione una GUI (Control Panel) con le seguenti funzionalità:
@@ -146,7 +146,7 @@ Per rappresentare in modo efficace questi scenari e facilitare la comunicazione 
 \end{figure}
 
 
-\subsection{Functional Requirements}
+\subsection{Requisiti Funzionali}
 I requisiti funzionali delineano le funzioni specifiche del sistema, cioè cosa il sistema deve fare:
 \begin{enumerate}
     \item I nodi Mainstay sono la struttura portante dell'intero sistema:
@@ -192,15 +192,15 @@ I requisiti funzionali delineano le funzioni specifiche del sistema, cioè cosa 
                     \end{enumerate}
                     Si deve inoltre considerare che si andrà a utilizzare un sensore economico prefabbricato a basso consumo energetico, in grado di comunicare i dati rilevati tramite un protocollo di rete.
               \item Sensore per la rilevazione dell'inquinamento acustico, con le seguenti caratteristiche:
-                    \begin{itemize}
+                    \begin{enumerate}
                         \item Le letture devono variare in un intervallo di valori rappresentativi di un ambiente urbano, da 40 a 100 decibel (dB).
                         \item Oltre al valore in decibel, il sensore deve fornire una descrizione corrispondente al livello di rumore.
-                    \end{itemize}
+                    \end{enumerate}
               \item Modulo per la rilevazione del livello dell'acqua di un fiume e possibilità di intervento:
                     \begin{enumerate}
                         \item Sensore per la rilevazione degli allagamenti: il sensore deve periodicamente misurare il livello dell'acqua e comunicare il valore rilevato al nodo Mainstay.
                         \item Pannello di controllo per l'intervento in caso di allagamento, con le seguenti caratteristiche:
-                              \begin{itemize}
+                              \begin{enumerate}
                                   \item Soglia di allagamento configurabile.
                                   \item Possibilità di controllare più sensori.
                                   \item Possibilità di assumere tre stati:
@@ -213,12 +213,12 @@ I requisiti funzionali delineano le funzioni specifiche del sistema, cioè cosa 
                                   \item Passaggio in automatico allo stato Warned quando il valore della maggioranza dei sensori supera la soglia di allagamento.
                                   \item Possibilità di intervenire passando in stato Evacuating quando il sistema è Warned.
                                   \item Possibilità di intervenire tornando in stato Safe quando il sistema è Evacuating.
-                              \end{itemize}
+                              \end{enumerate}
                     \end{enumerate}
           \end{enumerate}
 \end{enumerate}
 
-\subsection{Non-Functional Requirements}
+\subsection{Requisiti Non Funzionali}
 I requisiti non funzionali definiscono attributi di qualità, vincoli e proprietà generali del sistema:
 \begin{enumerate}
     \item Affidabilità: L'affidabilità e la resilienza sono due aspetti cruciali del sistema "CityTwin". In caso di guasti hardware o malfunzionamenti dei nodi, il sistema deve essere in grado di mantenere la continuità delle operazioni fondamentali. A tale scopo, è prevista l'implementazione di un meccanismo di ridondanza, in cui i dati sono presenti in più istanze di nodi Mainstay.
@@ -226,7 +226,7 @@ I requisiti non funzionali definiscono attributi di qualità, vincoli e propriet
     \item Modularità: Il sistema deve essere realizzato in moduli separati, in modo da poter essere facilmente estendibile.
 \end{enumerate}
 
-\subsection{Implementation Requirements}
+\subsection{Requisiti di Implementazione}
 I requisiti di implementazione riguardano gli aspetti tecnologici e metodologici dell'implementazione del sistema:
 \begin{enumerate}
     \item Linguaggio di Programmazione: Il sistema deve essere realizzato utilizzando il linguaggio Scala 3.

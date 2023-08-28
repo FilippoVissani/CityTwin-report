@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+actor Utente as user
+
+rectangle Sistema{
+    usecase "Aggiungere/rimuovere nodi Resource" as UC1
+}
+
+rectangle Control_Panel{
+    usecase "Visualizzare stato nodi Mainstay e Resource" as UC2
+    usecase "Visualizzare posizione risorse nella città" as UC3
+    usecase "Visualizzare grafico nodi Mainstay e Resource online nel tempo" as UC4
+}
+
+rectangle River_Monitor{
+    usecase "Visualizzare stato River Monitor" as UC5
+    usecase "Visualizzare sensori monitorati" as UC6
+    usecase "Avviare l'evacuazione" as UC7
+    usecase "Terminare l'evacuazione" as UC8
+}
+
+user --> UC1
+user --> UC2
+user --> UC3
+user --> UC4
+user --> UC4
+user --> UC5
+user --> UC6
+user --> UC7
+user --> UC8
+@enduml

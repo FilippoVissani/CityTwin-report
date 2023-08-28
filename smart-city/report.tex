@@ -23,22 +23,22 @@
 
 \begin{titlepage}
 
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
-\center
+    \center
 
-\textsc{\Large Relazione di progetto di "Smart City e Tecnologie Mobili"}\\[0.5cm]
+    \textsc{\Large Relazione di progetto di "Smart City e Tecnologie Mobili"}\\[0.5cm]
 
-\HRule \\[0.4cm]
-{ \huge \bfseries CityTwin}\\[0.4cm]
-\HRule \\[1.5cm]
+    \HRule \\[0.4cm]
+    { \huge \bfseries CityTwin}\\[0.4cm]
+    \HRule \\[1.5cm]
 
-\vfill
+    \vfill
 
-\begin{flushleft}
-\emph{Numero del gruppo: 128}\\[1cm]
-\emph{Componenti del gruppo: Eddie Barzi, Filippo Vissani}\\[3cm]
-\end{flushleft}
+    \begin{flushleft}
+        \emph{Numero del gruppo: 128}\\[1cm]
+        \emph{Componenti del gruppo: Eddie Barzi, Filippo Vissani}\\[3cm]
+    \end{flushleft}
 
 \end{titlepage}
 
@@ -107,61 +107,134 @@ Per semplificare l'avvio del sistema distribuito e garantire la scalabilità ver
 %----------------------------------------------------------------------------------------
 
 \section{Analisi dei requisiti}
+In questa sezione, verranno delineati i vari requisiti del sistema "CityTwin" in base alle diverse categorie di requisiti identificate. Nella fase di analisi dei requisiti, abbiamo preso il ruolo di stakeholder per comprendere appieno le esigenze degli utenti e guidare lo sviluppo del sistema. Questo approccio ci ha permesso di metterci nei panni degli utilizzatori finali e di definire con precisione le azioni chiave che gli utenti avrebbero svolto all'interno dell'applicazione.
 
-Di seguito viene riportato l'elenco dettagliato dei requisiti del sistema.
+\subsection{Business Requirements}
+I requisiti aziendali definiscono gli obiettivi di alto livello e la motivazione dietro lo sviluppo del software. Rispondono alla domanda "perché" e definiscono l'importanza strategica del progetto:
+\begin{enumerate}
+    \item Obiettivi Strategici: Il progetto "CityTwin" mira a creare una piattaforma di simulazione e monitoraggio delle smart cities per migliorare la gestione e l'ottimizzazione delle risorse urbane.
+    \item Aumento dell'Efficienza Urbana: Il sistema mira a migliorare l'efficienza operativa delle città intelligenti attraverso la rappresentazione digitale delle entità e delle interazioni all'interno della città.
+\end{enumerate}
+
+\subsection{User Requirements}
+I requisiti utente si concentrano sull'esperienza dell'utente finale e sulla modalità di interazione con il sistema.
+Gli scenari d'uso hanno permesso di definire le azioni principali che gli utenti avrebbero potuto compiere all'interno dell'applicazione.
+Per rappresentare in modo efficace questi scenari e facilitare la comunicazione visiva di quello che il sistema offre all'utente, è stato disegnato un diagramma dei casi d'uso, mostrato in figura \ref{fig:use-cases-diagram}. Questo diagramma ha contribuito a visualizzare in modo chiaro ed esauriente le attività degli utenti e le interazioni con il sistema.
 
 \begin{enumerate}
+    \item L'utente deve avere a disposizione una GUI (Control Panel) con le seguenti funzionalità:
+          \begin{enumerate}
+              \item Deve mostrare lo stato attuale dei nodi Mainstay e Resource del sistema.
+              \item Deve mostrare la posizione delle risorse nella città, indicandone il nome e lo stato (online/offline).
+              \item Deve mostrare un grafico che rappresenti il numero di nodi Mainstay e Resource online nel tempo, sulla base dei dati rilevati
+                    dal servizio di persistenza.
+          \end{enumerate}
+    \item L'utente deve avere a disposizione una GUI (River Monitor) con le seguenti funzionalità:
+          \begin{enumerate}
+              \item Deve mostrare lo stato attuale del River Monitor (Safe, Warned, Evacuating).
+              \item Deve mostrare i sensori monitorati con il relativo livello dell'acqua.
+              \item Deve mostrare il valore di soglia dell'acqua sopra la quale il River Monitor passa allo stato di "Warned".
+              \item Deve mettere a disposizione un pulsante per passare allo stato di "Evacuating" e un pulsante per tornare allo stato di "Safe".
+          \end{enumerate}
+    \item L'utente deve avere la possibilità di aggiungere o rimuovere nuovi nodi Resource in tempo reale, senza che questo comprometta il funzionamento del sistema. Questa flessibilità consente di adattare il sistema alle mutevoli esigenze delle smart cities.
+\end{enumerate}
+\begin{figure}[H]
+    \centering
+    \caption{Diagramma dei casi d'uso.}
+    \includegraphics[width=0.8\textwidth]{../assets/images/use-cases-diagram.png}
+    \label{fig:use-cases-diagram}
+\end{figure}
+
+
+\subsection{Functional Requirements}
+I requisiti funzionali delineano le funzioni specifiche del sistema, cioè cosa il sistema deve fare:
+\begin{enumerate}
     \item I nodi Mainstay sono la struttura portante dell'intero sistema:
-    \begin{enumerate}
-        \item Ricevono informazioni dai nodi Resource che modellano sensori.
-        \item Comunicano informazioni ai nodi Resource che modellano attuatori.
-        \item Rilevano i malfunzionamenti dei nodi Resource.
-        \item Rilevano i malfunzionamenti degli altri nodi Mainstay.
-        \item Si occupano di salvare le informazioni contattando il servizio di persistenza.
-        \item Non devono conoscere a prescindere le tipologie dei nodi Resource.
-        \item Devono disporre di una struttura dati distribuita che permetta di memorizzare le informazioni rilevanti:
-        \begin{enumerate}
-            \item La struttura dati deve essere sincronizzata tra i nodi Mainstay.
-            \item La struttura dati deve mantenere la consistenza dei dati nel tempo.
-        \end{enumerate}
-    \end{enumerate}
+          \begin{enumerate}
+              \item Ricevono informazioni dai nodi Resource che modellano sensori.
+              \item Comunicano informazioni ai nodi Resource che modellano attuatori.
+              \item Rilevano i malfunzionamenti dei nodi Resource.
+              \item Rilevano i malfunzionamenti degli altri nodi Mainstay.
+              \item Si occupano di salvare le informazioni contattando il servizio di persistenza.
+              \item Non devono conoscere a prescindere le tipologie dei nodi Resource.
+              \item Devono disporre di una struttura dati distribuita che permetta di memorizzare le informazioni rilevanti:
+                    \begin{enumerate}
+                        \item La struttura dati deve essere sincronizzata tra i nodi Mainstay.
+                        \item La struttura dati deve mantenere la consistenza dei dati nel tempo.
+                    \end{enumerate}
+          \end{enumerate}
     \item I nodi Resource:
-    \begin{enumerate}
-        \item Rappresentano astrazioni di:
-        \begin{enumerate}
-            \item Sensori.
-            \item Attuatori.
-            \item Entità più complesse, come stazioni di controllo, che possono anche impiegare interfacce grafiche.
-        \end{enumerate}
-        \item Fanno riferimento ad uno dei nodi Mainstay per ottenere o comunicare informazioni.
-        \item Possono essere aggiunti o rimossi in tempo reale.
-    \end{enumerate}
-    \item Deve essere presente una GUI (distinta da quelle definite al punto 2.1.3) con le seguenti funzionalità:
-    \begin{enumerate}
-        \item Deve mostrare lo stato attuale dei nodi Mainstay e Resource del sistema.
-        \item Deve mostrare la posizione delle risorse nella città.
-        \item Deve presentare alcune statistiche interessanti sulla base dei dati rilevati dal servizio di persistenza.
-    \end{enumerate}
+          \begin{enumerate}
+              \item Rappresentano astrazioni di:
+                    \begin{enumerate}
+                        \item Sensori.
+                        \item Attuatori.
+                        \item Entità più complesse, come stazioni di controllo, che possono anche impiegare interfacce grafiche.
+                    \end{enumerate}
+              \item Fanno riferimento ad uno dei nodi Mainstay per ottenere o comunicare informazioni.
+              \item Possono essere aggiunti o rimossi in tempo reale.
+          \end{enumerate}
     \item Deve essere presente un servizio di persistenza dei dati che permetta di salvare in modo persistente:
-    \begin{enumerate}
-        \item Lo stato dei nodi Mainstay.
-        \item Lo stato dei nodi Resource.
-    \end{enumerate}
+          \begin{enumerate}
+              \item Lo stato dei nodi Mainstay.
+              \item Lo stato dei nodi Resource.
+          \end{enumerate}
     \item Il malfunzionamento di un nodo non deve compromettere il funzionamento del sistema.
-    \item Il sistema deve essere realizzato in moduli separati, in modo da poter essere facilmente estendibile.
     \item Deve poter essere possibile introdurre nuovi moduli senza dover modificare i componenti esistenti.
     \item Vengono previsti i seguenti moduli per i nodi Resource:
-    \begin{enumerate}
-        \item Sensore per la rilevazione di piogge acide.
-        \item Sensore per l'analisi della qualità dell'aria.
-        \item Sensore per la rilevazione dell'inquinamento acustico.
-        \item Modulo per la rilevazione del livello dell'acqua di un fiume e possibilità di intervento:
-        \begin{enumerate}
-            \item Sensore per la rilevazione degli allagamenti.
-            \item Pannello di controllo per l'intervento in caso di allagamento.
-        \end{enumerate}
-    \end{enumerate}
+          \begin{enumerate}
+              \item Sensore per la rilevazione di piogge acide. Il sensore deve essere in grado di rilevare il valore di pH dell'acqua piovana, compreso tra 0 e 14.
+              \item Sensore per l'analisi della qualità dell'aria. Il sensore deve essere in grado di rilevare i seguenti parametri chiave:
+                    \begin{enumerate}
+                        \item Concentrazione di PM10 (Particolato inferiore ai 10 micrometri).
+                        \item Concentrazione di PM2,5 (Particolato inferiore ai 2,5 micrometri. Si noti che è un sottoinsieme del PM10).
+                        \item Concentrazione di NOx (Ossidi di azoto).
+                    \end{enumerate}
+                    Si deve inoltre considerare che si andrà a utilizzare un sensore economico prefabbricato a basso consumo energetico, in grado di comunicare i dati rilevati tramite un protocollo di rete.
+              \item Sensore per la rilevazione dell'inquinamento acustico, con le seguenti caratteristiche:
+                    \begin{itemize}
+                        \item Le letture devono variare in un intervallo di valori rappresentativi di un ambiente urbano, da 40 a 100 decibel (dB).
+                        \item Oltre al valore in decibel, il sensore deve fornire una descrizione corrispondente al livello di rumore.
+                    \end{itemize}
+              \item Modulo per la rilevazione del livello dell'acqua di un fiume e possibilità di intervento:
+                    \begin{enumerate}
+                        \item Sensore per la rilevazione degli allagamenti: il sensore deve periodicamente misurare il livello dell'acqua e comunicare il valore rilevato al nodo Mainstay.
+                        \item Pannello di controllo per l'intervento in caso di allagamento, con le seguenti caratteristiche:
+                              \begin{itemize}
+                                  \item Soglia di allagamento configurabile.
+                                  \item Possibilità di controllare più sensori.
+                                  \item Possibilità di assumere tre stati:
+                                        \begin{itemize}
+                                            \item Safe quando non c'è pericolo.
+                                            \item Warned quando il livello dell'acqua supera la soglia di allagamento.
+                                            \item Evacuating quando il livello dell'acqua supera la soglia di allagamento e l'utente ha premuto il pulsante di evacuazione.
+                                        \end{itemize}
+                                  \item Mostrare lo stato attuale del River Monitor.
+                                  \item Passaggio in automatico allo stato Warned quando il valore della maggioranza dei sensori supera la soglia di allagamento.
+                                  \item Possibilità di intervenire passando in stato Evacuating quando il sistema è Warned.
+                                  \item Possibilità di intervenire tornando in stato Safe quando il sistema è Evacuating.
+                              \end{itemize}
+                    \end{enumerate}
+          \end{enumerate}
 \end{enumerate}
+
+\subsection{Non-Functional Requirements}
+I requisiti non funzionali definiscono attributi di qualità, vincoli e proprietà generali del sistema:
+\begin{enumerate}
+    \item Affidabilità: L'affidabilità e la resilienza sono due aspetti cruciali del sistema "CityTwin". In caso di guasti hardware o malfunzionamenti dei nodi, il sistema deve essere in grado di mantenere la continuità delle operazioni fondamentali. A tale scopo, è prevista l'implementazione di un meccanismo di ridondanza, in cui i dati sono presenti in più istanze di nodi Mainstay.
+    \item Performance: Il sistema deve rispondere tempestivamente alle richieste dell'utente e gestire grandi quantità di dati in tempo reale.
+    \item Modularità: Il sistema deve essere realizzato in moduli separati, in modo da poter essere facilmente estendibile.
+\end{enumerate}
+
+\subsection{Implementation Requirements}
+I requisiti di implementazione riguardano gli aspetti tecnologici e metodologici dell'implementazione del sistema:
+\begin{enumerate}
+    \item Linguaggio di Programmazione: Il sistema deve essere realizzato utilizzando il linguaggio Scala 3.
+    \item Architettura Basata su Attori: L'implementazione deve seguire il paradigma ad attori utilizzando il framework Akka per gestire l'interazione tra i nodi.
+    \item Tecnologie di Persistenza: Il modulo di persistenza dei dati deve essere implementato utilizzando MongoDB per garantire la memorizzazione affidabile dei dati rilevati.
+    \item Documentazione del Codice: Il codice deve essere adeguatamente documentato per consentire una comprensione chiara e agevolare la manutenzione futura.
+\end{enumerate}
+
 
 \newpage
 
@@ -189,7 +262,7 @@ Il \textit{Control Panel} è l'interfaccia utente principale attraverso cui gli 
 Il \textit{Persistence Service} gestisce la persistenza dei dati nel sistema. Comunica con il \textit{Core} attraverso le interfacce \textit{Post Resource} e \textit{Post Mainstay} per ricevere e salvare i dati relativi alle risorse. Analogamente, le interfacce \textit{Get Mainstay} e \textit{Get Resource }consentono di richiedere i dati al servizio di persistenza.
 
 \begin{figure}[H]
-\caption{Diagramma dei componenti del sistema e delle loro dipendenze.}
+    \caption{Diagramma dei componenti del sistema e delle loro dipendenze.}
     \includegraphics[width=\textwidth]{../assets/images/core-component-diagram.png}
     \label{fig:core-component-diagram}
 \end{figure}

@@ -229,13 +229,17 @@ Il \textit{Mainstay Actor} comunica con il \textit{Persistence Service Driver Ac
 
 Il comportamento generale del sistema viene definito sulla base di una serie di interazioni tra i componenti. In particolare, le interazioni possono essere raggruppate per definire un determinato aspetto di tale comportamento.
 
+\subsubsection{Aggiornamento Sullo Stato dei Nodi}
+
 Lo scambio di messaggi tra \textit{Nodes Observer Actor} e \textit{Mainstay Actor} (Figura \ref{fig:core-nodes-state-sequence-diagram}) è volto a mantenere aggiornato quest'ultimo sullo stato generale dei nodi del sistema. Nel momento in cui il \textit{Mainstay Actor} riceve un aggiornamento sui nodi, esso aggiorna il proprio stato e lo comunica al \textit{Persistence Service Driver Actor}, che si occupa di rendere persistenti i dati tramite il servizio di persistenza.
 
 \begin{figure}[H]
-    \caption{Diagramma di sequenza per l'aggiornamento dello stato dei nodi del sistema.}
+    \caption{Diagramma di sequenza per l'aggiornamento sullo stato dei nodi del sistema.}
     \includegraphics[width=\textwidth]{../assets/images/core-nodes-state-sequence-diagram.png}
     \label{fig:core-nodes-state-sequence-diagram}
 \end{figure}
+
+\subsubsection{Aggiornamento Sullo Stato delle Risorse}
 
 Lo scambio di messaggi tra \textit{Resource Actor} e \textit{Mainstay Actor} (Figura \ref{fig:core-resource-state-exchange-sequence-diagram}) è utile a:
 \begin{itemize}
@@ -251,6 +255,8 @@ In ogni caso, quando il \textit{Mainstay Actor} riceve un aggiornamento, lo comu
     \label{fig:core-resource-state-exchange-sequence-diagram}
 \end{figure}
 
+\subsubsection{Sincronizzazione dei Nodi Mainstay}
+
 Come detto precedentemente, i nodi \textit{Mainstay} sono i pilastri portanti dell'intero sistema e si occupano della gestione dei dati riguardanti le risorse e i nodi. I nodi \textit{Mainstay} devono essere sempre sincronizzati tra loro, in modo da poter garantire la coerenza dei dati. Per questo motivo, i nodi \textit{Mainstay} si sincronizzano ogni volta che una risorsa manda il suo stato ad uno di questi. In Figura \ref{fig:core-mainstays-sync-sequence-diagram} viene presentato il diagramma di sequenza per la sincronizzazione dei nodi \textit{Mainstay}.
 
 \begin{figure}[H]
@@ -258,6 +264,8 @@ Come detto precedentemente, i nodi \textit{Mainstay} sono i pilastri portanti de
     \includegraphics[width=\textwidth]{../assets/images/core-mainstays-sync-sequence-diagram.png}
     \label{fig:core-mainstays-sync-sequence-diagram}
 \end{figure}
+
+\subsubsection{Aggiornamento del Pannello di Controllo}
 
 Il comportamento del \textit{Control Panel} (Figura \ref{fig:control-panel-sequence-diagram}) viene modellato come un caso particolare di risorsa che comunica con il \textit{Mainstay Actor} per ottenere lo stato delle risorse e dei nodi. Inoltre, il \textit{Control Panel} comunica con il servizio di persistenza per ottenere lo storico dei dati e calcolare le statistiche.
 

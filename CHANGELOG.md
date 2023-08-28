@@ -1,3 +1,10 @@
+## [1.1.18](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.17...1.1.18) (2023-08-28)
+
+
+### Documentation
+
+* add section "Tecnologie Utilizzate" ([d459087](https://github.com/FilippoVissani/CityTwin-report/commit/d459087b8236ef472b4ac1e67a9c512928571636))
+
 ## [1.1.17](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.16...1.1.17) (2023-08-28)
 
 

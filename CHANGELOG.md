@@ -1,3 +1,10 @@
+## [1.1.15](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.14...1.1.15) (2023-08-28)
+
+
+### Documentation
+
+* change subsections to subsubsections ([dd8567b](https://github.com/FilippoVissani/CityTwin-report/commit/dd8567b9e13a7eb62350fb50889475d0fc9a62b9))
+
 ## [1.1.14](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.13...1.1.14) (2023-08-28)
 
 

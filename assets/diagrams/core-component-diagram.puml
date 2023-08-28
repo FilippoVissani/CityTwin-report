@@ -10,10 +10,8 @@ component [Noise Pollution Monitor] as noisePollutionMonitor
 component [River Monitor] as riverMonitor
 component [Persistence Service] as persistenceService
 
-interface "Mainstay Actor" as mainstayActor
-interface "Resource Actor" as resourceActor
-interface "Resource State" as resourceState
-interface "Mainstay State" as mainstayState
+interface "Resource" as resource
+interface "Mainstay" as mainstay
 
 interface "Get Resource" as getResource
 interface "Post Resource" as postResource
@@ -25,10 +23,8 @@ postResource -- persistenceService
 getMainstay -- persistenceService
 postMainstay -- persistenceService
 
-resourceActor -- core
-resourceState -- core
-mainstayActor -- core
-mainstayState -- core
+resource -- core
+mainstay -- core
 
 core ..> postResource
 core ..> postMainstay
@@ -36,21 +32,15 @@ core ..> postMainstay
 controlPanel ..> getResource
 controlPanel ..> getMainstay
 
-controlPanel ..> resourceActor
-controlPanel ..> mainstayActor
-controlPanel ..> mainstayState
-controlPanel ..> resourceState
+controlPanel ..> mainstay
+controlPanel ..> resource
 
-acidRainMonitor ..> resourceActor
-acidRainMonitor ..> resourceState
+acidRainMonitor ..> resource
 
-airQualityMonitor ..> resourceActor
-airQualityMonitor ..> resourceState
+airQualityMonitor ..> resource
 
-noisePollutionMonitor ..> resourceActor
-noisePollutionMonitor ..> resourceState
+noisePollutionMonitor ..> resource
 
-riverMonitor ..> resourceActor
-riverMonitor ..> resourceState
+riverMonitor ..> resource
 
 @enduml

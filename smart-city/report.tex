@@ -382,11 +382,27 @@ Il comportamento del \textit{Control Panel} (Figura \ref{fig:control-panel-seque
 I componenti monitor sono elementi fondamentali del sistema, in quanto raccolgono dati ambientali cruciali per valutare le condizioni della città. Ogni componente monitor è progettato per monitorare un aspetto specifico dell'ambiente, come la qualità dell'aria, la presenza di inquinamento acustico, il livello dell'acqua dei fiumi e i livelli di acidità delle piogge. Di seguito verranno forniti dettagli su ciascun componente monitor.
 
 \subsubsection{Acid Rain Monitor}
-% aggiungere dettagli sulle piogge acide: che cosa sono, che cosa comportano, a cosa sono dovute, eccetera... insomma fare una panoramica che dia uno scopo di esistere a questo sensore.
-% aggiungere dettagli sul sensore: 
-%   le proprietà (nome, posizione), 
-%   range di valori che può rilevare e quando li rileva.
-% aggiungere dettagli sul modo di interagire con il resource actor. (come funziona il resource actor è gia stato spiegato)
+
+Le piogge acide sono fenomeni meteorologici caratterizzati dall'acidificazione delle precipitazioni atmosferiche, come pioggia o neve, a causa dell'elevato contenuto di sostanze acide, in particolare anidride solforosa ed ossidi di azoto, nell'atmosfera. Questi agenti inquinanti vengono principalmente prodotti da processi industriali e veicolari. Le piogge acide possono causare seri danni agli ecosistemi, alle coltivazioni agricole, agli edifici e alle infrastrutture, oltre a influire negativamente sulla qualità dell'acqua nei corsi d'acqua e nei laghi.
+
+\paragraph{Obiettivo e Scopo}
+Il principale scopo dell'Acid Rain Monitor è monitorare i livelli di pH delle piogge acide per rilevare eventuali situazioni di acidificazione dell'ambiente. Questo componente fornisce informazioni utili per valutare l'impatto delle piogge acide e prendere eventuali misure correttive.
+
+\paragraph{Caratteristiche}
+L'Acid Rain Monitor è rappresentato da un \textit{Acid Rain Sensor}, identificato da un nome univoco e una posizione geografica. Il sensore è in grado di rilevare il livello di pH dell'acqua piovana. Il range di valori che può rilevare varia da 0 a 14, dove 0 indica una forte acidità, 7 indica neutralità e 14 indica un'elevata alcalinità. Il sensore effettua rilevamenti periodici per monitorare i cambiamenti nei livelli di pH nel tempo.
+
+\paragraph{Architettura}
+L'architettura dell'Acid Rain Monitor prevede una stretta collaborazione con il \textit{Resource Actor}, un componente principale del sistema. L'\textit{Acid Rain Sensor} genera periodicamente un messaggio di \textit{tick} verso se stesso, il quale avvia il processo di rilevamento del pH. Una volta ottenuto il valore del pH, il sensore invia questo dato al \textit{Resource Actor}, che si occupa di comunicare i dati al \textit{Mainstay Actor}.
+
+\paragraph{Interazione con il Resource Actor}
+Il sensore interagisce con il \textit{Resource Actor} attraverso l'invio di dati relativi ai rilevamenti del pH. Il sensore invia al \textit{Resource Actor} un messaggio contenente il valore del pH e altre informazioni come il nome e la sua posizione. Il \textit{Resource Actor} comunica e invia i dati direttamente al \textit{Mainstay Actor}, rendendoli disponibili per le diverse parti del sistema che richiedono informazioni sui rilevamenti. In Figura \ref{fig:sensor-resourceactor-interaction-diagram} viene presentato il diagramma di sequenza per l'interazione tra l'Acid Rain Monitor e il \textit{Resource Actor}.
+
+\begin{figure}[H]
+    \centering
+    \caption{Diagramma di sequenza per l'interazione tra un sensore e il relativo \textit{Resource Actor}.}
+    \includegraphics[width=0.6\textwidth]{../assets/images/sensor-resourceactor-interaction-diagram.png}
+    \label{fig:sensor-resourceactor-interaction-diagram}
+\end{figure}
 
 \subsubsection{Air Quality Monitor}
 

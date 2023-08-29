@@ -1,0 +1,13 @@
+@startuml
+control "Sensor" as S
+control "Resource Actor" as RA
+
+activate S
+S -> RA: Spawn
+activate RA
+
+loop every X seconds
+    S --> S: Tick()
+    S --> RA: ResourceChanged(resource)
+end
+@enduml

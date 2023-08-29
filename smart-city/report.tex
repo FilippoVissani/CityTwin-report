@@ -413,12 +413,25 @@ Il principale scopo dell'Air Quality Monitor è monitorare i livelli di PM10, PM
 L'Air Quality Monitor è costituito da un \textit{Air Sensor}, caratterizzato da un nome univoco e una posizione geografica. Il sensore è in grado di rilevare i parametri indicati dai requisiti \ref{itm:pm10}, \ref{itm:pm25} e \ref{itm:NOx} nell'aria circostante.
 
 \paragraph{Architettura}
-Come nel caso dell'Acid Rain Monitor, l'Air Quality Monitor prevede una stretta collaborazione con il \textit{Resource Actor}. L'\textit{Air Sensor} simula il comportamento del sensore, effettuando rilevamenti periodici dei livelli di PM10, PM2.5 e NOx attraverso richieste HTTP al sensore fisico. I dati rilevati vengono quindi inviati al \textit{Resource Actor}, che si occupa di comunicarli al \textit{Mainstay Actor} per l'archiviazione e l'accesso ai dati.
+Come nel caso dell'Acid Rain Monitor, l'Air Quality Monitor prevede una stretta collaborazione con il \textit{Resource Actor}. L'\textit{Air Sensor} simula il comportamento del sensore, effettuando rilevamenti periodici dei livelli di PM10, PM2.5 e NOx comunicando con sensore fisico tramite un protocollo di rete. I dati rilevati vengono quindi inviati al \textit{Resource Actor}, che si occupa di comunicarli al \textit{Mainstay Actor} per l'archiviazione e l'accesso ai dati.
 
 \paragraph{Interazione con il Resource Actor}
 Il sensore interagisce con il \textit{Resource Actor} attraverso l'invio di dati relativi ai parametri chiave della qualità dell'aria. Il sensore invia al \textit{Resource Actor} un messaggio contenente i valori dei parametri chiave e altre informazioni come il nome e la sua posizione. Il \textit{Resource Actor} comunica e invia i dati direttamente al \textit{Mainstay Actor}, rendendoli disponibili per le diverse parti del sistema che richiedono informazioni sui rilevamenti. In Figura \ref{fig:sensor-resourceactor-interaction-diagram} viene presentato il diagramma di sequenza per l'interazione tra il sensore dell'Air Quality Monitor e il \textit{Resource Actor}.
 
 \subsubsection{Noise Pollution Monitor}
+L'inquinamento acustico è un problema urbano che può avere effetti negativi sulla salute umana, sull'ambiente e sulla qualità della vita complessiva. I livelli elevati di rumore possono causare disturbi al sonno, stress, problemi uditivi e disturbi della concentrazione. Il Noise Pollution Monitor è progettato per misurare e monitorare i livelli di rumore nell'ambiente circostante, al fine di valutare l'inquinamento acustico e identificare situazioni critiche.
+
+\paragraph{Obiettivo e Scopo}
+L'obiettivo principale del Noise Pollution Monitor è rilevare il livello di rumore nell'area circostante e fornire una valutazione della situazione di inquinamento acustico. Questo componente fornisce dati essenziali per comprendere l'entità del problema e adottare misure per mitigare gli effetti negativi del rumore.
+
+\paragraph{Caratteristiche}
+Il Noise Pollution Monitor è rappresentato da un \textit{Noise Sensor}, identificato da un nome univoco e una posizione geografica. È in grado di misurare i livelli di rumore espressi in decibel (dB), con un range tipico di 40 dB (ambiente tranquillo) a 100 dB (ambiente molto rumoroso) e fornire la corrispondente descrizione, come indicato dai requisiti \ref{itm:dB} e \ref{itm:dBDescription}. Il sensore effettua rilevamenti periodici dei livelli di rumore.
+
+\paragraph{Architettura}
+Come nel caso dell'Acid Rain Monitor e dell'Air Quality Monitor, il Noise Pollution Monitor prevede una stretta collaborazione con il \textit{Resource Actor}. Il \textit{Noise Sensor} genera periodicamente un messaggio di \textit{tick} verso se stesso, responsabile di simulare il comportamento del sensore di rumore. Una volta ottenuti i dati, il sensore invia questi dati al \textit{Resource Actor}, che si occupa di comunicare i dati al \textit{Mainstay Actor}.
+
+\paragraph{Interazione con il Resource Actor}
+Il \textit{Noise Sensor} interagisce con il \textit{Resource Actor} attraverso lo scambio di risorse contenenti i dati del rilevamento del rumore. Il \textit{Noise Sensor} crea una risorsa che include il valore di livello di rumore misurato e una descrizione corrispondente al livello di rumore. Questa risorsa viene inviata al \textit{Resource Actor}, che la comunica al \textit{Mainstay Actor}. Da qui, i dati possono essere accessibili da altre parti del sistema che richiedono informazioni sui rilevamenti. Il diagramma di sequenza in Figura \ref{fig:sensor-resourceactor-interaction-diagram} illustra l'interazione tra il sensore di inquinamento acustico e il \textit{Resource Actor}.
 
 
 \subsubsection{River Monitor}

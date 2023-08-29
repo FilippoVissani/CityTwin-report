@@ -1,3 +1,21 @@
+## [1.1.20](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.19...1.1.20) (2023-08-29)
+
+
+### Bug Fixes
+
+* fix itemize ([dd8a13e](https://github.com/FilippoVissani/CityTwin-report/commit/dd8a13ed59d0f1edb9aa1ee258c6d542e6368ac9))
+
+
+### Documentation
+
+* add  subsection "Testing dei Moduli Sviluppati in Scala 3" ([c642483](https://github.com/FilippoVissani/CityTwin-report/commit/c642483c14ea9ccd32c8e70240c6440a291bd82b))
+* add subsection in "Implementazione" ([406aafb](https://github.com/FilippoVissani/CityTwin-report/commit/406aafb6143872298f49901fb5382ce7e140644f))
+
+
+### General maintenance
+
+* add directories in .gitignore ([030d9ba](https://github.com/FilippoVissani/CityTwin-report/commit/030d9ba0890143d50439f7c2ab05f3fec100cebd))
+
 ## [1.1.19](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.18...1.1.19) (2023-08-28)
 
 

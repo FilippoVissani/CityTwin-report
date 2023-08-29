@@ -1,3 +1,10 @@
+## [1.1.22](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.21...1.1.22) (2023-08-29)
+
+
+### Bug Fixes
+
+* fix typo ([1585e5d](https://github.com/FilippoVissani/CityTwin-report/commit/1585e5d8bdce3234404290c8e69807bd1c633029))
+
 ## [1.1.21](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.20...1.1.21) (2023-08-29)
 
 

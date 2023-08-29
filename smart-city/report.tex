@@ -378,6 +378,22 @@ Il comportamento del \textit{Control Panel} (Figura \ref{fig:control-panel-seque
     \label{fig:control-panel-sequence-diagram}
 \end{figure}
 
+\subsection{Progettazione dei moduli Monitor}
+I componenti monitor sono elementi fondamentali del sistema, in quanto raccolgono dati ambientali cruciali per valutare le condizioni della città. Ogni componente monitor è progettato per monitorare un aspetto specifico dell'ambiente, come la qualità dell'aria, la presenza di inquinamento acustico, il livello dell'acqua dei fiumi e i livelli di acidità delle piogge. Di seguito verranno forniti dettagli su ciascun componente monitor.
+
+\subsubsection{Acid Rain Monitor}
+% aggiungere dettagli sulle piogge acide: che cosa sono, che cosa comportano, a cosa sono dovute, eccetera... insomma fare una panoramica che dia uno scopo di esistere a questo sensore.
+% aggiungere dettagli sul sensore: 
+%   le proprietà (nome, posizione), 
+%   range di valori che può rilevare e quando li rileva.
+% aggiungere dettagli sul modo di interagire con il resource actor. (come funziona il resource actor è gia stato spiegato)
+
+\subsubsection{Air Quality Monitor}
+
+\subsubsection{Noise Pollution Monitor}
+
+\subsubsection{River Monitor}
+
 \newpage
 
 %----------------------------------------------------------------------------------------
@@ -443,7 +459,7 @@ Docker è una tecnologia di virtualizzazione leggera e di containerizzazione che
 
 \subsubsection{Serializzazione delle Strutture Dati}
 
-La serializzazione in Akka è il processo di convertire oggetti Scala in un formato che può essere trasmesso attraverso la rete e quindi ricostruito in un oggetto equivalente. Questo è particolarmente importante in un ambiente basato su attori, in cui i messaggi vengono inviati tra attori in diversi processi o nodi. Lo scambio di messaggi prevede l'utilizzo di strutture dati, che in un sistema distribuito devono essere serializzate prima di essere inviate. 
+La serializzazione in Akka è il processo di convertire oggetti Scala in un formato che può essere trasmesso attraverso la rete e quindi ricostruito in un oggetto equivalente. Questo è particolarmente importante in un ambiente basato su attori, in cui i messaggi vengono inviati tra attori in diversi processi o nodi. Lo scambio di messaggi prevede l'utilizzo di strutture dati, che in un sistema distribuito devono essere serializzate prima di essere inviate.
 
 Durante il processo di sviluppo si sono presentati problemi di serializzazione delle \verb|HashMap[A, B]| (dove \verb|A| e \verb|B| sono tipi generici), per questo motivo si è scelto di convertire le \verb|HashMap[A, B]| in \verb|Set[(A, B)]| per lo scambio di messaggi tra attori.
 

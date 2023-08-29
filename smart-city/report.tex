@@ -9,6 +9,33 @@
 \usepackage{float}
 \usepackage[italian]{babel}
 \usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
 
 \linespread{1.2}
 \setlength{\parindent}{0pt}
@@ -424,7 +451,7 @@ Un altro tipo di struttura dati che non è possibile serializzare direttamente �
 
 Esempio di enumerazione in Scala 3:
 
-\begin{lstlisting}[language=scala]
+\begin{lstlisting}[language=Scala]
     enum ResourceType:
         case Act
         case Sense
@@ -432,7 +459,7 @@ Esempio di enumerazione in Scala 3:
 
 Esempio di enumerazione in Scala 2:
 
-\begin{lstlisting}[language=scala]
+\begin{lstlisting}[language=Scala]
     object ResourceType extends Enumeration:
         type ResourceType = Value
         val Act, Sense = Value
@@ -486,7 +513,19 @@ Il pannello di controllo dispone di quattro schermate:
 
 \section{Testing e performance}
 
+\subsection{Testing dei Moduli Sviluppati in Scala 3}
 
+Per testare i moduli sviluppati in Scala 3 si è scelto di utilizzare il framework di testing ScalaTest in combinazione con il TestKit fornito da Akka.
+
+ScalaTest è un framework di testing per il linguaggio di programmazione Scala. È progettato per semplificare il processo di scrittura e esecuzione dei test nelle applicazioni Scala, fornendo una varietà di stili di testing e utilità per rendere più facile il testing delle applicazioni.
+
+Per testare efficacemente le applicazioni Akka, viene utilizzato il "TestKit di Akka", che è un modulo appositamente progettato per il testing delle interazioni tra attori e per la simulazione dell'ambiente di esecuzione concorrente.
+
+Il seguente listato mostra un esempio di specifica di test per il \textit{Resource Actor} del modulo \textit{Core}. Grazie al TestKit di Akka, è possibile simulare l'invio di messaggi in modo asincrono e verificare che il comportamento dell'attore sia conforme alle specifiche.
+
+\lstinputlisting[language=Scala]{../assets/listings/AsyncTestingResourceSpec.scala}
+
+\subsection{Testing dei Moduli Sviluppati JavaScript}
 
 \newpage
 

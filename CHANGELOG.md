@@ -1,3 +1,11 @@
+## [1.1.23](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.22...1.1.23) (2023-08-29)
+
+
+### Documentation
+
+* add "Acid Rain Monitor" section in "Progettazione" ([60d0f84](https://github.com/FilippoVissani/CityTwin-report/commit/60d0f84f0c7fdd3b8566166c125eb4062c7b6f73))
+* define structure of subsection "Progettazione dei moduli Monitor" ([37df90d](https://github.com/FilippoVissani/CityTwin-report/commit/37df90dc9d7d268d855ca99e408c70a0ad90e600))
+
 ## [1.1.22](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.21...1.1.22) (2023-08-29)
 
 

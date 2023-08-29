@@ -1,3 +1,10 @@
+## [1.1.24](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.23...1.1.24) (2023-08-29)
+
+
+### Documentation
+
+* add "Air Quality Monitor" section in "Progettazione" ([60fdd34](https://github.com/FilippoVissani/CityTwin-report/commit/60fdd349acadec003c0ab633b079e503cccb4d3f))
+
 ## [1.1.23](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.22...1.1.23) (2023-08-29)
 
 

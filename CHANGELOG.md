@@ -1,3 +1,10 @@
+## [1.1.21](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.20...1.1.21) (2023-08-29)
+
+
+### Documentation
+
+* add subsection in "Testing e performance" ([5fb3792](https://github.com/FilippoVissani/CityTwin-report/commit/5fb3792263ea1187e840792d2afe386b348636d2))
+
 ## [1.1.20](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.19...1.1.20) (2023-08-29)
 
 

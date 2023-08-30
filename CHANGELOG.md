@@ -1,3 +1,11 @@
+## [1.1.25](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.24...1.1.25) (2023-08-30)
+
+
+### Documentation
+
+* add "river monitor" section in "Progettazione" ([8026053](https://github.com/FilippoVissani/CityTwin-report/commit/802605324cc50f5d71ded46052f07a2a73572958))
+* add two sequence diagrams ([8ec980b](https://github.com/FilippoVissani/CityTwin-report/commit/8ec980b9c605b5f672ecfe6334bc5120b433ce60))
+
 ## [1.1.24](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.23...1.1.24) (2023-08-29)
 
 

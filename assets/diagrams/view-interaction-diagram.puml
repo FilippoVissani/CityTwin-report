@@ -1,0 +1,27 @@
+@startuml
+
+participant "View" as V
+control "ViewActor" as VA
+control "ResourceActor" as RA
+
+activate VA
+VA -> RA: Spawn
+activate RA
+
+loop every X seconds
+    VA --> RA: AskResourcesToMainstay(resourcesToCheck)
+    RA --> VA: ResourcesFromMainstayResponse(resources)
+    VA -> V: UpdateRiverMonitorState(riverMonitorState)
+end
+
+alt river monitor state is "Warned"
+    V --> VA: Evacuate Zone Pressed
+    VA --> RA: ResourceChanged(resource)
+end
+
+alt river monitor state is "Evacuating"
+    V --> VA: Evacuated Zone Pressed
+    VA --> RA: ResourceChanged(resource)
+end
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+control "River Monitor State Actor" as RMSA
+control "River Monitor Actor" as RMA
+control "Resource Actor" as RA
+
+activate RMA
+RMA -> RA: Spawn
+activate RA
+RMA -> RMSA: Spawn
+activate RMSA
+
+
+loop every X seconds
+    RMA --> RA: AskResourcesToMainstay(resourcesToCheck)
+    RA --> RMA: ResourcesFromMainstayResponse(resources)
+    RMA --> RMSA: MonitoredSensors(monitoredSensors)
+    alt water level of most sensors above threshold
+       RMA --> RMSA: WarnRiverMonitor()
+    end
+    alt command "Evacuating" from user
+        RMA --> RMSA: EvacuatingRiverMonitor
+    end
+    alt command "Evacuated" from user
+        RMA --> RMSA: EvacuatedRiverMonitor
+    end
+    RMSA --> RA: ResourceChanged(resource)
+end
+@enduml

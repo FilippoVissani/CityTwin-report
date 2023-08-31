@@ -1,3 +1,10 @@
+## [1.1.31](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.30...1.1.31) (2023-08-31)
+
+
+### Documentation
+
+* add paragraphs in "Piano di lavoro" ([977e1e2](https://github.com/FilippoVissani/CityTwin-report/commit/977e1e2eef7c60bb983df5ac73e1440999d98262))
+
 ## [1.1.30](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.29...1.1.30) (2023-08-31)
 
 

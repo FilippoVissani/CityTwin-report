@@ -770,7 +770,101 @@ L'esecuzione è avvenuta in locale, su una macchina con le caratteristiche descr
 
 \section{Piano di lavoro}
 
+Per lo sviluppo del progetto è stato adottato un processo ispirato alle tecniche agili proposte da Scrum.
+La prima attività intrapresa è stata quella di analizzare i requisiti del sistema. Lo sviluppo delle funzionalità si è articolato secondo unità di tempo, chiamate Sprint, che scandivano il ritmo con il quale venivano effettuate riunioni e confronti tra gli sviluppatori. Al termine di ogni sprint settimanale, il team si riuniva per effettuare una retrospettiva su quanto svolto, per definire ciò che restava da sviluppare ed eventuali difficoltà incontrate. Durante ogni sprint, per organizzare il lavoro da svolgere, è stato prodotto uno sprint backlog: un artefatto che tiene traccia delle funzionalità da sviluppare. Per quanto riguarda la definizione dei task è stata utilizzata la funzionalità "issue boards" di GitLab, in questo modo è stato possibile tener traccia dello stato di avanzamento del progetto.
 
+Di seguito viene riportato il process backlog effettuato durante lo sviluppo del progetto.
+
+\begin{itemize}
+    \item Sprint 1
+    \begin{itemize}
+        \item Obiettivi
+        \begin{itemize}
+            \item Impostare il progetto SBT
+            \item Aggiungere CI per automatizzare i test
+            \item Aggiungere la configurazione di Akka Cluster
+            \item Definire l'architettura del Core e iniziare l'implementazione
+            \item Definire le impostazioni di logging
+        \end{itemize}
+        \item Revisione
+        \begin{itemize}
+            \item Alcuni comportamenti del Core devono essere corretti
+            \item Deve essere deciso come le risorse interagiscono con i Mainstay
+            \item I progetti delle risorse concrete devono essere definiti
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item Sprint 2
+    \begin{itemize}
+        \item Obiettivi
+        \begin{itemize}
+            \item Trovare un modo per inviare le HashMap nei messaggi
+            \item Definire il comportamento di ResourceActor
+            \item Rendere ResourceActor consapevole dei Mainstay online
+            \item Avviare l'implementazione del Control Panel
+            \item Definire i moduli delle risorse concrete
+        \end{itemize}
+        \item Revisione
+        \begin{itemize}
+            \item Alcuni comportamenti del Core devono essere risolti
+            \item L'implementazione del Control Panel non è completa
+            \item Bisogna trovare un modo semplice per avviare l'intero sistema distribuito
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item Sprint 3
+    \begin{itemize}
+        \item Obiettivi
+        \begin{itemize}
+            \item Stabilizzare le API del Core
+            \item Dockerizzare le applicazioni
+            \item Avviare l'implementazione di River Monitor
+            \item Migliorare il Control Panel
+            \item Avviare l'implementazione del servizio di persistenza
+        \end{itemize}
+        \item Revisione
+        \begin{itemize}
+            \item Il comportamento del servizio di persistenza deve essere testato
+            \item Le interazioni con il servizio di persistenza devono essere implementate
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item Sprint 4
+    \begin{itemize}
+        \item Obiettivi
+        \begin{itemize}
+            \item Implementare l'interazione tra Core e servizio di persistenza
+            \item Implementare l'interazione tra Control Panel e servizio di persistenza
+            \item Avviare l'implementazione di Air Quality Monitor
+            \item Avviare l'implementazione di Acid Rain Monitor
+            \item Avviare l'implementazione di Noise Pollution Monitor
+        \end{itemize}
+        \item Revisione
+        \begin{itemize}
+            \item La sincronizzazione tra i Mainstay deve essere migliorata
+            \item L'implementazione dei moduli delle risorse deve essere completata
+            \item Le scritture non necessarie sul servizio di persistenza devono essere ridotte
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item Sprint 5
+    \begin{itemize}
+        \item Obiettivi
+        \begin{itemize}
+            \item Migliorare la sincronizzazione tra i Mainstay
+            \item Aggiungere la possibilità di scegliere la mappa della città
+            \item Aggiungere la documentazione
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
 
 \newpage
 

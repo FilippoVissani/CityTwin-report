@@ -1,3 +1,17 @@
+## [1.1.30](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.29...1.1.30) (2023-08-31)
+
+
+### Bug Fixes
+
+* SBT as subsection of "Tecnologie Utilizzate" ([2fa4371](https://github.com/FilippoVissani/CityTwin-report/commit/2fa437127d591b2212ce47a8485cc73b563c1276))
+
+
+### Documentation
+
+* add "Azure Functions" description ([c98ca88](https://github.com/FilippoVissani/CityTwin-report/commit/c98ca88918430564b7d37cb2f717b1b9613daf49))
+* add "River Monitor Actor" in "Implementazione" ([b1a6699](https://github.com/FilippoVissani/CityTwin-report/commit/b1a669992dca5b4ae29f2ede506e30ac8877c5bf))
+* add "Sensori" in "Implementazione" ([d74ae97](https://github.com/FilippoVissani/CityTwin-report/commit/d74ae97421b4785cd35ff2101257050453ea27b0))
+
 ## [1.1.29](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.28...1.1.29) (2023-08-31)
 
 

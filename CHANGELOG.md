@@ -1,3 +1,10 @@
+## [1.1.34](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.33...1.1.34) (2023-08-31)
+
+
+### Documentation
+
+* add River Monitor in sprint 1 ([8342e06](https://github.com/FilippoVissani/CityTwin-report/commit/8342e063f4853671c7331a8cc15231acc029ca84))
+
 ## [1.1.33](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.32...1.1.33) (2023-08-31)
 
 

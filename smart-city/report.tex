@@ -10,6 +10,7 @@
 \usepackage[italian]{babel}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{url}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -125,7 +126,34 @@ Per semplificare l'avvio del sistema distribuito e garantire la scalabilità ver
 
 \section{Stato dell'arte}
 
+La piattaforma open source di riferimento per la realizzazione di sistemi di smart city è Snap4City\cite{Snap4City}, sviluppata da DISIT Lab dell'Università di Firenze\cite{DISIT}. Questa piattaforma offre una vasta gamma di funzionalità per la raccolta, l'elaborazione e la visualizzazione dei dati urbani, consentendo decisioni informate in tempo reale. Snap4City permette anche l'integrazione di dati provenienti da fonti esterne, come dati geospaziali, informazioni meteorologiche o flussi di traffico, per creare nuovi servizi.
 
+\subsection{Snap4City}
+
+Snap4City offre le seguenti funzionalità chiave:
+
+\begin{itemize}
+    \item Acquisizione dati da sorgenti diverse, inclusi OpenData, GIS territoriali, dispositivi IoT, sensori industriali e social media, con vari protocolli di comunicazione.
+    \item Aggregazione dati con il modello semantico unificato Km4City, permettendo di riconciliare dati complessi.
+    \item Data analytics in tempo reale per produrre risultati diretti e inferiti, utilizzando strumenti di machine learning e calcolo massivo.
+    \item Visualizzazione dei dati tramite dashboard interattive, mobile e altri dispositivi.
+    \item Creazione di sinottici e dashboard personalizzate connesse a soluzioni DCS (Dynamic Control System).
+\end{itemize}
+
+\subsection{Confronto tra Snap4City e il Progetto CityTwin}
+Pur affrontando obiettivi simili di monitoraggio e gestione delle smart city, Snap4City e il progetto CityTwin presentano alcune differenze.
+
+\subsubsection{Architettura e Scopo}
+Snap4City è una piattaforma completa che si basa sulla raccolta di dati reali provenienti da varie fonti, consentendo un monitoraggio accurato dell'ambiente urbano. La piattaforma offre strumenti per la visualizzazione dei dati e l'analisi, consentendo agli utenti di ottenere insights significativi sull'ambiente urbano effettivo.
+Il progetto CityTwin, d'altra parte, è incentrato sulla rappresentazione del comportamento delle varie entità all'interno di una smart city con la creazione di nodi per sensori e attuatori. In altre parole, CityTwin offre la possibilità di modellare e gestire dinamicamente le interazioni tra le entità all'interno dell'ambiente urbano.
+
+\subsubsection{Scalabilità e Flessibilità}
+Snap4City è stato progettato per adattarsi a diverse città e contesti, integrando una vasta gamma di dati e adattandosi alle esigenze specifiche delle comunità locali. Tuttavia, la gestione e l'integrazione di dati reali da varie fonti possono comportare sfide di scalabilità.
+Il progetto CityTwin si concentra sulla flessibilità dell'aggiunta di nuovi nodi in tempo reale. Questo approccio consente di adattare il sistema alle mutevoli esigenze delle smart cities, senza compromettere il funzionamento del sistema. Grazie alla sua natura open source e al codice sorgente ben documentato e testato, CityTwin consente agli sviluppatori di creare nuovi moduli, in maniera semplice e flessibile, per estendere il sistema.
+
+\subsubsection{Tecnologie e Paradigmi}
+Sia Snap4City che CityTwin adottano approcci moderni per affrontare le sfide delle smart city. Snap4City sfrutta una varietà di tecnologie per l'acquisizione, l'elaborazione e la visualizzazione dei dati, oltre a soluzioni di analisi avanzata. D'altro canto, CityTwin sfrutta il paradigma degli attori e il linguaggio di programmazione funzionale Scala 3 per la modellazione e la gestione del comportamento delle entità.
+CityTwin richiede che ogni entità sia implementata come attore, consentendo una comunicazione efficace tra gli elementi del sistema tramite messaggi e promuovendo la programmazione concorrente e distribuita.
 
 \newpage
 
@@ -922,9 +950,8 @@ Di seguito viene riportato il process backlog effettuato durante lo sviluppo del
 %	RIFERIMENTI BIBLIOGRAFICI
 %----------------------------------------------------------------------------------------
 \addcontentsline{toc}{section}{Riferimenti bibliografici}
-\begin{thebibliography}
-    Elencare i riferimenti bibliografici citati nel testo.
-\end{thebibliography}
+\bibliographystyle{plain}
+\bibliography{bibliography}
 
 %----------------------------------------------------------------------------------------
 

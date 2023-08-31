@@ -1,3 +1,10 @@
+## [1.1.32](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.31...1.1.32) (2023-08-31)
+
+
+### Bug Fixes
+
+* fix letter case ([92fa932](https://github.com/FilippoVissani/CityTwin-report/commit/92fa932dd8348057cbc0ec79a4287009357ca818))
+
 ## [1.1.31](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.30...1.1.31) (2023-08-31)
 
 

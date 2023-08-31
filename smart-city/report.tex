@@ -757,7 +757,43 @@ L'esecuzione è avvenuta in locale, su una macchina con le caratteristiche descr
 
 \section{Analisi di deployment su larga scala}
 
+L'analisi di deployment su larga scala di un progetto software è un processo complesso che deve tenere conto di una serie di fattori, tra cui:
 
+\begin{itemize}
+    \item Il carico previsto sul sistema
+    \item I requisiti di disponibilità e scalabilità
+    \item Le esigenze di sicurezza e conformità
+\end{itemize}
+
+Nel caso di un progetto su larga scala, è necessario adottare un'architettura e una piattaforma di deployment che possano supportare le esigenze specifiche del progetto. In generale, l'architettura di un sistema su larga scala dovrebbe essere distribuita e scalabile. Ciò significa che i componenti del sistema dovrebbero essere distribuiti su più nodi e che il sistema dovrebbe essere in grado di adattarsi al carico variando il numero di nodi attivi.
+
+Per garantire un'adeguata disponibilità, è necessario implementare una strategia di failover. Questa strategia dovrebbe consentire di mantenere attivo il sistema anche in caso di guasto di un nodo o di un componente.
+
+Per garantire la scalabilità, è necessario implementare una strategia di bilanciamento del carico. Questa strategia dovrebbe distribuire il carico tra i nodi in modo uniforme, in modo da evitare che un nodo venga sovraccaricato.
+
+In termini di sicurezza, è necessario adottare misure per proteggere il sistema da attacchi e intrusioni. Queste misure dovrebbero includere l'abilitazione di autenticazione e autorizzazione, l'utilizzo di crittografia e la protezione dei dati sensibili.
+
+In termini di conformità, è necessario garantire che il sistema rispetti le normative applicabili. Queste normative possono riguardare aspetti come la privacy, la sicurezza e l'ambiente.
+
+Di seguito sono riportati alcuni esempi di criticità che possono essere incontrate in un progetto su larga scala e di soluzioni tipiche in contesti di cloud architecture per garantire un'adeguata resilienza, in termini di availability e scalability del sistema.
+
+\subsection{Criticità Evidenziate}
+
+\begin{itemize}
+    \item Un singolo punto di fallimento può causare l'interruzione del servizio.
+    \item Un carico elevato può causare prestazioni insoddisfacenti o addirittura l'arresto del sistema.
+    \item Un attacco informatico può causare la perdita di dati o la compromissione del sistema.
+    \item Il sistema non è conforme alle normative applicabili.
+\end{itemize}
+
+\subsection{Soluzioni Rispettive}
+
+\begin{itemize}
+    \item Distribuire i componenti del sistema su più nodi e implementare una strategia di failover.
+    \item Implementare una strategia di bilanciamento del carico per distribuire il carico su più nodi.
+    \item Abilitare autenticazione e autorizzazione, utilizzare crittografia e proteggere i dati sensibili.
+    \item Garantire che il sistema rispetti le normative applicabili.
+\end{itemize}
 
 \newpage
 

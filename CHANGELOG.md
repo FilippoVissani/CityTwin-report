@@ -1,3 +1,10 @@
+## [1.1.28](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.27...1.1.28) (2023-08-31)
+
+
+### Documentation
+
+* remove appendix ([41d2044](https://github.com/FilippoVissani/CityTwin-report/commit/41d2044e83196fe9b1b6140dd1d7ea4929e8492b))
+
 ## [1.1.27](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.26...1.1.27) (2023-08-31)
 
 

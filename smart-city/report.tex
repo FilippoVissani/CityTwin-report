@@ -649,6 +649,17 @@ Come i dati vengono generati è illustrato di seguito:
     \item \textbf{Flood Sensor Actor:} Questo attore genera il valore di livello dell'acqua in modo casuale, con un range da 0 a 20. Un esempio di dato generato è la seguente stringa: \textit{16}.
 \end{itemize}
 
+\subsubsection{River Monitor Actor}
+Il \textit{River Monitor Actor} fa parte del modulo \textit{River Monitor}. Dovendo questo attore comunicare più dati e con la necessità che questi dati venissero poi facilmente utilizzati dalla \textit{View}, si è deciso di serializzare in formato JSON un'intera \textit{Case Class} contenente tutti i dati necessari, mostrata nel seguente listato:
+\begin{lstlisting}[language=Scala]
+case class RiverMonitorResourceState(
+    riverMonitorState: String,
+    threshold: Float,
+    monitoredSensors: Option[Map[String, Map[String, String]]]
+)
+\end{lstlisting}
+Per la serializzazione e relativa deserializzazione di questa \textit{Case Class} si è utilizzata la libreria \textit{upickle}. Questa libreria permette di serializzare e deserializzare strutture dati in formato JSON in modo semplice e veloce.
+
 \newpage
 
 

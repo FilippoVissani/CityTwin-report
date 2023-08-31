@@ -1,3 +1,10 @@
+## [1.1.35](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.34...1.1.35) (2023-08-31)
+
+
+### Documentation
+
+* remove empty section ([678af8d](https://github.com/FilippoVissani/CityTwin-report/commit/678af8db1ff2cd032ce5dfecd5f9824651161954))
+
 ## [1.1.34](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.33...1.1.34) (2023-08-31)
 
 

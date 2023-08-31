@@ -1,3 +1,10 @@
+## [1.1.27](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.26...1.1.27) (2023-08-31)
+
+
+### Documentation
+
+* fix wrong caption ([d3deb9e](https://github.com/FilippoVissani/CityTwin-report/commit/d3deb9e336647647995e08757bcf3b8fce720615))
+
 ## [1.1.26](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.25...1.1.26) (2023-08-31)
 
 

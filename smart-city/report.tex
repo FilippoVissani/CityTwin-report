@@ -757,43 +757,49 @@ L'esecuzione è avvenuta in locale, su una macchina con le caratteristiche descr
 
 \section{Analisi di deployment su larga scala}
 
-L'analisi di deployment su larga scala di un progetto software è un processo complesso che deve tenere conto di una serie di fattori, tra cui:
+La presente sezione si concentra sull'analisi di deployment su larga scala di un sistema, considerando l'evoluzione del progetto da un contesto isolato a uno di dimensioni significative. L'obiettivo principale è valutare come garantire l'adeguata resilienza, disponibilità e scalabilità del sistema in tale scenario.
 
-\begin{itemize}
-    \item Il carico previsto sul sistema
-    \item I requisiti di disponibilità e scalabilità
-    \item Le esigenze di sicurezza e conformità
-\end{itemize}
+Il deployment su larga scala richiede una progettazione oculata e una solida implementazione. L'adozione di servizi cloud, l'architettura a microservizi e le best practice di sicurezza, unitamente a un monitoraggio costante, contribuiscono a garantire la resilienza, la disponibilità e la scalabilità del sistema. L'analisi e l'adeguamento delle risorse in termini di costo sono altresì rilevanti per un'implementazione di successo.
 
-Nel caso di un progetto su larga scala, è necessario adottare un'architettura e una piattaforma di deployment che possano supportare le esigenze specifiche del progetto. In generale, l'architettura di un sistema su larga scala dovrebbe essere distribuita e scalabile. Ciò significa che i componenti del sistema dovrebbero essere distribuiti su più nodi e che il sistema dovrebbe essere in grado di adattarsi al carico variando il numero di nodi attivi.
+\subsection{Architettura a Microservizi}
 
-Per garantire un'adeguata disponibilità, è necessario implementare una strategia di failover. Questa strategia dovrebbe consentire di mantenere attivo il sistema anche in caso di guasto di un nodo o di un componente.
+Nel passaggio a una scala maggiore, l'adozione di un'architettura a microservizi emerge come una soluzione pragmatica. Questo approccio suddivide il sistema in componenti modulari indipendenti, semplificando la gestione e il deployment. Ogni microservizio può essere scalato separatamente in base alle esigenze di carico, migliorando l'efficienza e la manutenibilità complessiva.
 
-Per garantire la scalabilità, è necessario implementare una strategia di bilanciamento del carico. Questa strategia dovrebbe distribuire il carico tra i nodi in modo uniforme, in modo da evitare che un nodo venga sovraccaricato.
+\subsection{Infrastruttura Cloud}
 
-In termini di sicurezza, è necessario adottare misure per proteggere il sistema da attacchi e intrusioni. Queste misure dovrebbero includere l'abilitazione di autenticazione e autorizzazione, l'utilizzo di crittografia e la protezione dei dati sensibili.
+L'utilizzo di una piattaforma cloud costituisce un aspetto chiave per garantire la flessibilità e la scalabilità necessarie. I servizi cloud, come AWS, Azure e GCP, offrono meccanismi automatici di scalabilità delle risorse in risposta al carico di lavoro. Questo non solo migliora la resilienza, ma permette anche una gestione efficiente delle risorse.
 
-In termini di conformità, è necessario garantire che il sistema rispetti le normative applicabili. Queste normative possono riguardare aspetti come la privacy, la sicurezza e l'ambiente.
+\subsection{Bilanciamento del Carico}
 
-Di seguito sono riportati alcuni esempi di criticità che possono essere incontrate in un progetto su larga scala e di soluzioni tipiche in contesti di cloud architecture per garantire un'adeguata resilienza, in termini di availability e scalability del sistema.
+L'impiego di bilanciatori di carico risulta essenziale per distribuire uniformemente il traffico tra diverse istanze dei servizi. Questa pratica evita sovraccarichi e previene il single point of failure, garantendo la disponibilità continua del sistema anche in caso di aumento del traffico.
 
-\subsection{Criticità Evidenziate}
+\subsection{Autoscaling}
 
-\begin{itemize}
-    \item Un singolo punto di fallimento può causare l'interruzione del servizio.
-    \item Un carico elevato può causare prestazioni insoddisfacenti o addirittura l'arresto del sistema.
-    \item Un attacco informatico può causare la perdita di dati o la compromissione del sistema.
-    \item Il sistema non è conforme alle normative applicabili.
-\end{itemize}
+L'implementazione di un sistema di autoscaling consente di adeguare dinamicamente il numero di istanze dei servizi in base alla domanda. Ciò si traduce in prestazioni ottimali durante i picchi di utilizzo e nell'uso efficiente delle risorse durante i periodi di minor carico, garantendo un'esperienza utente coerente.
 
-\subsection{Soluzioni Rispettive}
+\subsection{Tecnologie di Containerizzazione e Orchestrazione}
 
-\begin{itemize}
-    \item Distribuire i componenti del sistema su più nodi e implementare una strategia di failover.
-    \item Implementare una strategia di bilanciamento del carico per distribuire il carico su più nodi.
-    \item Abilitare autenticazione e autorizzazione, utilizzare crittografia e proteggere i dati sensibili.
-    \item Garantire che il sistema rispetti le normative applicabili.
-\end{itemize}
+L'adozione di tecnologie di contenitori, come Docker, e sistemi di orchestrazione, come Kubernetes, agevola la distribuzione e la gestione dei servizi. La containerizzazione assicura l'isolamento delle applicazioni, mentre l'orchestrazione semplifica il deployment, il monitoraggio e la scalabilità.
+
+\subsection{Monitoraggio e Diagnostica}
+
+L'istituzione di un sistema di monitoraggio continuo riveste un ruolo critico. Strumenti come Prometheus e Grafana consentono la rilevazione tempestiva di anomalie e il monitoraggio delle prestazioni. Questa pratica contribuisce a garantire la riuscita identificazione e risoluzione dei problemi.
+
+\subsection{Backup e Ripristino}
+
+Pianificare strategie di backup regolari e procedure di ripristino è fondamentale per assicurare la continuità operativa. In caso di guasti o perdita di dati, queste misure garantiscono l'integrità dei dati e riducono i tempi di inattività.
+
+\subsection{Sicurezza}
+
+Nel contesto di un deployment su larga scala, la sicurezza riveste un ruolo cruciale e richiede una considerazione approfondita.
+
+Con un maggior numero di utenti e componenti, la gestione delle credenziali diventa complessa. L'uso di pratiche di autenticazione forte, come l'autenticazione a due fattori, e la centralizzazione delle credenziali attraverso strumenti di gestione delle identità contribuiscono a mitigare il rischio di accessi non autorizzati.
+
+La sicurezza dei dati è fondamentale. L'adozione di crittografia dei dati in transito e a riposo previene l'accesso non autorizzato ai dati sensibili. Inoltre, è importante definire politiche di accesso rigorose e autorizzazioni granulari per limitare l'accesso solo alle parti necessarie del sistema.
+
+Con l'aumento del traffico, il rischio di attacchi distribuiti di negazione del servizio (DDoS) aumenta. L'adozione di soluzioni di mitigazione DDoS e la configurazione dei bilanciatori di carico per filtrare il traffico dannoso contribuiscono a mantenere la disponibilità del sistema.
+
+Eseguire test di penetrazione regolari può rivelare potenziali vulnerabilità che potrebbero essere sfruttate dagli attaccanti. Questi test simulano attacchi reali per identificare punti deboli nel sistema.
 
 \newpage
 

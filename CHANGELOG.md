@@ -1,3 +1,10 @@
+## [1.1.29](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.28...1.1.29) (2023-08-31)
+
+
+### Documentation
+
+* add number of cores ([01dd6dc](https://github.com/FilippoVissani/CityTwin-report/commit/01dd6dc20b83b219e5d5e77b5d66b84a21b1f6a6))
+
 ## [1.1.28](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.27...1.1.28) (2023-08-31)
 
 

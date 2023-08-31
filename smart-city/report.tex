@@ -636,7 +636,63 @@ Il servizio di persistenza espone delle API web, le quali sono state testate uti
     \label{fig:postman}
 \end{figure}
 
-\newpage
+\subsection{Performance del Sistema Distribuito}
+
+Per l'analisi delle performance del sistema distribuito si è scelto di considerare i tempi dello scambio dei messaggi tra uno dei nodi \textit{Resource} e il suo \textit{Mainstay} di riferimento. I risultati dell'analisi sono riportati in Tabella \ref{tab:analysis-specs}.
+
+L'esecuzione è avvenuta in locale, su una macchina con le caratteristiche descritte in Tabella \ref{tab:machine-specs}.
+
+\begin{figure}[H]
+    \caption{Specifiche della macchina su cui è stata eseguita l'analisi.}
+    \begin{center}
+        \begin{tabular}{ | l | l | }
+            \hline
+            \textbf{OS} & NixOS 23.05 \\ 
+            \hline
+            \textbf{Linux kernel version} & 6.1.47 \\ 
+            \hline
+            \textbf{CPU} & AMD Ryzen 7 5700U \\
+            \hline
+            \textbf{Threads} & 16 \\
+            \hline
+            \textbf{Base clock} & 1.8GHz \\
+            \hline
+            \textbf{Max boost clock} & 4.3GHz \\
+            \hline
+            \textbf{L2 cache} & 4MB \\
+            \hline
+            \textbf{L3 cache} & 8MB \\
+            \hline
+            \textbf{Memory} & 15325MiB \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \label{tab:machine-specs}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Specifiche della macchina su cui è stata eseguita l'analisi.}
+    \begin{center}
+        \begin{tabular}{ | l | l | }
+            \hline
+            \textbf{Numero di nodi \textit{Mainstay}} & 3 \\ 
+            \hline
+            \textbf{Numero di nodi \textit{Resource}} & 31 \\ 
+            \hline
+            \textbf{Numero di richieste effettuate} & 101 \\
+            \hline
+            \textbf{Numero di risposte ottenute} & 101 \\
+            \hline
+            \textbf{Tempo di risposta massimo} & 3.228 s \\
+            \hline
+            \textbf{Tempo di risposta minimo} & 0.002 s \\
+            \hline
+            \textbf{Tempo di risposta medio} & 0.183 s \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \label{tab:analysis-specs}
+\end{figure}
 
 %----------------------------------------------------------------------------------------
 %	ANALISI DI DEPLOYMENT SU LARGA SCALA

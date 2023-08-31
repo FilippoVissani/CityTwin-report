@@ -1,3 +1,10 @@
+## [1.1.26](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.25...1.1.26) (2023-08-31)
+
+
+### Documentation
+
+* add subsection "Performance del Sistema Distribuito" ([6d5316d](https://github.com/FilippoVissani/CityTwin-report/commit/6d5316dcbbd8857bd348740f4ff9c17fa71e7026))
+
 ## [1.1.25](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.24...1.1.25) (2023-08-30)
 
 

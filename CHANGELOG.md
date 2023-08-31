@@ -1,3 +1,11 @@
+## [1.1.36](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.35...1.1.36) (2023-08-31)
+
+
+### Documentation
+
+* improve "Analisi di deployment su larga scala" ([46ecac4](https://github.com/FilippoVissani/CityTwin-report/commit/46ecac465aa3477f3a953b3f30524c744ce69211))
+* remove unused subsection ([c1cd82a](https://github.com/FilippoVissani/CityTwin-report/commit/c1cd82ae47e8a4946901bd1ff6ffc3362fcbabcc))
+
 ## [1.1.35](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.34...1.1.35) (2023-08-31)
 
 

@@ -1,3 +1,10 @@
+## [1.1.37](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.36...1.1.37) (2023-08-31)
+
+
+### Documentation
+
+* add "Stato dell'arte" section ([a79ac62](https://github.com/FilippoVissani/CityTwin-report/commit/a79ac625a5b879287735e1a3ec7a78fac7d2df11))
+
 ## [1.1.36](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.35...1.1.36) (2023-08-31)
 
 

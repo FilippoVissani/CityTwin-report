@@ -1,3 +1,10 @@
+## [1.1.40](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.39...1.1.40) (2023-09-01)
+
+
+### Documentation
+
+* add tasks owners ([9fe4662](https://github.com/FilippoVissani/CityTwin-report/commit/9fe4662a9e73739779ce5191149f08f964bbf1a7))
+
 ## [1.1.39](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.38...1.1.39) (2023-09-01)
 
 

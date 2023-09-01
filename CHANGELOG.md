@@ -1,3 +1,10 @@
+## [1.1.39](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.38...1.1.39) (2023-09-01)
+
+
+### Documentation
+
+* add citations ([8a3ea31](https://github.com/FilippoVissani/CityTwin-report/commit/8a3ea31d621392ddfc56afa9b37e40f6f760a5ce))
+
 ## [1.1.38](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.37...1.1.38) (2023-09-01)
 
 

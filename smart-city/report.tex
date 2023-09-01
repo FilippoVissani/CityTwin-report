@@ -569,7 +569,7 @@ Docker è una tecnologia di virtualizzazione leggera e di containerizzazione che
 
 \subsubsection{Servizio FAAS Microsoft Azure Functions}
 
-Il servizio Azure Functions (Funzioni di Azure) è una soluzione di elaborazione serverless offerta da Microsoft Azure. Questo servizio consente agli sviluppatori di scrivere, distribuire ed eseguire rapidamente codice in risposta ad eventi specifici senza preoccuparsi dell'infrastruttura sottostante. Le Azure Functions sono progettate per essere altamente scalabili e reattive, rendendole ideali per scenari in cui è richiesta una risposta rapida a eventi come richieste HTTP, scadenze temporali o trigger di database.
+Il servizio Azure Functions\cite{azurefunctions} (Funzioni di Azure) è una soluzione di elaborazione serverless offerta da Microsoft Azure\cite{microsoftazure}. Questo servizio consente agli sviluppatori di scrivere, distribuire ed eseguire rapidamente codice in risposta ad eventi specifici senza preoccuparsi dell'infrastruttura sottostante. Le Azure Functions sono progettate per essere altamente scalabili e reattive, rendendole ideali per scenari in cui è richiesta una risposta rapida a eventi come richieste HTTP, scadenze temporali o trigger di database.
 
 \subsection{Problematiche Riscontrate e Soluzioni Adottate}
 
@@ -698,7 +698,7 @@ Per la serializzazione e relativa deserializzazione di questa \textit{Case Class
 
 \subsection{Testing dei Moduli Sviluppati in Scala 3}
 
-Per testare i moduli sviluppati in Scala 3 si è scelto di utilizzare il framework di testing ScalaTest in combinazione con il TestKit fornito da Akka.
+Per testare i moduli sviluppati in Scala 3 si è scelto di utilizzare il framework di testing ScalaTest\cite{scalatest} in combinazione con il TestKit fornito da Akka.
 
 ScalaTest è un framework di testing per il linguaggio di programmazione Scala. È progettato per semplificare il processo di scrittura e esecuzione dei test nelle applicazioni Scala, fornendo una varietà di stili di testing e utilità per rendere più facile il testing delle applicazioni.
 
@@ -710,7 +710,7 @@ Il seguente listato mostra un esempio di specifica di test per il \textit{Resour
 
 \subsection{Testing del Servizio di Persistenza}
 
-Postman è un'applicazione molto popolare che offre un'ampia gamma di strumenti per semplificare il processo di sviluppo, test e documentazione delle API. Le API sono punti di accesso che consentono a diverse applicazioni di comunicare tra loro, scambiando dati e funzionalità. Postman è ampiamente utilizzato dai team di sviluppo di software per testare, convalidare e interagire con le API in diversi scenari.
+Postman\cite{postman} è un'applicazione che offre un'ampia gamma di strumenti per semplificare il processo di sviluppo, test e documentazione delle API. Le API sono punti di accesso che consentono a diverse applicazioni di comunicare tra loro, scambiando dati e funzionalità. Postman è ampiamente utilizzato dai team di sviluppo di software per testare, convalidare e interagire con le API in diversi scenari.
 
 Il servizio di persistenza espone delle API web, le quali sono state testate utilizzando il software Postman (Figura: \ref{fig:postman}).
 
@@ -796,7 +796,7 @@ Nel passaggio a una scala maggiore, l'adozione di un'architettura a microservizi
 
 \subsection{Infrastruttura Cloud}
 
-L'utilizzo di una piattaforma cloud costituisce un aspetto chiave per garantire la flessibilità e la scalabilità necessarie. I servizi cloud, come AWS, Azure e GCP, offrono meccanismi automatici di scalabilità delle risorse in risposta al carico di lavoro. Questo non solo migliora la resilienza, ma permette anche una gestione efficiente delle risorse.
+L'utilizzo di una piattaforma cloud costituisce un aspetto chiave per garantire la flessibilità e la scalabilità necessarie. I servizi cloud, come AWS\cite{amazonaws}, Azure e GCP\cite{gcp}, offrono meccanismi automatici di scalabilità delle risorse in risposta al carico di lavoro. Questo non solo migliora la resilienza, ma permette anche una gestione efficiente delle risorse.
 
 \subsection{Bilanciamento del Carico}
 
@@ -808,7 +808,7 @@ L'implementazione di un sistema di autoscaling consente di adeguare dinamicament
 
 \subsection{Tecnologie di Containerizzazione e Orchestrazione}
 
-L'adozione di tecnologie di contenitori, come Docker, e sistemi di orchestrazione, come Kubernetes, agevola la distribuzione e la gestione dei servizi. La containerizzazione assicura l'isolamento delle applicazioni, mentre l'orchestrazione semplifica il deployment, il monitoraggio e la scalabilità.
+L'adozione di tecnologie di contenitori, come Docker, e sistemi di orchestrazione, come Kubernetes\cite{kubernetes}, agevola la distribuzione e la gestione dei servizi. La containerizzazione assicura l'isolamento delle applicazioni, mentre l'orchestrazione semplifica il deployment, il monitoraggio e la scalabilità.
 
 \subsection{Backup e Ripristino}
 
@@ -836,7 +836,7 @@ Eseguire test di penetrazione regolari può rivelare potenziali vulnerabilità c
 \section{Piano di lavoro}
 
 Per lo sviluppo del progetto è stato adottato un processo ispirato alle tecniche agili proposte da Scrum.
-La prima attività intrapresa è stata quella di analizzare i requisiti del sistema. Lo sviluppo delle funzionalità si è articolato secondo unità di tempo, chiamate Sprint, che scandivano il ritmo con il quale venivano effettuate riunioni e confronti tra gli sviluppatori. Al termine di ogni sprint settimanale, il team si riuniva per effettuare una retrospettiva su quanto svolto, per definire ciò che restava da sviluppare ed eventuali difficoltà incontrate. Durante ogni sprint, per organizzare il lavoro da svolgere, è stato prodotto uno sprint backlog: un artefatto che tiene traccia delle funzionalità da sviluppare. Per quanto riguarda la definizione dei task è stata utilizzata la funzionalità "issue boards" di GitLab, in questo modo è stato possibile tener traccia dello stato di avanzamento del progetto.
+La prima attività intrapresa è stata quella di analizzare i requisiti del sistema. Lo sviluppo delle funzionalità si è articolato secondo unità di tempo, chiamate Sprint, che scandivano il ritmo con il quale venivano effettuate riunioni e confronti tra gli sviluppatori. Al termine di ogni sprint settimanale, il team si riuniva per effettuare una retrospettiva su quanto svolto, per definire ciò che restava da sviluppare ed eventuali difficoltà incontrate. Durante ogni sprint, per organizzare il lavoro da svolgere, è stato prodotto uno sprint backlog: un artefatto che tiene traccia delle funzionalità da sviluppare. Per quanto riguarda la definizione dei task è stata utilizzata la funzionalità "issue boards" di GitLab\cite{GitLab}, in questo modo è stato possibile tener traccia dello stato di avanzamento del progetto.
 
 Di seguito viene riportato il process backlog effettuato durante lo sviluppo del progetto.
 

@@ -499,7 +499,7 @@ Il flusso di lavoro all'interno del sistema di monitoraggio del fiume è il segu
 
     \item Il \textit{River Monitor Actor} valuta le misurazioni dei sensori per determinare se è necessario passare allo stato di allarme. Nello specifico, comunica al \textit{River Monitor State Actor} di passare allo stato di \textit{Warned} se il livello dell'acqua della maggior parte dei sensori supera una soglia critica.
 
-    \item Il \textit{River Monitor Actor} controlla le risorse relative alla view perchè se l'utente ha avviato una procedura di evacuazione (possibile solo se il \textit{River Monitor State Actor} è in stato di allarme), il \textit{River Monitor State Actor} cambia il suo stato in \textit{Evacuating}. dallo stato di \textit{Evacuating} il \textit{River Monitor State Actor} può passare allo stato di \textit{Evacuated} se l'utente ha segnalato che la zona è stata evacuata. in questo caso il \textit{River Monitor State Actor} torna allo stato \textit{Safe}.
+    \item Il \textit{River Monitor Actor} controlla le risorse relative alla view perché se l'utente ha avviato una procedura di evacuazione (possibile solo se il \textit{River Monitor State Actor} è in stato di allarme), il \textit{River Monitor State Actor} cambia il suo stato in \textit{Evacuating}. dallo stato di \textit{Evacuating} il \textit{River Monitor State Actor} può passare allo stato di \textit{Evacuated} se l'utente ha segnalato che la zona è stata evacuata. in questo caso il \textit{River Monitor State Actor} torna allo stato \textit{Safe}.
 
     \item A questo punto il \textit{River Monitor State Actor} comunica al \textit{Resource Actor} il suo stato e i sensori monitorati, in modo che queste informazioni possano essere visualizzate nella \textit{View}.
 
@@ -685,7 +685,7 @@ case class RiverMonitorResourceState(
     monitoredSensors: Option[Map[String, Map[String, String]]]
 )
 \end{lstlisting}
-Per la serializzazione e relativa deserializzazione di questa \textit{Case Class} si è utilizzata la libreria \textit{upickle}. Questa libreria permette di serializzare e deserializzare strutture dati in formato JSON in modo semplice e veloce.
+Per la serializzazione e relativa deserializzazione di questa \textit{Case Class} si è utilizzata la libreria \textit{upickle}\cite{upickle}. Questa libreria permette di serializzare e deserializzare strutture dati in formato JSON in modo semplice e veloce.
 
 \newpage
 

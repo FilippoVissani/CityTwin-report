@@ -1,3 +1,10 @@
+## [1.1.41](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.40...1.1.41) (2023-09-01)
+
+
+### Bug Fixes
+
+* fix tasks owners ([0c968ee](https://github.com/FilippoVissani/CityTwin-report/commit/0c968eea208224c2b29cbb7694f78e7a6577aeef))
+
 ## [1.1.40](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.39...1.1.40) (2023-09-01)
 
 

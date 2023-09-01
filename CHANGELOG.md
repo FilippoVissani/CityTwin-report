@@ -1,3 +1,10 @@
+## [1.1.42](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.41...1.1.42) (2023-09-01)
+
+
+### Documentation
+
+* add "Conclusioni" section ([9672e03](https://github.com/FilippoVissani/CityTwin-report/commit/9672e035424ff81931a9c17d7bb9c97341032dd0))
+
 ## [1.1.41](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.40...1.1.41) (2023-09-01)
 
 

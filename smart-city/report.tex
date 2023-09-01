@@ -11,6 +11,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{url}
+\usepackage{hyperref}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -107,16 +108,16 @@ L'utente potrà visualizzare lo stato attuale del sistema, lo storico dei dati e
 
 Per la realizzazione del progetto verranno utilizzate le seguenti tecnologie:
 
-Akka è un toolkit open source e runtime che semplifica la costruzione di applicazioni concorrenti e distribuite sulla JVM. Questo toolkit supporta diversi modelli di programmazione per la concorrenza, ma enfatizza la concorrenza basata su attori.
+Akka\cite{akka} è un toolkit open source e runtime che semplifica la costruzione di applicazioni concorrenti e distribuite sulla JVM. Questo toolkit supporta diversi modelli di programmazione per la concorrenza, ma enfatizza la concorrenza basata su attori.
 
-I componenti principali del progetto, quali Mainstay e Resource, verranno modellati sulla base del paradigma ad attori e verranno realizzati utilizzando Akka in combinazione con il linguaggio Scala 3.
+I componenti principali del progetto, quali Mainstay e Resource, verranno modellati sulla base del paradigma ad attori e verranno realizzati utilizzando Akka in combinazione con il linguaggio Scala 3\cite{scala}.
 
-Per quanto riguarda il servizio di persistenza dei dati, utile per visualizzare le statistiche, verrà utilizzato MongoDB, un database non relazionale orientato ai documenti. Questo database verrà utilizzato per salvare in modo persistente i dati rilevati dai nodi Mainstay.
+Per quanto riguarda il servizio di persistenza dei dati, utile per visualizzare le statistiche, verrà utilizzato MongoDB\cite{mongodb}, un database non relazionale orientato ai documenti. Questo database verrà utilizzato per salvare in modo persistente i dati rilevati dai nodi Mainstay.
 Il servizio di persistenza verrà realizzato come modulo separato, per questo motivo si sceglie di implementare un layer scritto in JavaScript, che esponga delle API utilizzabili sia dai nodi Mainstay che da altri clienti.
 
-Sulla base dei linguaggi scelti, verranno adottati Simple Build Tool (SBT) per Scala 3 e Node Package Manager (NPM) per JavaScript per la gestione delle dipendenze e la compilazione del codice.
+Sulla base dei linguaggi scelti, verranno adottati Simple Build Tool (SBT)\cite{sbt} per Scala 3 e Node Package Manager (NPM)\cite{npm} per JavaScript per la gestione delle dipendenze e la compilazione del codice.
 
-Per semplificare l'avvio del sistema distribuito e garantire la scalabilità verrà utilizzato Docker, un progetto open source che automatizza il deployment di applicazioni all'interno di contenitori software.
+Per semplificare l'avvio del sistema distribuito e garantire la scalabilità verrà utilizzato Docker\cite{docker}, un progetto open source che automatizza il deployment di applicazioni all'interno di contenitori software.
 
 \newpage
 
@@ -547,7 +548,7 @@ Alcuni concetti chiave all'interno del toolkit Akka:
 
 \subsubsection{Node.js}
 
-Node.js è una piattaforma open-source basata sul motore JavaScript V8 di Google, progettata per consentire l'esecuzione di codice JavaScript lato server. Prima dell'avvento di Node.js, JavaScript era principalmente utilizzato all'interno dei browser per creare interazioni dinamiche nelle pagine web. Tuttavia, Node.js ha esteso il suo utilizzo consentendo di eseguire codice JavaScript anche sul server, aprendo la strada a numerose possibilità di sviluppo web e applicativo.
+Node.js\cite{nodejs} è una piattaforma open-source basata sul motore JavaScript V8 di Google, progettata per consentire l'esecuzione di codice JavaScript lato server. Prima dell'avvento di Node.js, JavaScript era principalmente utilizzato all'interno dei browser per creare interazioni dinamiche nelle pagine web. Tuttavia, Node.js ha esteso il suo utilizzo consentendo di eseguire codice JavaScript anche sul server, aprendo la strada a numerose possibilità di sviluppo web e applicativo.
 
 Alcune delle caratteristiche chiave di Node.js:
 

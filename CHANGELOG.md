@@ -1,3 +1,19 @@
+## [2.0.0](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.43...2.0.0) (2023-09-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* add correct template for distributed systems
+
+### Features
+
+* add correct template for distributed systems ([f78f9be](https://github.com/FilippoVissani/CityTwin-report/commit/f78f9be351bddcaa0475a27cd75a3dc023950652))
+
+
+### Build and continuous integration
+
+* set ci to compile new template ([8c49f08](https://github.com/FilippoVissani/CityTwin-report/commit/8c49f087a80710d6002f3d0aa762a23172edf367))
+
 ## [1.1.43](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.42...1.1.43) (2023-09-01)
 
 

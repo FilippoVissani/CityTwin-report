@@ -1,3 +1,18 @@
+## [2.0.1](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.0...2.0.1) (2023-09-11)
+
+
+### Dependency updates
+
+* **deps:** update actions/checkout action to v4 ([a4b10a9](https://github.com/FilippoVissani/CityTwin-report/commit/a4b10a98b1153d87f4a6f2c4a5526ca78de2feaa))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.53 ([285ee58](https://github.com/FilippoVissani/CityTwin-report/commit/285ee58c174eca03cda45c0463cbbfb1cfbae5bc))
+* **deps:** update node.js to 18.17 ([4e595e1](https://github.com/FilippoVissani/CityTwin-report/commit/4e595e110020000fd799d32feb826194c7c1ee72))
+* **deps:** update xu-cheng/latex-action action to v3 ([e0e9e1d](https://github.com/FilippoVissani/CityTwin-report/commit/e0e9e1de3d51d250ce1f20181ee163aadead1eaf))
+
+
+### Documentation
+
+* add title and students ([e2e503a](https://github.com/FilippoVissani/CityTwin-report/commit/e2e503ad4193cd81119995c467441913135965d8))
+
 ## [2.0.0](https://github.com/FilippoVissani/CityTwin-report/compare/1.1.43...2.0.0) (2023-09-08)
 
 

@@ -297,7 +297,152 @@ Il comportamento del \textit{Control Panel} (Figura \ref{fig:control-panel-seque
 \end{figure}
 
 \section{Dettagli Implementativi}
-TODO
+
+\subsection{Tecnologie Utilizzate}
+
+\subsubsection{Scala 3}
+
+Scala 3 è una versione successiva del linguaggio di programmazione Scala, progettato per migliorare e semplificare ulteriormente l'esperienza di programmazione funzionale e orientata agli oggetti. È un linguaggio staticamente tipizzato che unisce caratteristiche provenienti da diversi paradigmi di programmazione, consentendo agli sviluppatori di scrivere codice conciso ed elegante mentre sfruttano la potenza dei tipi statici.
+
+\subsubsection{Simple Build Tool (SBT)}
+
+SBT è uno strumento di build e gestione delle dipendenze ampiamente utilizzato nella comunità di sviluppo software in linguaggio Scala. È stato creato per semplificare il processo di compilazione, test e distribuzione delle applicazioni Scala.
+
+\subsubsection{Akka}
+
+Akka è un toolkit open-source scritto in Scala che offre un modello di programmazione per costruire applicazioni distribuite, concorrenti e reattive basate su attori. Gli attori sono unità fondamentali di elaborazione in Akka e rappresentano entità concorrenti leggere che comunicano tra loro attraverso messaggi. Questo modello di programmazione facilita la gestione dell'elaborazione parallela e distribuita in modo efficiente.
+
+\subsubsection{Node.js}
+
+Node.js\cite{nodejs} è una piattaforma open-source basata sul motore JavaScript V8 di Google, progettata per consentire l'esecuzione di codice JavaScript lato server. Prima dell'avvento di Node.js, JavaScript era principalmente utilizzato all'interno dei browser per creare interazioni dinamiche nelle pagine web. Tuttavia, Node.js ha esteso il suo utilizzo consentendo di eseguire codice JavaScript anche sul server, aprendo la strada a numerose possibilità di sviluppo web e applicativo.
+
+\subsubsection{MongoDB}
+
+MongoDB è un database NoSQL ampiamente utilizzato per gestire e archiviare grandi quantità di dati, inclusi dati non strutturati, semi-strutturati e strutturati. È progettato per essere flessibile, scalabile e performante, ed è particolarmente adatto per applicazioni che richiedono un'archiviazione e un accesso veloce a dati complessi e eterogenei.
+
+\subsubsection{Docker}
+
+Docker è una tecnologia di virtualizzazione leggera e di containerizzazione che consente di creare, distribuire e gestire applicazioni e servizi in ambienti isolati noti come "container". Questi container includono tutto ciò di cui un'applicazione ha bisogno per essere eseguita, come il codice, le librerie, le dipendenze e le variabili d'ambiente, il tutto condiviso su una base immutabile. Questo concetto di containerizzazione rende Docker un approccio efficace per sviluppare, testare e distribuire applicazioni in modo rapido e consistente su diverse piattaforme.
+
+\subsubsection{Servizio FAAS Microsoft Azure Functions}
+
+Il servizio Azure Functions\cite{azurefunctions} (Funzioni di Azure) è una soluzione di elaborazione serverless offerta da Microsoft Azure\cite{microsoftazure}. Questo servizio consente agli sviluppatori di scrivere, distribuire ed eseguire rapidamente codice in risposta ad eventi specifici senza preoccuparsi dell'infrastruttura sottostante. Le Azure Functions sono progettate per essere altamente scalabili e reattive, rendendole ideali per scenari in cui è richiesta una risposta rapida a eventi come richieste HTTP, scadenze temporali o trigger di database.
+
+\subsection{Problematiche Riscontrate e Soluzioni Adottate}
+
+\subsubsection{Serializzazione delle Strutture Dati}
+
+La serializzazione in Akka è il processo di convertire oggetti Scala in un formato che può essere trasmesso attraverso la rete e quindi ricostruito in un oggetto equivalente. Questo è particolarmente importante in un ambiente basato su attori, in cui i messaggi vengono inviati tra attori in diversi processi o nodi. Lo scambio di messaggi prevede l'utilizzo di strutture dati, che in un sistema distribuito devono essere serializzate prima di essere inviate.
+
+Durante il processo di sviluppo si sono presentati problemi di serializzazione delle \verb|HashMap[A, B]| (dove \verb|A| e \verb|B| sono tipi generici), per questo motivo si è scelto di convertire le \verb|HashMap[A, B]| in \verb|Set[(A, B)]| per lo scambio di messaggi tra attori.
+
+Un altro tipo di struttura dati che non è possibile serializzare direttamente è l'enumerazione di Scala 3. Per questo motivo, si è scelto di utilizzare un'enumerazione di Scala 2, che è serializzabile.
+
+Esempio di enumerazione in Scala 3:
+
+\begin{lstlisting}[language=Scala]
+    enum ResourceType:
+        case Act
+        case Sense
+\end{lstlisting}
+
+Esempio di enumerazione in Scala 2:
+
+\begin{lstlisting}[language=Scala]
+    object ResourceType extends Enumeration:
+        type ResourceType = Value
+        val Act, Sense = Value
+\end{lstlisting}
+
+\subsubsection{Rappresentazione dello Stato delle Risorse}
+
+I nodi \textit{Mainstay} sono stati concepiti per essere generici e indipendenti dagli altri moduli del sistema. Per questo motivo non conoscono il tipo di risorse presenti a runtime e quindi non possono interpretarne lo stato. Questa risulta una problematica nel momento in cui lo stato della risorsa va serializzato per essere inviato ad un nodo \textit{Mainstay}.
+
+In origine il tipo dello stato della risorsa è stato definito come \verb|Any|, ma questo ha portato a problemi di serializzazione. Per risolvere questo problema, si è scelto di tipizzare lo stato come \verb|String|, in modo che esso possa essere definito in formato JSON.
+
+\subsection{Implementazione del Control Panel}
+
+Il pannello di controllo è stato progettato per essere facilmente utilizzabile da qualsiasi tipo di utente. Le interazioni necessarie per visualizzare le informazioni desiderate sono state ridotte al minimo, in modo da rendere l'esperienza utente il più semplice possibile.
+
+Il pannello di controllo dispone di quattro schermate:
+
+\begin{itemize}
+    \item \textbf{Mappa della città} (Figura \ref{fig:control-panel-map}): visualizza la posizione delle risorse nella città, indicandone il nome e lo stato (online/offline).
+    \item \textbf{Pannello delle informazioni} (Figura \ref{fig:control-panel-info}): visualizza in tempo reale le informazioni sullo stato delle risorse e dei Mainstay.
+    \item \textbf{Pannello delle statistiche dei nodi Resource} (Figura \ref{fig:control-panel-resources-stats}): visualizza lo stato dei nodi Resource nel tempo.
+    \item \textbf{Pannello delle statistiche dei nodi Mainstay}: visualizza lo stato dei nodi Mainstay nel tempo.
+\end{itemize}
+
+\begin{figure}[H]
+    \caption{Control Panel: schermata della mappa della città.}
+    \includegraphics[width=\textwidth]{../assets/images/control-panel-map.png}
+    \label{fig:control-panel-map}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Control Panel: schermata delle informazioni sullo stato dei nodi \textit{Resource} e dei nodi \textit{Mainstay}.}
+    \includegraphics[width=\textwidth]{../assets/images/control-panel-info.png}
+    \label{fig:control-panel-info}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Control Panel: schermata delle statistiche dei nodi \textit{Resource}.}
+    \includegraphics[width=\textwidth]{../assets/images/control-panel-resources-stats.png}
+    \label{fig:control-panel-resources-stats}
+\end{figure}
+
+\subsection{Implementazione dei moduli Monitor}
+In questa sezione verrà illustrata l'implementazione delle parti più significative dei moduli di monitoraggio dell'aria, delle piogge acide, dell'inquinamento acustico e delle alluvioni.
+
+\subsubsection{Sensori}
+Tutti e quattro i moduli Monitor implementano ognuno un proprio sensore, rappresentato da un attore specifico, che simula il comportamento di un sensore reale. I sensori dei quattro moduli seguono una struttura simile nell'implementazione, basata sull'utilizzo di attori e su un timer per la generazione periodica dei dati. Ciò che cambia da un sensore all'altro è il tipo di dato che viene generato e inviato al sistema.
+Nel seguente listato viene mostrata l'implementazione di \textit{Flood Sensor Actor,
+    Noise Sensor Actor, Air Sensor Actor} e \textit{Acid Rain Sensor Actor}, senza andare nel dettaglio dei dati generati.
+
+\begin{lstlisting}[language=Scala]
+object SensorActor:
+  def apply(sensor: Sensor): Behavior[SensorActorCommand] =
+    Behaviors.setup { ctx =>
+      val resourceActor = ctx.spawnAnonymous(ResourceActor())
+      Behaviors.withTimers { timers =>
+        timers.startTimerAtFixedRate(Tick, TickInterval)
+        Behaviors.receiveMessage {
+          case Tick =>
+            // Generate data
+            val data = generateMeasurementData()
+            val resource = Resource(
+              Some(sensor.name),
+              Some(sensor.position),
+              Some(data),
+              Set(ResourceType.Sense)
+            )
+            // Send generated data to ResourceActor
+            resourceActor ! ResourceChanged(resource)
+            Behaviors.same
+        }
+      }
+    }
+\end{lstlisting}
+
+\paragraph{Generazione dei dati}
+Come i dati vengono generati è illustrato di seguito:
+\begin{itemize}
+    \item \textbf{Air Sensor Actor:} Questo attore è stato progettato per simulare l'utilizzo di un sensore fisico reale che possa comunicare solo attraverso un protocollo di rete. Per questo motivo, il sensore non genera direttamente i dati, ma li ottiene interagendo con una funzione su Azure che simula il comportamento del sensore. L'\textit{Air Sensor Actor} richiede i dati alla funzione attraverso una richiesta HTTP GET e la funzione risponde con i dati in formato JSON. Un esempio di risposta è la seguente stringa: \textit{\{"pm10":46.29966, "pm25":33.35241, "nox":76.84502\}}.
+    \item \textbf{Acid Rain Sensor Actor:} Questo attore genera i dati in modo casuale. I dati generati sono valori di pH compresi tra 0 e 14. Un esempio di valore generato è la seguente stringa in formato JSON: \textit{\{"ph":7.0\}}.
+    \item \textbf{Noise Sensor Actor:} Questo attore genera il valore di decibel in modo casuale, con un range da 40 a 100 decibel (dB), e una descrizione relativa al livello di rumore. Un esempio di dato generato è la seguente stringa in formato JSON: \textit{\{"value (dB)":65, "description":"Moderate noise"\}}.
+    \item \textbf{Flood Sensor Actor:} Questo attore genera il valore di livello dell'acqua in modo casuale, con un range da 0 a 20. Un esempio di dato generato è la seguente stringa: \textit{16}.
+\end{itemize}
+
+\subsubsection{River Monitor Actor}
+Il \textit{River Monitor Actor} fa parte del modulo \textit{River Monitor}. Dovendo questo attore comunicare più dati e con la necessità che questi dati venissero poi facilmente utilizzati dalla \textit{View}, si è deciso di serializzare in formato JSON un'intera \textit{Case Class} contenente tutti i dati necessari, mostrata nel seguente listato:
+\begin{lstlisting}[language=Scala]
+case class RiverMonitorResourceState(
+    riverMonitorState: String,
+    threshold: Float,
+    monitoredSensors: Option[Map[String, Map[String, String]]]
+)
+\end{lstlisting}
+Per la serializzazione e relativa deserializzazione di questa \textit{Case Class} si è utilizzata la libreria \textit{upickle}\cite{upickle}. Questa libreria permette di serializzare e deserializzare strutture dati in formato JSON in modo semplice e veloce.
 
 \section{Validazione del Sistema}
 TODO

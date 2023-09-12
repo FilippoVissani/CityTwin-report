@@ -1,3 +1,10 @@
+## [2.0.7](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.6...2.0.7) (2023-09-12)
+
+
+### Documentation
+
+* remove template suggestions ([dc73722](https://github.com/FilippoVissani/CityTwin-report/commit/dc7372272797e19e5cc54b1ce86f70eae16d5f30))
+
 ## [2.0.6](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.5...2.0.6) (2023-09-12)
 
 

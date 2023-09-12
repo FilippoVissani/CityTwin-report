@@ -181,9 +181,9 @@ I requisiti non funzionali definiscono attributi di qualità, vincoli e propriet
 \subsection{Requisiti di Implementazione}
 I requisiti di implementazione riguardano gli aspetti tecnologici e metodologici dell'implementazione del sistema:
 \begin{enumerate}
-    \item Linguaggio di Programmazione: Il sistema deve essere realizzato utilizzando il linguaggio Scala 3.
-    \item Architettura Basata su Attori: L'implementazione deve seguire il paradigma ad attori utilizzando il framework Akka per gestire l'interazione tra i nodi.
-    \item Tecnologie di Persistenza: Il modulo di persistenza dei dati deve essere implementato utilizzando MongoDB per garantire la memorizzazione affidabile dei dati rilevati.
+    \item Linguaggio di Programmazione: Il sistema deve essere realizzato utilizzando il linguaggio Scala 3\cite{scala}.
+    \item Architettura Basata su Attori: L'implementazione deve seguire il paradigma ad attori utilizzando il framework Akka\cite{akka} per gestire l'interazione tra i nodi.
+    \item Tecnologie di Persistenza: Il modulo di persistenza dei dati deve essere implementato utilizzando MongoDB\cite{mongodb} per garantire la memorizzazione affidabile dei dati rilevati.
     \item Documentazione del Codice: Il codice deve essere adeguatamente documentato per consentire una comprensione chiara e agevolare la manutenzione futura.
 \end{enumerate}
 
@@ -306,7 +306,7 @@ Scala 3 è una versione successiva del linguaggio di programmazione Scala, proge
 
 \subsubsection{Simple Build Tool (SBT)}
 
-SBT è uno strumento di build e gestione delle dipendenze ampiamente utilizzato nella comunità di sviluppo software in linguaggio Scala. È stato creato per semplificare il processo di compilazione, test e distribuzione delle applicazioni Scala.
+SBT\cite{sbt} è uno strumento di build e gestione delle dipendenze ampiamente utilizzato nella comunità di sviluppo software in linguaggio Scala. È stato creato per semplificare il processo di compilazione, test e distribuzione delle applicazioni Scala.
 
 \subsubsection{Akka}
 
@@ -316,13 +316,17 @@ Akka è un toolkit open-source scritto in Scala che offre un modello di programm
 
 Node.js\cite{nodejs} è una piattaforma open-source basata sul motore JavaScript V8 di Google, progettata per consentire l'esecuzione di codice JavaScript lato server. Prima dell'avvento di Node.js, JavaScript era principalmente utilizzato all'interno dei browser per creare interazioni dinamiche nelle pagine web. Tuttavia, Node.js ha esteso il suo utilizzo consentendo di eseguire codice JavaScript anche sul server, aprendo la strada a numerose possibilità di sviluppo web e applicativo.
 
+\subsubsection{Node Package Manager (NPM)}
+
+NPM\cite{npm} è un gestore di pacchetti che permette agli sviluppatori di installare, condividere e gestire librerie e pacchetti di terze parti. Questo ecosistema di pacchetti offre una vasta gamma di strumenti e librerie che semplificano lo sviluppo.
+
 \subsubsection{MongoDB}
 
 MongoDB è un database NoSQL ampiamente utilizzato per gestire e archiviare grandi quantità di dati, inclusi dati non strutturati, semi-strutturati e strutturati. È progettato per essere flessibile, scalabile e performante, ed è particolarmente adatto per applicazioni che richiedono un'archiviazione e un accesso veloce a dati complessi e eterogenei.
 
 \subsubsection{Docker}
 
-Docker è una tecnologia di virtualizzazione leggera e di containerizzazione che consente di creare, distribuire e gestire applicazioni e servizi in ambienti isolati noti come "container". Questi container includono tutto ciò di cui un'applicazione ha bisogno per essere eseguita, come il codice, le librerie, le dipendenze e le variabili d'ambiente, il tutto condiviso su una base immutabile. Questo concetto di containerizzazione rende Docker un approccio efficace per sviluppare, testare e distribuire applicazioni in modo rapido e consistente su diverse piattaforme.
+Docker\cite{docker} è una tecnologia di virtualizzazione leggera e di containerizzazione che consente di creare, distribuire e gestire applicazioni e servizi in ambienti isolati noti come "container". Questi container includono tutto ciò di cui un'applicazione ha bisogno per essere eseguita, come il codice, le librerie, le dipendenze e le variabili d'ambiente, il tutto condiviso su una base immutabile. Questo concetto di containerizzazione rende Docker un approccio efficace per sviluppare, testare e distribuire applicazioni in modo rapido e consistente su diverse piattaforme.
 
 \subsubsection{Servizio FAAS Microsoft Azure Functions}
 

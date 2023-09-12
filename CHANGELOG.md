@@ -1,3 +1,10 @@
+## [2.0.8](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.7...2.0.8) (2023-09-12)
+
+
+### Documentation
+
+* change title ([fed24a9](https://github.com/FilippoVissani/CityTwin-report/commit/fed24a9100be54c9f08148832ff72b6651d551f5))
+
 ## [2.0.7](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.6...2.0.7) (2023-09-12)
 
 

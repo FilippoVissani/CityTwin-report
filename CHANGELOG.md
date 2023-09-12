@@ -1,3 +1,17 @@
+## [2.0.3](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.2...2.0.3) (2023-09-12)
+
+
+### Documentation
+
+* add Conclusioni and Sviluppi futuri ([9b21e68](https://github.com/FilippoVissani/CityTwin-report/commit/9b21e681eb1f3fed38c1b40d950d32930ea293b4))
+* add Deployment Instructions ([d91b676](https://github.com/FilippoVissani/CityTwin-report/commit/d91b6765c89f55c199177186661c5601072b3160))
+* fix too wide line ([01a5a71](https://github.com/FilippoVissani/CityTwin-report/commit/01a5a712f8c5402c270774ffa6673b03132b1e54))
+
+
+### Build and continuous integration
+
+* update renovate.json ([21228e0](https://github.com/FilippoVissani/CityTwin-report/commit/21228e08c25a35dd57f678578f21b1741a00384f))
+
 ## [2.0.2](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.1...2.0.2) (2023-09-11)
 
 

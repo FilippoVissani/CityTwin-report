@@ -1,3 +1,10 @@
+## [2.0.14](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.13...2.0.14) (2023-09-12)
+
+
+### Documentation
+
+* Improve "Istruzioni per il Deploy" and "Generazione degli Artefatti" ([c205571](https://github.com/FilippoVissani/CityTwin-report/commit/c2055713ae823fa54273acf213933294c2f31cd1))
+
 ## [2.0.13](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.12...2.0.13) (2023-09-12)
 
 

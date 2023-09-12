@@ -1,3 +1,11 @@
+## [2.0.13](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.12...2.0.13) (2023-09-12)
+
+
+### Documentation
+
+* add river monitor state diagram ([0cfbd23](https://github.com/FilippoVissani/CityTwin-report/commit/0cfbd237d3b5fba2b344267d5a16e61ac6ba2389))
+* remove unused section ([9f8cd2c](https://github.com/FilippoVissani/CityTwin-report/commit/9f8cd2cf09cf6fa4d5c2bb92c13d44cf42ac5453))
+
 ## [2.0.12](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.11...2.0.12) (2023-09-12)
 
 

@@ -1,3 +1,10 @@
+## [2.0.10](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.9...2.0.10) (2023-09-12)
+
+
+### Documentation
+
+* add paragraphs in "Validazione del Sistema" ([72e217d](https://github.com/FilippoVissani/CityTwin-report/commit/72e217d9fc444be5472a287d1d13c4f44c0bcb8f))
+
 ## [2.0.9](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.8...2.0.9) (2023-09-12)
 
 

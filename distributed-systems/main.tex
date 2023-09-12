@@ -193,8 +193,20 @@ I requisiti di implementazione riguardano gli aspetti tecnologici e metodologici
 
 L'architettura del sistema, presentata in Figura \ref{fig:core-component-diagram}, è organizzata intorno a componenti interconnessi che consentono il monitoraggio e la gestione delle entità presenti all'interno della città. Ogni componente svolge ruoli specifici all'interno del sistema e interagisce attraverso interfacce ben definite.
 
+\begin{figure}[H]
+    \caption{Diagramma dei componenti del sistema e delle loro dipendenze.}
+    \includegraphics[width=\textwidth]{../assets/images/core-component-diagram.png}
+    \label{fig:core-component-diagram}
+\end{figure}
+
 In Figura \ref{fig:nodes-component-diagram} viene presentata l'architettura dei componenti in esecuzione e dei protocolli di rete utilizzati. Il sistema è costituito da un insieme di nodi \textit{Mainstay} e \textit{Resource} che comunicano tra loro attraverso il protocollo \textit{Akka}. Inoltre, i nodi \textit{Mainstay} comunicano con il servizio di persistenza attraverso il protocollo \textit{HTTP}.
 I nodi che comunicano utilizzando il protocollo \textit{Akka} sono \textit{Actor System} organizzati in un cluster, in modo da poter garantire la scalabilità del sistema.
+
+\begin{figure}[H]
+    \caption{Diagramma dei componenti in esecuzione e dei protocolli di rete utilizzati.}
+    \includegraphics[width=\textwidth]{../assets/images/nodes-component-diagram.png}
+    \label{fig:nodes-component-diagram}
+\end{figure}
 
 \subsubsection{Core}
 Il componente centrale del sistema è il \textit{Core}, responsabile della gestione dell'elaborazione dati, del coordinamento delle attività e della comunicazione tra gli altri componenti. Il Core funge da mediatore tra le varie risorse presenti all'interno della città, ricevendo dati dai sensori e inviandoli al servizio di persistenza.
@@ -229,18 +241,6 @@ Il \textit{Control Panel} è l'interfaccia utente principale attraverso cui gli 
 
 \subsubsection{Persistence Service}
 Il \textit{Persistence Service} gestisce la persistenza dei dati nel sistema. Comunica con il \textit{Core} attraverso le interfacce \textit{Post Resource} e \textit{Post Mainstay} per ricevere e salvare i dati relativi alle risorse. Analogamente, le interfacce \textit{Get Mainstay} e \textit{Get Resource }consentono di richiedere i dati al servizio di persistenza.
-
-\begin{figure}[H]
-    \caption{Diagramma dei componenti del sistema e delle loro dipendenze.}
-    \includegraphics[width=\textwidth]{../assets/images/core-component-diagram.png}
-    \label{fig:core-component-diagram}
-\end{figure}
-
-\begin{figure}[H]
-    \caption{Diagramma dei componenti in esecuzione e dei protocolli di rete utilizzati.}
-    \includegraphics[width=\textwidth]{../assets/images/nodes-component-diagram.png}
-    \label{fig:nodes-component-diagram}
-\end{figure}
 
 \subsection{Behaviour}
 

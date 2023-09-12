@@ -1,3 +1,19 @@
+## [2.0.6](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.5...2.0.6) (2023-09-12)
+
+
+### Bug Fixes
+
+* move figures ([b933fda](https://github.com/FilippoVissani/CityTwin-report/commit/b933fda9e36f6fae8d4973e5e8235de5a2eacfbc))
+* set numbers to lists ([41cb892](https://github.com/FilippoVissani/CityTwin-report/commit/41cb8923e706fd0188f3a490684e5221779a65b2))
+
+
+### Documentation
+
+* add bibliography ([08dc08c](https://github.com/FilippoVissani/CityTwin-report/commit/08dc08ca7584d0081a8e21b4095cc674a7e0e9fa))
+* add requirements ([86f9158](https://github.com/FilippoVissani/CityTwin-report/commit/86f915895e13f019733a23f0dc1aa9cd5b091b16))
+* fix use cases diagram ([4f87a03](https://github.com/FilippoVissani/CityTwin-report/commit/4f87a03481a20de23b7e1694a8c7320d679219e2))
+* remove unused section ([efca504](https://github.com/FilippoVissani/CityTwin-report/commit/efca504e08374234b9bad1352af4576a2b54b4f9))
+
 ## [2.0.5](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.4...2.0.5) (2023-09-12)
 
 

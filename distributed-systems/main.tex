@@ -561,6 +561,107 @@ L'esecuzione è avvenuta in locale, su una macchina con le caratteristiche descr
     \label{tab:analysis-specs}
 \end{figure}
 
+\section{Piano di lavoro}
+
+Per lo sviluppo del progetto è stato adottato un processo ispirato alle tecniche agili proposte da Scrum.
+La prima attività intrapresa è stata quella di analizzare i requisiti del sistema. Lo sviluppo delle funzionalità si è articolato secondo unità di tempo, chiamate Sprint, che scandivano il ritmo con il quale venivano effettuate riunioni e confronti tra gli sviluppatori. Al termine di ogni sprint settimanale, il team si riuniva per effettuare una retrospettiva su quanto svolto, per definire ciò che restava da sviluppare ed eventuali difficoltà incontrate. Durante ogni sprint, per organizzare il lavoro da svolgere, è stato prodotto uno sprint backlog: un artefatto che tiene traccia delle funzionalità da sviluppare. Per quanto riguarda la definizione dei task è stata utilizzata la funzionalità "issue boards" di GitLab\cite{GitLab}, in questo modo è stato possibile tener traccia dello stato di avanzamento del progetto.
+
+Di seguito viene riportato il process backlog effettuato durante lo sviluppo del progetto.
+
+\begin{itemize}
+    \item Sprint 1
+          \begin{itemize}
+              \item Obiettivi
+                    \begin{itemize}
+                        \item Impostare il progetto SBT @ Barzi
+                        \item Aggiungere CI per automatizzare i test @ Vissani
+                        \item Aggiungere la configurazione di Akka Cluster @ Vissani
+                        \item Definire l'architettura del Core e iniziare l'implementazione @ Vissani, Barzi
+                        \item Definire le impostazioni di logging @ Vissani
+                        \item Definire lo scopo e avviare l'implementazione del modulo River Monitor @ Barzi
+                    \end{itemize}
+              \item Revisione
+                    \begin{itemize}
+                        \item Alcuni comportamenti del Core devono essere corretti
+                        \item Deve essere deciso come le risorse interagiscono con i Mainstay
+                        \item I progetti delle risorse concrete devono essere definiti
+                    \end{itemize}
+          \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item Sprint 2
+          \begin{itemize}
+              \item Obiettivi
+                    \begin{itemize}
+                        \item Trovare un modo per inviare le HashMap nei messaggi @ Vissani
+                        \item Definire il comportamento di ResourceActor @ Vissani
+                        \item Rendere ResourceActor consapevole dei Mainstay online @ Vissani
+                        \item Avviare l'implementazione del Control Panel @ Vissani
+                        \item Definire i moduli delle risorse concrete @ Barzi
+                        \item Continuare l'implementazione di River Monitor integrandolo con ResourceActor @ Barzi
+                    \end{itemize}
+              \item Revisione
+                    \begin{itemize}
+                        \item Alcuni comportamenti del Core devono essere risolti
+                        \item L'implementazione del Control Panel non è completa
+                        \item Bisogna trovare un modo semplice per avviare l'intero sistema distribuito
+                    \end{itemize}
+          \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item Sprint 3
+          \begin{itemize}
+              \item Obiettivi
+                    \begin{itemize}
+                        \item Stabilizzare le API del Core @ Vissani
+                        \item Dockerizzare le applicazioni @ Barzi
+                        \item Continuare l'implementazione di River Monitor @ Barzi
+                        \item Migliorare il Control Panel @ Vissani
+                        \item Avviare l'implementazione del servizio di persistenza @ Vissani
+                    \end{itemize}
+              \item Revisione
+                    \begin{itemize}
+                        \item Non è stato possibile Dockerizzare le applicazioni a causa di Swing
+                        \item Il comportamento del servizio di persistenza deve essere testato
+                        \item Le interazioni con il servizio di persistenza devono essere implementate
+                    \end{itemize}
+          \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item Sprint 4
+          \begin{itemize}
+              \item Obiettivi
+                    \begin{itemize}
+                        \item Implementare l'interazione tra Core e servizio di persistenza @ Vissani
+                        \item Implementare l'interazione tra Control Panel e servizio di persistenza @ Vissani
+                        \item Avviare l'implementazione di Air Quality Monitor @ Barzi
+                        \item Avviare l'implementazione di Acid Rain Monitor @ Barzi
+                        \item Avviare l'implementazione di Noise Pollution Monitor @ Barzi
+                    \end{itemize}
+              \item Revisione
+                    \begin{itemize}
+                        \item La sincronizzazione tra i Mainstay deve essere migliorata
+                        \item L'implementazione dei moduli delle risorse deve essere completata
+                        \item Le scritture non necessarie sul servizio di persistenza devono essere ridotte
+                    \end{itemize}
+          \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item Sprint 5
+          \begin{itemize}
+              \item Obiettivi
+                    \begin{itemize}
+                        \item Migliorare la sincronizzazione tra i Mainstay @ Vissani
+                        \item Aggiungere la possibilità di scegliere la mappa della città @ Vissani
+                        \item Aggiungere la documentazione @ Vissani, Barzi
+                    \end{itemize}
+          \end{itemize}
+\end{itemize}
+
 \section{Istruzioni per il Deploy}
 
 %Explain here how to install and launch the produced software artefacts.

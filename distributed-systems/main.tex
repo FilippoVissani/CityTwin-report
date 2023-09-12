@@ -4,6 +4,7 @@
 \usepackage{url}
 \usepackage{natbib}
 \usepackage{graphicx}
+\usepackage{listings}
 
 \newcommand{\emailaddr}[1]{\href{mailto:#1}{\texttt{#1}}}
 
@@ -131,21 +132,61 @@ Pseudo-formal or formal criteria are preferred.
 
 In case of a test-driven development, describe tests here and possibly report the amount of passing tests, the total amount of tests and, possibly, the test coverage.
 
-\section{Deployment Instructions}
+\section{Istruzioni per il Deploy}
 
-Explain here how to install and launch the produced software artefacts.
+%Explain here how to install and launch the produced software artefacts.
 %
-Assume the softaware must be installed on a totally virgin environment.
+%Assume the softaware must be installed on a totally virgin environment.
 %
-So, report \textbf{any} configuration step.
+%So, report \textbf{any} configuration step.
 
-Gradle and Docker may be useful here to ensure the deployment and launch processes to be easy.
+%Gradle and Docker may be useful here to ensure the deployment and launch processes to be easy.
+\subsection{Requisiti in comune}
+\begin{itemize}
+    \item Scala 3.3.0
+    \item Java openjdk 17.0.7
+    \item SBT 1.x
+    \item Docker
+    \item Docker Compose
+\end{itemize}
 
-\section{Usage Examples}
+\subsection{Requisiti specifici per piattaforma}
+\subsubsection{Linux}
+\begin{itemize}
+    \item unzip
+\end{itemize}
 
-Show how to use the produced software artefacts.
+\subsubsection{Windows}
+\begin{itemize}
+    \item Powershell
+    \item tar
+\end{itemize}
 
-Ideally, there should be at least one example for each scenario proposed above.
+\section{Avvio del sistema}
+
+%Show how to use the produced software artefacts.
+
+%Ideally, there should be at least one example for each scenario proposed above.
+
+Prima di tutto, avviare il servizio di persistenza:
+
+\begin{lstlisting}[language=bash]
+    docker compose build
+    docker compose up
+\end{lstlisting}
+Quindi avviare il resto del sistema in un altro terminale:
+
+Su Linux (bash):
+
+\begin{lstlisting}[language=bash]
+    ./scripts/startup.sh
+\end{lstlisting}
+
+Su Windows (Powershell):
+
+\begin{lstlisting}[language=bash]
+    ./scripts/startup.bat
+\end{lstlisting}
 
 \section{Conclusioni}
 

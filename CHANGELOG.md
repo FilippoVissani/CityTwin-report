@@ -1,3 +1,10 @@
+## [2.0.11](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.10...2.0.11) (2023-09-12)
+
+
+### Documentation
+
+* add "Piano di lavoro" ([247d9a1](https://github.com/FilippoVissani/CityTwin-report/commit/247d9a1a61ad553337c949fd480c3fa6fbcb1005))
+
 ## [2.0.10](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.9...2.0.10) (2023-09-12)
 
 

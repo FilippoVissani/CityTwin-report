@@ -1,0 +1,13 @@
+@startuml
+    [*] --> Safe
+    Safe: do/ Controlla livello acqua
+    Safe: do/ Mostra dati all'utente
+    Safe --> Warned : livello superiore alla soglia
+    Warned: entry/ Avvisa l'utente
+    Warned: do/ Mostra dati all'utente
+    Warned --> Evacuating : l'utente avvia l'evacuazione
+    Evacuating : entry/ Avvisa l'utente
+    Evacuating : do/ Mostra dati all'utente
+    Evacuating --> Safe : l'utente termina l'evacuazione
+    note "i dati mostrati all'utente sono: lo stato, la soglia e i dettagli di ogni sensore monitorato" as N1
+@enduml

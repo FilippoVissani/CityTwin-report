@@ -85,36 +85,100 @@ What model / paradigm / techonology is the best suited to face this project's re
 %
 What's the abstraction gap among the available models / paradigms / techonologies and the problem to be solved?
 
-\section{Design}
+\section{Progettazione}
 
-This is where the logical / abstract contribution of the project is presented.
+\subsection{Architettura del Sistema}
 
-Notice that, when describing a software project, three dimensions need to be taken into account: structure, behaviour, and interaction.
+L'architettura del sistema, presentata in Figura \ref{fig:core-component-diagram}, è organizzata intorno a componenti interconnessi che consentono il monitoraggio e la gestione delle entità presenti all'interno della città. Ogni componente svolge ruoli specifici all'interno del sistema e interagisce attraverso interfacce ben definite.
 
-Always remember to report \textbf{why} a particular design has been chosen.
-Reporting wrong design choices which has been evalued during the design phase is welcome too.
+In Figura \ref{fig:nodes-component-diagram} viene presentata l'architettura dei componenti in esecuzione e dei protocolli di rete utilizzati. Il sistema è costituito da un insieme di nodi \textit{Mainstay} e \textit{Resource} che comunicano tra loro attraverso il protocollo \textit{Akka}. Inoltre, i nodi \textit{Mainstay} comunicano con il servizio di persistenza attraverso il protocollo \textit{HTTP}.
+I nodi che comunicano utilizzando il protocollo \textit{Akka} sono \textit{Actor System} organizzati in un cluster, in modo da poter garantire la scalabilità del sistema.
 
-\subsection{Structure}
+\subsubsection{Core}
+Il componente centrale del sistema è il \textit{Core}, responsabile della gestione dell'elaborazione dati, del coordinamento delle attività e della comunicazione tra gli altri componenti. Il Core funge da mediatore tra le varie risorse presenti all'interno della città, ricevendo dati dai sensori e inviandoli al servizio di persistenza.
 
-Which entities need to by modelled to solve the problem?
-%
-(UML Class diagram)
+L'architettura del modulo \textit{Core} (Figura \ref{fig:core-class-diagram}) è costituita da diversi attori, ognuno dei quali svolge un ruolo specifico nel processo di acquisizione, gestione e comunicazione dei dati relativi alle risorse.
 
-How should entities be modularised?
-%
-(UML Component / Package / Deployment Diagrams)
+\textit{Resource Actor} è responsabile della gestione della risorsa, indipendentemente dal fatto che essa sia un sensore o un attuatore. Comunica con il \textit{Mainstay Actor} per ottenere o mandare lo stato delle risorse. È in grado di ricevere comandi e cambiamenti relativi alle risorse.
+
+Il \textit{Mainstay Actor} si occupa di tenere in piedi l'intero sistema distribuito. Esso scambia lo stato delle risorse con il \textit{Resource Actor} e comunica con il \textit{Persistence Service Driver Actor} per salvare i dati nel servizio di persistenza. Inoltre, il \textit{Mainstay Actor} è responsabile della sincronizzazione dei nodi \textit{Mainstay}.
+
+Il \textit{Nodes Observer Actor} monitora gli stati dei nodi all'interno del sistema e aggiorna il \textit{Mainstay Actor} sulla base del cambiamento di stato dei nodi.
+
+L'attore \textit{Persistence Service Driver} è responsabile della gestione delle operazioni di persistenza dei dati. Comunica con il \textit{Mainstay Actor} per pubblicare nuovi dati al servizio di persistenza.
+
+L'architettura prevede interazioni chiare e ben definite tra gli attori attraverso l'utilizzo di comandi specifici.
+
+Il \textit{Resource Actor} comunica con il \textit{Mainstay Actor} utilizzando comandi come \textit{AskResourcesState}, \textit{AskAllResourcesState} e \textit{UpdateResources}. Queste interazioni consentono al \textit{Resource Actor} di ottenere informazioni sullo stato delle risorse e di aggiornare lo stato stesso.
+
+Il \textit{Mainstay Actor} comunica con il \textit{Persistence Service Driver Actor} utilizzando comandi come \textit{PostMainstay} e \textit{PostResource}. Queste interazioni consentono al \textit{Mainstay Actor} di inviare nuovi dati al servizio di persistenza.
+
+\begin{figure}[h]
+    \caption{Diagramma delle classi del modulo \textit{Core}.}
+    \includegraphics[width=\textwidth]{../assets/images/core-class-diagram.png}
+    \label{fig:core-class-diagram}
+\end{figure}
+
+\subsubsection{Componenti Monitor}
+I diversi monitor ambientali, come l'\textit{Acid Rain Monitor}, l'\textit{Air Quality Monitor}, il \textit{Noise Pollution Monitor} e il \textit{River Monitor}, costituiscono le fonti primarie di dati. Ciascun monitor raccoglie misurazioni specifiche e invia queste informazioni al \textit{Core} tramite l'interfaccia \textit{Resource}. Questa comunicazione consente al \textit{Core} di elaborare i dati e fornire una visione completa delle condizioni ambientali.
+
+\subsubsection{Control Panel}
+Il \textit{Control Panel} è l'interfaccia utente principale attraverso cui gli utenti interagiscono con il sistema. Comunica con il \textit{Core} per ottenere dati sullo stato ambientale e sul sistema nel suo complesso. Inoltre, il pannello di controllo richiede al servizio di persistenza lo storico dei dati in modo da poterli elaborare per ottenere delle statistiche.
+
+\subsubsection{Persistence Service}
+Il \textit{Persistence Service} gestisce la persistenza dei dati nel sistema. Comunica con il \textit{Core} attraverso le interfacce \textit{Post Resource} e \textit{Post Mainstay} per ricevere e salvare i dati relativi alle risorse. Analogamente, le interfacce \textit{Get Mainstay} e \textit{Get Resource }consentono di richiedere i dati al servizio di persistenza.
+
+\begin{figure}[h]
+    \caption{Diagramma dei componenti del sistema e delle loro dipendenze.}
+    \includegraphics[width=\textwidth]{../assets/images/core-component-diagram.png}
+    \label{fig:core-component-diagram}
+\end{figure}
+
+\begin{figure}[h]
+    \caption{Diagramma dei componenti in esecuzione e dei protocolli di rete utilizzati.}
+    \includegraphics[width=\textwidth]{../assets/images/nodes-component-diagram.png}
+    \label{fig:nodes-component-diagram}
+\end{figure}
 
 \subsection{Behaviour}
 
-How should each entity behave?
-%
-(UML State diagram or Activity Diagram)
+TODO
 
-\subsection{Interaction}
+\subsection{Interazioni dei Componenti}
 
-How should entities interact with each other?
-%
-(UML Sequence Diagram)
+Lo scambio di messaggi tra \textit{Resource Actor} e \textit{Mainstay Actor} (Figura \ref{fig:core-resource-state-exchange-sequence-diagram}) è utile a:
+\begin{itemize}
+    \item Ottenere lo stato delle altre risorse e comunicare il proprio nel caso un cui il nodo \textit{Resource} modella un attuatore.
+    \item Comunicare lo stato della risorsa nel caso un cui il nodo \textit{Resource} modella un sensore.
+\end{itemize}
+
+In ogni caso, quando il \textit{Mainstay Actor} riceve un aggiornamento, lo comunica al servizio di persistenza tramite il \textit{Persistence Service Driver Actor}.
+
+\begin{figure}[h]
+    \caption{Diagramma di sequenza per lo scambio dello stato delle risorse.}
+    \includegraphics[width=\textwidth]{../assets/images/core-resource-state-exchange-sequence-diagram.png}
+    \label{fig:core-resource-state-exchange-sequence-diagram}
+\end{figure}
+
+\subsubsection{Sincronizzazione dei Nodi Mainstay}
+
+Come detto precedentemente, i nodi \textit{Mainstay} sono i pilastri portanti dell'intero sistema e si occupano della gestione dei dati riguardanti le risorse e i nodi. I nodi \textit{Mainstay} devono essere sempre sincronizzati tra loro, in modo da poter garantire la coerenza dei dati. Per questo motivo, i nodi \textit{Mainstay} si sincronizzano ogni volta che una risorsa manda il suo stato ad uno di questi. In Figura \ref{fig:core-mainstays-sync-sequence-diagram} viene presentato il diagramma di sequenza per la sincronizzazione dei nodi \textit{Mainstay}.
+
+\begin{figure}[h]
+    \caption{Diagramma di sequenza per la sincronizzazione dei nodi Mainstay.}
+    \includegraphics[width=\textwidth]{../assets/images/core-mainstays-sync-sequence-diagram.png}
+    \label{fig:core-mainstays-sync-sequence-diagram}
+\end{figure}
+
+\subsubsection{Aggiornamento del Pannello di Controllo}
+
+Il comportamento del \textit{Control Panel} (Figura \ref{fig:control-panel-sequence-diagram}) viene modellato come un caso particolare di risorsa che comunica con il \textit{Mainstay Actor} per ottenere lo stato delle risorse e dei nodi. Inoltre, il \textit{Control Panel} comunica con il servizio di persistenza per ottenere lo storico dei dati e calcolare le statistiche.
+
+\begin{figure}[h]
+    \caption{Diagramma di sequenza per l'aggiornamento del pannello di controllo.}
+    \includegraphics[width=\textwidth]{../assets/images/control-panel-sequence-diagram.png}
+    \label{fig:control-panel-sequence-diagram}
+\end{figure}
 
 \section{Implementation Details}
 

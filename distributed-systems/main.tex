@@ -445,7 +445,121 @@ case class RiverMonitorResourceState(
 Per la serializzazione e relativa deserializzazione di questa \textit{Case Class} si è utilizzata la libreria \textit{upickle}\cite{upickle}. Questa libreria permette di serializzare e deserializzare strutture dati in formato JSON in modo semplice e veloce.
 
 \section{Validazione del Sistema}
-TODO
+
+\subsection{Testing dei Moduli Sviluppati in Scala 3}
+
+Per testare i moduli sviluppati in Scala 3 si è scelto di utilizzare il framework di testing ScalaTest\cite{scalatest} in combinazione con il TestKit fornito da Akka.
+
+ScalaTest è un framework di testing per il linguaggio di programmazione Scala. È progettato per semplificare il processo di scrittura e esecuzione dei test nelle applicazioni Scala, fornendo una varietà di stili di testing e utilità per rendere più facile il testing delle applicazioni.
+
+Per testare efficacemente le applicazioni Akka, viene utilizzato il "TestKit di Akka", che è un modulo appositamente progettato per il testing delle interazioni tra attori e per la simulazione dell'ambiente di esecuzione concorrente.
+
+Il seguente listato mostra un esempio di specifica di test per il \textit{Resource Actor} del modulo \textit{Core}. Grazie al TestKit di Akka, è possibile simulare l'invio di messaggi in modo asincrono e verificare che il comportamento dell'attore sia conforme alle specifiche.
+
+\lstinputlisting[language=Scala]{../assets/listings/AsyncTestingResourceSpec.scala}
+
+Di seguito viene riportato l'output dei test eseguiti con SBT:
+
+\begin{lstlisting}
+[info] ResourceStateTest:
+[info] Resource
+[info] - should Merge correctly another resource
+[info] JsonParseTest:
+[info] Parser
+[info] - should Parse correctly mainstays history JSON string
+[info] AsyncTestingResourceSpec:
+[info] Resource actor
+[info] - should Ask resources to mainstay
+[info] - should Send response when resource state is asked
+[info] - should Set mainstays correctly and notify new resource state to mainstay
+[info] AsyncTestingNodesObserverSpec:
+[info] Nodes observer actor
+[info] - should Send resource updates to mainstay correctly
+[info] - should Send mainstay updates to mainstay correctly
+[info] AsyncTestingMainstaySpec:
+[info] Mainstay actor
+[info] - should Register a resource state
+[info] - should Register a new mainstay
+[info] - should Sync with other mainstay
+[info] Run completed in 1 second, 154 milliseconds.
+[info] Total number of tests run: 10
+[info] Suites: completed 5, aborted 0
+[info] Tests: succeeded 10, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+
+\end{lstlisting}
+
+\subsection{Testing del Servizio di Persistenza}
+
+Postman\cite{postman} è un'applicazione che offre un'ampia gamma di strumenti per semplificare il processo di sviluppo, test e documentazione delle API. Le API sono punti di accesso che consentono a diverse applicazioni di comunicare tra loro, scambiando dati e funzionalità. Postman è ampiamente utilizzato dai team di sviluppo di software per testare, convalidare e interagire con le API in diversi scenari.
+
+Il servizio di persistenza espone delle API web, le quali sono state testate utilizzando il software Postman (Figura: \ref{fig:postman}).
+
+\begin{figure}[H]
+    \caption{Testing delle API web del servizio di persistenza utilizzando Postman.}
+    \includegraphics[width=\textwidth]{../assets/images/postman.jpg}
+    \label{fig:postman}
+\end{figure}
+
+\subsection{Performance del Sistema Distribuito}
+
+Per l'analisi delle performance del sistema distribuito si è scelto di considerare i tempi dello scambio dei messaggi tra uno dei nodi \textit{Resource} e il suo \textit{Mainstay} di riferimento. I risultati dell'analisi sono riportati in Tabella \ref{tab:analysis-specs}.
+
+L'esecuzione è avvenuta in locale, su una macchina con le caratteristiche descritte in Tabella \ref{tab:machine-specs}.
+
+\begin{figure}[H]
+    \caption{Specifiche della macchina su cui è stata eseguita l'analisi.}
+    \begin{center}
+        \begin{tabular}{ | l | l | }
+            \hline
+            \textbf{OS}                   & NixOS 23.05       \\
+            \hline
+            \textbf{Linux kernel version} & 6.1.47            \\
+            \hline
+            \textbf{CPU}                  & AMD Ryzen 7 5700U \\
+            \hline
+            \textbf{Cores}                & 8                 \\
+            \hline
+            \textbf{Threads}              & 16                \\
+            \hline
+            \textbf{Base clock}           & 1.8GHz            \\
+            \hline
+            \textbf{Max boost clock}      & 4.3GHz            \\
+            \hline
+            \textbf{L2 cache}             & 4MB               \\
+            \hline
+            \textbf{L3 cache}             & 8MB               \\
+            \hline
+            \textbf{Memory}               & 15325MiB          \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \label{tab:machine-specs}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Risultati dell'analisi effettuata.}
+    \begin{center}
+        \begin{tabular}{ | l | l | }
+            \hline
+            \textbf{Numero di nodi \textit{Mainstay}} & 3       \\
+            \hline
+            \textbf{Numero di nodi \textit{Resource}} & 31      \\
+            \hline
+            \textbf{Numero di richieste effettuate}   & 101     \\
+            \hline
+            \textbf{Numero di risposte ottenute}      & 101     \\
+            \hline
+            \textbf{Tempo di risposta massimo}        & 3.228 s \\
+            \hline
+            \textbf{Tempo di risposta minimo}         & 0.002 s \\
+            \hline
+            \textbf{Tempo di risposta medio}          & 0.183 s \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \label{tab:analysis-specs}
+\end{figure}
 
 \section{Istruzioni per il Deploy}
 

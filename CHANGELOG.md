@@ -1,3 +1,14 @@
+## [2.0.19](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.18...2.0.19) (2023-09-13)
+
+
+### Documentation
+
+* add section "Conoscenze Acquisite" ([9c5b19d](https://github.com/FilippoVissani/CityTwin-report/commit/9c5b19d61c072394cd9ed3037a7a8e392ab24f28))
+* add subsection ([88d96cd](https://github.com/FilippoVissani/CityTwin-report/commit/88d96cdfac434aae8ffba6c07c209ccd302052d7))
+* fix typo ([f6e6186](https://github.com/FilippoVissani/CityTwin-report/commit/f6e61865420982fa1ae7def50bd9d34c67c7acea))
+* fix typo ([a19f920](https://github.com/FilippoVissani/CityTwin-report/commit/a19f9207793cb24b4d8c62620f544fa351e07817))
+* fix typos ([937ca21](https://github.com/FilippoVissani/CityTwin-report/commit/937ca213ef8d0367e97b6084e0fdda47367c74c6))
+
 ## [2.0.18](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.17...2.0.18) (2023-09-13)
 
 

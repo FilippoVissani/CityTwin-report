@@ -397,6 +397,48 @@ In origine il tipo dello stato della risorsa è stato definito come \verb|Any|, 
 \subsection{Implementazione dei Moduli Monitor}
 In questa sezione verrà illustrata l'implementazione delle parti più significative dei moduli di monitoraggio dell'aria, delle piogge acide, dell'inquinamento acustico e delle alluvioni.
 
+\subsubsection{De/Serializzazione dei Dati prodotti dalle risorse}
+Ogni risorsa viene rappresentata nel sistema come istanza della classe \textit{ResourceState}, la quale contiene le seguenti informazioni:
+\begin{itemize}
+    \item \textbf{name:} Nome della risorsa.
+    \item \textbf{position:} Posizione della risorsa.
+    \item \textbf{state:} Dati prodotti dalla risorsa.
+    \item \textbf{resourceType:} Tipo della risorsa.
+    \item \textbf{nodeState:} Stato del nodo.
+\end{itemize}
+Ciascuna risorsa potrebbe però generare dei dati di tipo diverso, quindi è necessario trovare un modo per rappresentare questi dati in maniera generica.
+Si è deciso di utilizzare il campo \textit{state} come \textit{String} in formato JSON, in modo che possa essere facilmente letto da altre risorse.
+
+In questo modo, la stringa JSON potrà essere facilmente deserializzata dalle risorse che ne conoscono il significato e intendono utilizzare i dati per le proprie operazioni.
+
+\paragraph{Passi per la de/serializzazione}
+Per la serializzazione e deserializzazione dei dati si è scelto di utilizzare la libreria \textit{upickle}\cite{upickle}, che permette di convertire facilmente e in modo efficiente le classi Scala in formato JSON e viceversa.
+
+Per utilizzare questa libreria è necessario dichiarare le classi che si intendono serializzare e deserializzare come \textit{derives} di \textit{upickle.default.ReadWriter}, come mostrato nel seguente listato:
+\begin{lstlisting}[language=Scala]
+    import upickle.default.ReadWriter
+    case class FloodSensorData(waterLevel: Float) derives ReadWriter
+\end{lstlisting}
+In questo modo vengono generati automaticamente i metodi \textit{read} e \textit{write} che vengono utilizzati per serializzare e deserializzare correttamente instanze di quella classe. Sarà sufficiente chiamare quindi il metodo \textit{write} per serializzare un'istanza di \textit{FloodSensorData} in formato JSON e il metodo \textit{read} per deserializzare una stringa JSON in un'istanza di \textit{FloodSensorData}.
+
+Nel seguente listato viene mostrato un esempio:
+\begin{lstlisting}[language=Scala]
+    // Il sensore genera un'istanza di FloodSensorData e la serializza
+    val data = FloodSensorData(waterLevel)
+    val dataAsJsonString = write(data)
+
+    // Il messaggio viene mandato sotto forma di stringa JSON.
+
+    // La misurazione viene quindi ricevuta e deserializzata dal RiverMonitor
+    try {
+        val data = read(dataAsJsonString)
+    } catch {
+        case _ => // Errore nella deserializzazione
+    }
+    
+\end{lstlisting}
+Si noti come è importante gestire eventuali errori nella deserializzazione, in quanto la stringa JSON potrebbe aver subito delle modifiche durante la trasmissione che la rendono non più valida.
+
 \subsubsection{Sensori}
 Tutti e quattro i moduli Monitor implementano ognuno un proprio sensore, rappresentato da un attore specifico, che simula il comportamento di un sensore reale. I sensori dei quattro moduli seguono una struttura simile nell'implementazione, basata sull'utilizzo di attori e su un timer per la generazione periodica dei dati. Ciò che cambia da un sensore all'altro è il tipo di dato che viene generato e inviato al sistema.
 Nel seguente listato viene mostrata l'implementazione di \textit{Flood Sensor Actor,
@@ -412,15 +454,15 @@ object SensorActor:
         Behaviors.receiveMessage {
           case Tick =>
             // Generate data
-            val data = generateMeasurementData()
-            val resource = Resource(
+            val dataAsJson = generateMeasurementData()
+            val resourceState = ResourceState(
               Some(sensor.name),
               Some(sensor.position),
-              Some(data),
+              Some(dataAsJson),
               Set(ResourceType.Sense)
             )
-            // Send generated data to ResourceActor
-            resourceActor ! ResourceChanged(resource)
+            // Send generated ResourceState to ResourceActor
+            resourceActor ! ResourceChanged(resourceState)
             Behaviors.same
         }
       }
@@ -430,22 +472,24 @@ object SensorActor:
 \paragraph{Generazione dei Dati}
 Come i dati vengono generati è illustrato di seguito:
 \begin{itemize}
-    \item \textbf{Air Sensor Actor:} Questo attore è stato progettato per simulare l'utilizzo di un sensore fisico reale che possa comunicare solo attraverso un protocollo di rete. Per questo motivo, il sensore non genera direttamente i dati, ma li ottiene interagendo con una funzione su Azure che simula il comportamento del sensore. L'\textit{Air Sensor Actor} richiede i dati alla funzione attraverso una richiesta HTTP GET e la funzione risponde con i dati in formato JSON. Un esempio di risposta è la seguente stringa: \textit{\{"pm10":46.29966, "pm25":33.35241, "nox":76.84502\}}.
-    \item \textbf{Acid Rain Sensor Actor:} Questo attore genera i dati in modo casuale. I dati generati sono valori di pH compresi tra 0 e 14. Un esempio di valore generato è la seguente stringa in formato JSON: \textit{\{"ph":7.0\}}.
-    \item \textbf{Noise Sensor Actor:} Questo attore genera il valore di decibel in modo casuale, con un range da 40 a 100 decibel (dB), e una descrizione relativa al livello di rumore. Un esempio di dato generato è la seguente stringa in formato JSON: \textit{\{"value (dB)":65, "description":"Moderate noise"\}}.
-    \item \textbf{Flood Sensor Actor:} Questo attore genera il valore di livello dell'acqua in modo casuale, con un range da 0 a 20. Un esempio di dato generato è la seguente stringa: \textit{16}.
+    \item \textbf{Air Sensor Actor:} Questo attore è stato progettato per simulare l'utilizzo di un sensore fisico reale che possa comunicare solo attraverso un protocollo di rete. Per questo motivo, il sensore non genera direttamente i dati, ma li ottiene interagendo con una funzione su Azure che simula il comportamento del sensore. L'\textit{Air Sensor Actor} richiede i dati alla funzione attraverso una richiesta HTTP GET e la funzione risponde con i dati in formato JSON. Un esempio di risposta è la seguente stringa: \textit{\{"pm10":46.29966, "pm25":33.35241, "nox":76.84502\}}. Per assicurarsi che i dati ricevuti siano in un formato valido, la stringa JSON viene deserializzata in un'istanza di \textit{AirSensorData}, la \textit{Case Class} che rappresenta i dati rilevati dal sensore.
+    \item \textbf{Acid Rain Sensor Actor:} Questo attore genera i dati in modo casuale. I dati generati sono valori di pH compresi tra 0 e 14. Per rappresentare i dati di questo sensore viene utilizzata la \textit{Case Class AcidRainSensorData}. L'instanza della \textit{Case Class} viene poi serializzata in formato JSON e inviata al \textit{Resource Actor}. Un esempio di valore generato è la seguente stringa in formato JSON: \textit{\{"ph":7.0\}}.
+    \item \textbf{Noise Sensor Actor:} Questo attore genera il valore di decibel in modo casuale, con un range da 40 a 100 decibel (dB), e una descrizione relativa al livello di rumore. Viene prodotta un'istanza di \textit{NoiseSensorData} e un esempio di dato generato dopo la serializzazione è la seguente stringa in formato JSON: \textit{\{"value":65, "description":"Moderate noise"\}}.
+    \item \textbf{Flood Sensor Actor:} Questo attore genera il valore di livello dell'acqua in modo casuale, con un range da 0 a 20. Per rappresentare i dati di questo sensore viene utilizzata la \textit{Case Class FloodSensorData}. Un esempio di dato generato dopo la serializzazione è la seguente stringa in formato JSON: \textit{\{"waterLevel":7.2\}}.
 \end{itemize}
 
 \subsubsection{River Monitor Actor}
-Il \textit{River Monitor Actor} fa parte del modulo \textit{River Monitor}. Dovendo questo attore comunicare più dati e con la necessità che questi dati venissero poi facilmente utilizzati dalla \textit{View}, si è deciso di serializzare in formato JSON un'intera \textit{Case Class} contenente tutti i dati necessari, mostrata nel seguente listato:
+Il \textit{River Monitor Actor} fa parte del modulo \textit{River Monitor}.
+Si occupa di ricevere i dati di eventuali sensori e attuatori (view) e di deserializzarli per decidere il comportamento da adottare.
+
+I dati che questa risorsa deve comunicare per rappresentare il proprio stato sono mostrati nel seguente listato, il quale mostra la \textit{Case Class} \textit{RiverMonitorData}:
 \begin{lstlisting}[language=Scala]
-case class RiverMonitorResourceState(
-    riverMonitorState: String,
-    threshold: Float,
-    monitoredSensors: Option[Map[String, Map[String, String]]]
-)
+    case class RiverMonitorData(
+        riverMonitorState: RiverMonitorState,
+        threshold: Float,
+        monitoredSensors: Option[Map[String, Map[String, String]]]
+    ) derives ReadWriter
 \end{lstlisting}
-Per la serializzazione e relativa deserializzazione di questa \textit{Case Class} si è utilizzata la libreria \textit{upickle}\cite{upickle}. Questa libreria permette di serializzare e deserializzare strutture dati in formato JSON in modo semplice e veloce.
 
 \section{Validazione del Sistema}
 
@@ -824,6 +868,8 @@ Tra i vari miglioramenti a cui abbiamo pensato, i più significativi sono:
 \subsection{Conoscenze Acquisite}
 
 Durante la creazione del sistema distribuito, abbiamo acquisito una serie di competenze preziose nell'ambito dello sviluppo software utilizzando Scala 3 e Akka. In particolare, ci siamo concentrati sul paradigma ad attori, che ha dimostrato di essere fondamentale per la progettazione e l'implementazione di sistemi distribuiti altamente scalabili e resilienti. Grazie a Scala 3, abbiamo potuto sfruttare la potenza della programmazione funzionale e ottenere un codice più conciso ed espressivo. Akka, d'altra parte, ci ha fornito un'infrastruttura solida per implementare gli attori in modo efficiente, consentendo loro di comunicare in modo asincrono attraverso messaggi, garantendo al contempo la gestione dei fallimenti e la supervisione automatica degli attori stessi. Queste competenze ci hanno permesso di realizzare un sistema distribuito robusto e altamente performante, mettendo in evidenza il valore del paradigma ad attori nell'ambito dello sviluppo distribuito.
+
+\newpage
 
 \nocite{*} % Includes all references from the `references.bib` file
 \bibliographystyle{plain}

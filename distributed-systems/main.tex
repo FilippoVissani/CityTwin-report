@@ -689,7 +689,7 @@ Di seguito viene riportato il process backlog effettuato durante lo sviluppo del
           \end{itemize}
 \end{itemize}
 
-\section{Istruzioni per il Deploy}
+\section{Deployment e Avvio del Sistema}
 
 \subsection{Requisiti}
 \begin{itemize}
@@ -734,44 +734,22 @@ Su Windows (Powershell):
 tar -x -f ./nome-sottoprogetto/target/universal/nome-sottoprogetto-0.1.0.zip -C ./nome-sottoprogetto/target/
 \end{lstlisting}
 
-A questo punto è possibile avviare i singoli moduli, di seguito viene fornito il un esempio di comando per avviare il modulo \textit{Core}:
-
-Su Linux (bash):
-\begin{lstlisting}
-CESENA_MAP=$(readlink -f ./cesena-map.png)
-PERSISTENCE_SERVICE_HOST="127.0.0.1"
-PERSISTENCE_SERVICE_PORT="8080"
-./core/target/core-0.1.0/bin/core 2551 ${PERSISTENCE_SERVICE_HOST} ${PERSISTENCE_SERVICE_PORT}
-\end{lstlisting}
-
-Su Windows (Powershell):
-\begin{lstlisting}
-call ./core/target/core-0.1.0/bin/core.bat 2551 127.0.0.1 8080
-\end{lstlisting}
-
-Per avviare il servizio di persistenza è necessario eseguire il seguente comando nella root del progetto:
-
-\begin{lstlisting}[language=bash]
-docker compose build
-docker compose up
-\end{lstlisting}
-
-In generale, il servizio di persistenza deve essere avviato prima di avviare gli altri moduli.
-
-È sempre obbligatorio avviare almeno un'istanza del modulo \textit{Core}, altrimenti il cluster Akka non verrà avviato.
-
-Per automatizzare l'avvio del sistema è stato creato uno script, situato in \textit{./scripts/startup}, che compila, estrae ed avvia i moduli del cluster Akka con impostazioni predefinite.
-
-\section{Avvio del sistema}
-
-Prima di tutto, avviare il servizio di persistenza:
+Per generare le immagini Docker necessarie al servizio di persistenza, eseguire:
 
 \begin{lstlisting}[language=bash]
     docker compose build
+\end{lstlisting}
+
+\subsection{Avvio del sistema}
+
+In generale, è meglio avviare il servizio di persistenza prima degli altri moduli, in modo che questi possano connettersi al servizio di persistenza al loro avvio. Per avviare il servizio di persistenza, eseguire:
+
+\begin{lstlisting}[language=bash]
     docker compose up
 \end{lstlisting}
 
-Quindi, nel caso si voglia avviare il sistema con impostazioni predefinite, è sufficiente eseguire lo script fornito:
+È sempre obbligatorio avviare almeno un'istanza del modulo \textit{Core}, altrimenti il cluster Akka non verrà avviato.
+Per automatizzare l'avvio dei moduli del cluster Akka, è stato creato uno script, situato in \textit{./scripts/startup}, che compila, estrae ed avvia i moduli. Quindi, nel caso si voglia avviare il sistema con impostazioni predefinite, è sufficiente eseguire lo script fornito:
 
 Su Linux (bash):
 
@@ -785,7 +763,7 @@ Su Windows (Powershell):
 ./scripts/startup.bat
 \end{lstlisting}
 
-Altrimenti, è possibile avviare i singoli moduli manualmente, dopo averli compilati ed estratti, come descritto nella sezione precedente.
+Altrimenti, è possibile avviare i singoli moduli manualmente, dopo averli compilati ed estratti, come descritto precedentemente.
 
 Di seguito vengono riportati gli argomenti da passare ai moduli per il corretto funzionamento del sistema:
 \begin{lstlisting}[language=bash]
@@ -797,6 +775,21 @@ view-main <NODE_PORT> <RESOURCE_NAME> <WIDTH> <HEIGHT> <<RESOURCES_TO_CHECK>...>
 air-quality-monitor <NODE_PORT> <RESOURCE_NAME> <X_POSITION> <Y_POSITION> <SENSOR_URI>
 acid-rain-monitor <NODE_PORT> <RESOURCE_NAME> <X_POSITION> <Y_POSITION>
 noise-pollution-monitor <NODE_PORT> <RESOURCE_NAME> <X_POSITION> <Y_POSITION>
+\end{lstlisting}
+
+Di seguito viene fornito il un esempio di comando per avviare il modulo \textit{Core}:
+
+Su Linux (bash):
+\begin{lstlisting}
+CESENA_MAP=$(readlink -f ./cesena-map.png)
+PERSISTENCE_SERVICE_HOST="127.0.0.1"
+PERSISTENCE_SERVICE_PORT="8080"
+./core/target/core-0.1.0/bin/core 2551 ${PERSISTENCE_SERVICE_HOST} ${PERSISTENCE_SERVICE_PORT}
+\end{lstlisting}
+
+Su Windows (Powershell):
+\begin{lstlisting}
+call ./core/target/core-0.1.0/bin/core.bat 2551 127.0.0.1 8080
 \end{lstlisting}
 
 \section{Conclusioni}

@@ -1,3 +1,13 @@
+## [2.0.20](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.19...2.0.20) (2023-09-13)
+
+
+### Documentation
+
+* add Architettura of Componenti Monitor ([02d6342](https://github.com/FilippoVissani/CityTwin-report/commit/02d6342382e63750084216700701fc3276cbe63f))
+* add de/serialization details ([3edf472](https://github.com/FilippoVissani/CityTwin-report/commit/3edf472d5cf0de52b90065da0866975471c853d2))
+* add index ([6137631](https://github.com/FilippoVissani/CityTwin-report/commit/6137631554b2b28077ba7c787de9bdaffe637beb))
+* add River Monitor in Esempi di Utilizzo ([287428f](https://github.com/FilippoVissani/CityTwin-report/commit/287428f1eefc2798fa9eda2d455ae9378945e446))
+
 ## [2.0.19](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.18...2.0.19) (2023-09-13)
 
 

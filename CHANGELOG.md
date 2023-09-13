@@ -1,3 +1,10 @@
+## [2.0.15](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.14...2.0.15) (2023-09-13)
+
+
+### Documentation
+
+* improve "Avvio del sistema" ([cf0e41c](https://github.com/FilippoVissani/CityTwin-report/commit/cf0e41c136ce6d173ea643a9fd0d5dab2988a568))
+
 ## [2.0.14](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.13...2.0.14) (2023-09-12)
 
 

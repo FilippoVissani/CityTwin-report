@@ -85,7 +85,7 @@
 
 \end{abstract}
 
-\section{Analisi dei requisiti}
+\section{Analisi dei Requisiti}
 In questa sezione verranno delineati i vari requisiti del sistema in base alle diverse categorie di requisiti identificate. Nella fase di analisi dei requisiti, abbiamo preso il ruolo di stakeholder per comprendere appieno le esigenze degli utenti e guidare lo sviluppo del sistema. Questo approccio ci ha permesso di metterci nei panni degli utilizzatori finali e di definire con precisione le azioni chiave che gli utenti avrebbero svolto all'interno del sistema.
 
 \subsection{Requisiti di Business}
@@ -273,7 +273,7 @@ Il \textit{Persistence Service} gestisce la persistenza dei dati nel sistema. Co
 
 Il comportamento generale del sistema viene definito sulla base di una serie di interazioni tra i componenti. In particolare, le interazioni possono essere raggruppate per definire un determinato aspetto di tale comportamento.
 
-\subsubsection{Aggiornamento Sullo Stato dei Nodi}
+\subsubsection{Aggiornamento sullo Stato dei Nodi}
 
 Lo scambio di messaggi tra \textit{Nodes Observer Actor} e \textit{Mainstay Actor} (Figura \ref{fig:core-nodes-state-sequence-diagram}) è volto a mantenere aggiornato quest'ultimo sullo stato generale dei nodi del sistema. Nel momento in cui il \textit{Mainstay Actor} riceve un aggiornamento sui nodi, esso aggiorna il proprio stato e lo comunica al \textit{Persistence Service Driver Actor}, che si occupa di rendere persistenti i dati tramite il servizio di persistenza.
 
@@ -283,7 +283,7 @@ Lo scambio di messaggi tra \textit{Nodes Observer Actor} e \textit{Mainstay Acto
     \label{fig:core-nodes-state-sequence-diagram}
 \end{figure}
 
-\subsubsection{Aggiornamento Sullo Stato delle Risorse}
+\subsubsection{Aggiornamento sullo Stato delle Risorse}
 
 Lo scambio di messaggi tra \textit{Resource Actor} e \textit{Mainstay Actor} (Figura \ref{fig:core-resource-state-exchange-sequence-diagram}) è utile a:
 \begin{itemize}
@@ -387,7 +387,7 @@ I nodi \textit{Mainstay} sono stati concepiti per essere generici e indipendenti
 
 In origine il tipo dello stato della risorsa è stato definito come \verb|Any|, ma questo ha portato a problemi di serializzazione. Per risolvere questo problema, si è scelto di tipizzare lo stato come \verb|String|, in modo che esso possa essere definito in formato JSON.
 
-\subsection{Implementazione dei moduli Monitor}
+\subsection{Implementazione dei Moduli Monitor}
 In questa sezione verrà illustrata l'implementazione delle parti più significative dei moduli di monitoraggio dell'aria, delle piogge acide, dell'inquinamento acustico e delle alluvioni.
 
 \subsubsection{Sensori}
@@ -420,7 +420,7 @@ object SensorActor:
     }
 \end{lstlisting}
 
-\paragraph{Generazione dei dati}
+\paragraph{Generazione dei Dati}
 Come i dati vengono generati è illustrato di seguito:
 \begin{itemize}
     \item \textbf{Air Sensor Actor:} Questo attore è stato progettato per simulare l'utilizzo di un sensore fisico reale che possa comunicare solo attraverso un protocollo di rete. Per questo motivo, il sensore non genera direttamente i dati, ma li ottiene interagendo con una funzione su Azure che simula il comportamento del sensore. L'\textit{Air Sensor Actor} richiede i dati alla funzione attraverso una richiesta HTTP GET e la funzione risponde con i dati in formato JSON. Un esempio di risposta è la seguente stringa: \textit{\{"pm10":46.29966, "pm25":33.35241, "nox":76.84502\}}.
@@ -557,7 +557,7 @@ L'esecuzione è avvenuta in locale, su una macchina con le caratteristiche descr
     \label{tab:analysis-specs}
 \end{figure}
 
-\section{Piano di lavoro}
+\section{Piano di Lavoro}
 
 Per lo sviluppo del progetto è stato adottato un processo ispirato alle tecniche agili proposte da Scrum.
 La prima attività intrapresa è stata quella di analizzare i requisiti del sistema. Lo sviluppo delle funzionalità si è articolato secondo unità di tempo, chiamate Sprint, che scandivano il ritmo con il quale venivano effettuate riunioni e confronti tra gli sviluppatori. Al termine di ogni sprint settimanale, il team si riuniva per effettuare una retrospettiva su quanto svolto, per definire ciò che restava da sviluppare ed eventuali difficoltà incontrate. Durante ogni sprint, per organizzare il lavoro da svolgere, è stato prodotto uno sprint backlog: un artefatto che tiene traccia delle funzionalità da sviluppare. Per quanto riguarda la definizione dei task è stata utilizzata la funzionalità "issue boards" di GitLab\cite{GitLab}, in questo modo è stato possibile tener traccia dello stato di avanzamento del progetto.
@@ -709,7 +709,7 @@ Per generare le immagini Docker necessarie al servizio di persistenza, eseguire:
 docker compose build
 \end{lstlisting}
 
-\subsection{Avvio del sistema}
+\subsection{Avvio del Sistema}
 
 In generale, è meglio avviare il servizio di persistenza prima degli altri moduli, in modo che questi possano connettersi al servizio di persistenza al loro avvio. Per avviare il servizio di persistenza, eseguire:
 
@@ -799,7 +799,7 @@ Il pannello di controllo dispone di quattro schermate:
 %Recap what you did
 In conclusione possiamo evidenziare come il progetto abbia raggiunto gli obiettivi prefissati, ovvero la realizzazione di un sistema distribuito per il monitoraggio di una Smart City. Il sistema è stato sviluppato in maniera modulare, in modo da poter essere facilmente esteso e mantenuto. Inoltre, il sistema è stato progettato per essere scalabile e resiliente, in modo da poter essere utilizzato in un contesto reale.
 
-\subsection{Sviluppi futuri}
+\subsection{Sviluppi Futuri}
 
 %Recap what you did \emph{not}
 Tra i vari miglioramenti a cui abbiamo pensato, i più significativi sono:

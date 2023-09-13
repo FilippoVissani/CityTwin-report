@@ -270,6 +270,67 @@ Il \textit{Mainstay Actor} comunica con il \textit{Persistence Service Driver Ac
 \subsubsection{Componenti Monitor}
 I diversi monitor ambientali, come l'\textit{Acid Rain Monitor}, l'\textit{Air Quality Monitor}, il \textit{Noise Pollution Monitor} e il \textit{River Monitor}, costituiscono le fonti primarie di dati. Ciascun monitor raccoglie misurazioni specifiche e invia queste informazioni al \textit{Core} tramite l'interfaccia \textit{Resource}. Questa comunicazione consente al \textit{Core} di elaborare i dati e fornire una visione completa delle condizioni ambientali.
 
+\paragraph{Sensori}\label{par:Sensori}
+L'architettura dei sensori, quindi del \textit{NoiseSensor, AcidRainSensor, AirSensor} e \textit{FloodSensor}, prevede una stretta collaborazione con il \textit{Resource Actor}, un componente principale del sistema. I sensori generano periodicamente un messaggio di tick verso se stessi, avviando il processo di generazione dei dati. Una volta ottenuti i dati, i sensori li inviano al \textit{Resource Actor}, che si occupa di comunicare i dati al \textit{Mainstay Actor}. In Figura \ref{fig:sensor-resourceactor-interaction-diagram} viene presentato il diagramma di sequenza per l'interazione tra un sensore e il relativo \textit{Resource Actor}.
+
+\begin{figure}[H]
+    \centering
+    \caption{Diagramma di sequenza per l'interazione tra un sensore e il relativo \textit{Resource Actor}.}
+    \includegraphics[width=0.6\textwidth]{../assets/images/sensor-resourceactor-interaction-diagram.png}
+    \label{fig:sensor-resourceactor-interaction-diagram}
+\end{figure}
+
+\paragraph{River Monitor}
+Il "River Monitor" è un complesso sistema progettato per rilevare, monitorare e rispondere alle situazioni di alluvione in aree sensibili. Questo paragrafo descrive in dettaglio il design concettuale del sistema, delineando i componenti chiave e il loro ruolo all'interno dell'architettura complessiva.
+\subparagraph{Architettura}
+Nel sistema sistema di monitoraggio del fiume sono presenti i seguenti nodi \textit{Resource}, i quali non comunicano quindi direttamente tra di loro ma ognuno attraverso il proprio \textit{Resource Actor}:
+
+\begin{enumerate}
+    \item \textbf{Flood Sensor}: Sensore che rileva il livello dell'acqua del fiume, descritto nel paragrafo \ref{par:Sensori}.
+
+    \item \textbf{River Monitor Actor}: Il \textit{River Monitor} è un componente centrale del sistema. Ha il compito di monitorare i dati provenienti dai sensori di alluvione, valutare le condizioni correnti e prendere decisioni in base ai dati ricevuti. Il \textit{River Monitor} può attivare allarmi e avviare procedure di evacuazione. Per rappresentare lo stato del \textit{River Monitor} è stato introdotto il \textit{River Monitor State Actor}, il quale riceve messaggi dal \textit{River Monitor Actor} riguardo ai cambiamenti di stato, come la necessità di passare in stato di allarme o il passaggio allo stato di evacuazione. Il diagramma di sequenza in Figura \ref{fig:rivermonitor-resourceactor-interaction-diagram} illustra l'interazione tra il \textit{River Monitor Actor}, il \textit{River Monitor State Actor} e il \textit{Resource Actor}.
+
+    \item \textbf{View}: La \textit{View} rappresenta l'interfaccia utente dell'applicazione. Fornisce una rappresentazione visiva dello stato del \textit{River Monitor} e consente agli utenti di interagire con il sistema. Gli utenti possono visualizzare lo stato corrente, avviare procedure di evacuazione o segnalare zone come "evacuate" dopo aver avviato l'evacuazione. Nel diagramma di sequenza in Figura \ref{fig:view-interaction-diagram} viene illustrata l'interazione tra la \textit{View}, il \textit{View Actor} e il \textit{Resource Actor}.
+\end{enumerate}
+
+\begin{figure}[H]
+    \caption{Diagramma di sequenza per l'interazione tra River Monitor Actor, River Monitor State Actor e Resource Actor.}
+    \includegraphics[width=\textwidth]{../assets/images/rivermonitor-resourceactor-interaction-diagram.png}
+    \label{fig:rivermonitor-resourceactor-interaction-diagram}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Diagramma di sequenza per l'interazione tra View, View Actor e Resource Actor.}
+    \includegraphics[width=\textwidth]{../assets/images/view-interaction-diagram.png}
+    \label{fig:view-interaction-diagram}
+\end{figure}
+
+\subparagraph{Scenario operativo}
+Il ciclo operativo all'interno del sistema di monitoraggio del fiume è il seguente:
+
+\begin{enumerate}
+    \item I sensori di alluvione rilevano continuamente i livelli dell'acqua e inviano i dati al \textit{Resource Actor}.
+
+    \item Il \textit{River Monitor Actor} richiede al \textit{Resource Actor} lo stato delle risorse che sta monitorando, ovvero i sensori e la view. In condizioni normali, il \textit{River Monitor} è in stato \textit{Safe}.
+
+    \item Il \textit{River Monitor Actor} valuta le misurazioni dei sensori per determinare se è necessario passare allo stato di allarme. Nello specifico, comunica al \textit{River Monitor State Actor} di passare allo stato di \textit{Warned} se il livello dell'acqua della maggior parte dei sensori supera una soglia critica.
+
+    \item Il \textit{River Monitor Actor} controlla le risorse relative alla view perché se l'utente ha avviato una procedura di evacuazione (possibile solo se il \textit{River Monitor State Actor} è in stato di allarme), il \textit{River Monitor State Actor} cambia il suo stato in \textit{Evacuating}. dallo stato di \textit{Evacuating} il \textit{River Monitor State Actor} può passare allo stato di \textit{Evacuated} se l'utente ha segnalato che la zona è stata evacuata. in questo caso il \textit{River Monitor State Actor} torna allo stato \textit{Safe}.
+
+    \item A questo punto il \textit{River Monitor State Actor} comunica al \textit{Resource Actor} il suo stato e i sensori monitorati, in modo che queste informazioni possano essere visualizzate nella \textit{View}.
+
+    \item La \textit{View} visualizza lo stato corrente del \textit{River Monitor} agli utenti e consente loro di agire, avviando procedure di evacuazione e di fine evacuazione quando lo stato del \textit{River Monitor} lo consente.
+\end{enumerate}
+
+Il diagramma degli stati in Figura \ref{fig:river-monitor-state-diagram} mostra i possibili stati che può assumere il sistema \textit{River Monitor}.
+
+\begin{figure}[H]
+    \centering
+    \caption{Diagramma degli stati che può assumere la risorsa River Monitor.}
+    \includegraphics[width=\textwidth]{../assets/images/river-monitor-state-diagram.png}
+    \label{fig:river-monitor-state-diagram}
+\end{figure}
+
 \subsubsection{Control Panel}
 Il \textit{Control Panel} è l'interfaccia utente principale attraverso cui gli utenti interagiscono con il sistema. Comunica con il \textit{Core} per ottenere dati sullo stato ambientale e sul sistema nel suo complesso. Inoltre, il pannello di controllo richiede al servizio di persistenza lo storico dei dati in modo da poterli elaborare per ottenere delle statistiche.
 

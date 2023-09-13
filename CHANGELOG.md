@@ -1,3 +1,10 @@
+## [2.0.17](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.16...2.0.17) (2023-09-13)
+
+
+### Documentation
+
+* improve chapter 6 ([8d487ab](https://github.com/FilippoVissani/CityTwin-report/commit/8d487abb79d42cc44b312b77c953911674e91738))
+
 ## [2.0.16](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.15...2.0.16) (2023-09-13)
 
 

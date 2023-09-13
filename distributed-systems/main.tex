@@ -387,37 +387,6 @@ I nodi \textit{Mainstay} sono stati concepiti per essere generici e indipendenti
 
 In origine il tipo dello stato della risorsa è stato definito come \verb|Any|, ma questo ha portato a problemi di serializzazione. Per risolvere questo problema, si è scelto di tipizzare lo stato come \verb|String|, in modo che esso possa essere definito in formato JSON.
 
-\subsection{Implementazione del Control Panel}
-
-Il pannello di controllo è stato progettato per essere facilmente utilizzabile da qualsiasi tipo di utente. Le interazioni necessarie per visualizzare le informazioni desiderate sono state ridotte al minimo, in modo da rendere l'esperienza utente il più semplice possibile.
-
-Il pannello di controllo dispone di quattro schermate:
-
-\begin{itemize}
-    \item \textbf{Mappa della città} (Figura \ref{fig:control-panel-map}): visualizza la posizione delle risorse nella città, indicandone il nome e lo stato (online/offline).
-    \item \textbf{Pannello delle informazioni} (Figura \ref{fig:control-panel-info}): visualizza in tempo reale le informazioni sullo stato delle risorse e dei Mainstay.
-    \item \textbf{Pannello delle statistiche dei nodi Resource} (Figura \ref{fig:control-panel-resources-stats}): visualizza lo stato dei nodi Resource nel tempo.
-    \item \textbf{Pannello delle statistiche dei nodi Mainstay}: visualizza lo stato dei nodi Mainstay nel tempo.
-\end{itemize}
-
-\begin{figure}[H]
-    \caption{Control Panel: schermata della mappa della città.}
-    \includegraphics[width=\textwidth]{../assets/images/control-panel-map.png}
-    \label{fig:control-panel-map}
-\end{figure}
-
-\begin{figure}[H]
-    \caption{Control Panel: schermata delle informazioni sullo stato dei nodi \textit{Resource} e dei nodi \textit{Mainstay}.}
-    \includegraphics[width=\textwidth]{../assets/images/control-panel-info.png}
-    \label{fig:control-panel-info}
-\end{figure}
-
-\begin{figure}[H]
-    \caption{Control Panel: schermata delle statistiche dei nodi \textit{Resource}.}
-    \includegraphics[width=\textwidth]{../assets/images/control-panel-resources-stats.png}
-    \label{fig:control-panel-resources-stats}
-\end{figure}
-
 \subsection{Implementazione dei moduli Monitor}
 In questa sezione verrà illustrata l'implementazione delle parti più significative dei moduli di monitoraggio dell'aria, delle piogge acide, dell'inquinamento acustico e delle alluvioni.
 
@@ -791,6 +760,37 @@ Su Windows (Powershell):
 \begin{lstlisting}
 call ./core/target/core-0.1.0/bin/core.bat 2551 127.0.0.1 8080
 \end{lstlisting}
+
+\section{Esempi di Utilizzo}
+
+Il pannello di controllo è stato progettato per essere facilmente utilizzabile da qualsiasi tipo di utente. Le interazioni necessarie per visualizzare le informazioni desiderate sono state ridotte al minimo, in modo da rendere l'esperienza utente il più semplice possibile.
+
+Il pannello di controllo dispone di quattro schermate:
+
+\begin{itemize}
+    \item \textbf{Mappa della città} (Figura \ref{fig:control-panel-map}): visualizza la posizione delle risorse nella città, indicandone il nome e lo stato (verde=online, rosso=offline).
+    \item \textbf{Pannello delle informazioni} (Figura \ref{fig:control-panel-info}): visualizza in tempo reale le informazioni sullo stato delle risorse e dei Mainstay.
+    \item \textbf{Pannello delle statistiche dei nodi Resource} (Figura \ref{fig:control-panel-resources-stats}): visualizza lo stato dei nodi Resource nel tempo.
+    \item \textbf{Pannello delle statistiche dei nodi Mainstay}: visualizza lo stato dei nodi Mainstay nel tempo.
+\end{itemize}
+
+\begin{figure}[H]
+    \caption{Control Panel: schermata della mappa della città.}
+    \includegraphics[width=\textwidth]{../assets/images/control-panel-map.png}
+    \label{fig:control-panel-map}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Control Panel: schermata delle informazioni sullo stato dei nodi \textit{Resource} e dei nodi \textit{Mainstay}.}
+    \includegraphics[width=\textwidth]{../assets/images/control-panel-info.png}
+    \label{fig:control-panel-info}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Control Panel: schermata delle statistiche dei nodi \textit{Resource}.}
+    \includegraphics[width=\textwidth]{../assets/images/control-panel-resources-stats.png}
+    \label{fig:control-panel-resources-stats}
+\end{figure}
 
 \section{Conclusioni}
 

@@ -22,14 +22,14 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           working_directory: distributed-systems
-          root_file: main.tex
+          root_file: report_distributed-systems.tex
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape
 
       - name: Compile sc report
         uses: xu-cheng/latex-action@v3
         with:
           working_directory: smart-city
-          root_file: report.tex
+          root_file: report_smart-city.tex
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape
 
       - name: Release

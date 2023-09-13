@@ -714,7 +714,7 @@ Per generare le immagini Docker necessarie al servizio di persistenza, eseguire:
 In generale, è meglio avviare il servizio di persistenza prima degli altri moduli, in modo che questi possano connettersi al servizio di persistenza al loro avvio. Per avviare il servizio di persistenza, eseguire:
 
 \begin{lstlisting}[language=bash]
-    docker compose up
+docker compose up
 \end{lstlisting}
 
 È sempre obbligatorio avviare almeno un'istanza del modulo \textit{Core}, altrimenti il cluster Akka non verrà avviato.

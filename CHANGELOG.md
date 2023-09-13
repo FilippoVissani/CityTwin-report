@@ -1,3 +1,10 @@
+## [2.0.18](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.17...2.0.18) (2023-09-13)
+
+
+### Documentation
+
+* add section "Esempi di Utilizzo" ([d63df69](https://github.com/FilippoVissani/CityTwin-report/commit/d63df69ec306bf048cefaaf00df8880d7c2a08b0))
+
 ## [2.0.17](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.16...2.0.17) (2023-09-13)
 
 

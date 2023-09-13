@@ -1,3 +1,20 @@
+## [2.0.21](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.20...2.0.21) (2023-09-13)
+
+
+### Documentation
+
+* abstract in a new page ([0d0bdf4](https://github.com/FilippoVissani/CityTwin-report/commit/0d0bdf40b7fc5234a94344f3e99c835f7e86f24e))
+
+
+### Build and continuous integration
+
+* change pdf report names ([8b0736d](https://github.com/FilippoVissani/CityTwin-report/commit/8b0736db37e3f281a4267a8c5c96133d2665520a))
+
+
+### General maintenance
+
+* remove unused image ([c62e553](https://github.com/FilippoVissani/CityTwin-report/commit/c62e55389c668b0db60c50a5c09a2dff34cbd4d4))
+
 ## [2.0.20](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.19...2.0.20) (2023-09-13)
 
 

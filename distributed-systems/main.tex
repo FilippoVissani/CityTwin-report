@@ -7,6 +7,7 @@
 \usepackage{listings}
 \usepackage{float}
 \usepackage{xcolor}
+\usepackage[italian]{babel}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -84,6 +85,12 @@
     L'utente potrà visualizzare lo stato attuale del sistema, lo storico dei dati ed eventuali statistiche, nonché interagire con il sistema tramite GUI, ad esempio per intervenire dopo la rilevazione di un incendio.
 
 \end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\newpage
 
 \section{Analisi dei Requisiti}
 In questa sezione verranno delineati i vari requisiti del sistema in base alle diverse categorie di requisiti identificate. Nella fase di analisi dei requisiti, abbiamo preso il ruolo di stakeholder per comprendere appieno le esigenze degli utenti e guidare lo sviluppo del sistema. Questo approccio ci ha permesso di metterci nei panni degli utilizzatori finali e di definire con precisione le azioni chiave che gli utenti avrebbero svolto all'interno del sistema.
@@ -663,22 +670,22 @@ Di seguito viene riportato il process backlog effettuato durante lo sviluppo del
 \subsection{Requisiti}
 \begin{itemize}
     \item Comuni:
-        \begin{itemize}
-        \item Scala 3.3.0
-        \item Java openjdk 17.0.7
-        \item SBT 1.x
-        \item Docker
-        \item Docker Compose
-        \end{itemize}
+          \begin{itemize}
+              \item Scala 3.3.0
+              \item Java openjdk 17.0.7
+              \item SBT 1.x
+              \item Docker
+              \item Docker Compose
+          \end{itemize}
     \item Linux:
-        \begin{itemize}
-            \item unzip
-        \end{itemize}
+          \begin{itemize}
+              \item unzip
+          \end{itemize}
     \item Windows:
-        \begin{itemize}
-            \item Powershell
-            \item tar
-        \end{itemize}
+          \begin{itemize}
+              \item Powershell
+              \item tar
+          \end{itemize}
 \end{itemize}
 
 \subsection{Generazione degli Artefatti}

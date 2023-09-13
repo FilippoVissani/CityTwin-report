@@ -724,19 +724,19 @@ Gli artefatti generati sono eseguibili nativi per Linux, Mac e Windows compressi
 
 Per estrarre gli artefatti è necessario eseguire il seguente comando nella root del progetto:
 
-Linux:
+Su Linux (bash):
 \begin{lstlisting}
 unzip ./nome-sottoprogetto/target/universal/nome-sottoprogetto-0.1.0.zip -d ./nome-sottoprogetto/target/
 \end{lstlisting}
 
-Windows:
+Su Windows (Powershell):
 \begin{lstlisting}
 tar -x -f ./nome-sottoprogetto/target/universal/nome-sottoprogetto-0.1.0.zip -C ./nome-sottoprogetto/target/
 \end{lstlisting}
 
-A questo punto è possibile avviare i singoli moduli, di seguito viene fornito il comando per avviare il modulo \textit{Core}:
+A questo punto è possibile avviare i singoli moduli, di seguito viene fornito il un esempio di comando per avviare il modulo \textit{Core}:
 
-Linux:
+Su Linux (bash):
 \begin{lstlisting}
 CESENA_MAP=$(readlink -f ./cesena-map.png)
 PERSISTENCE_SERVICE_HOST="127.0.0.1"
@@ -744,7 +744,7 @@ PERSISTENCE_SERVICE_PORT="8080"
 ./core/target/core-0.1.0/bin/core 2551 ${PERSISTENCE_SERVICE_HOST} ${PERSISTENCE_SERVICE_PORT}
 \end{lstlisting}
 
-Windows:
+Su Windows (Powershell):
 \begin{lstlisting}
 call ./core/target/core-0.1.0/bin/core.bat 2551 127.0.0.1 8080
 \end{lstlisting}
@@ -760,7 +760,7 @@ In generale, il servizio di persistenza deve essere avviato prima di avviare gli
 
 È sempre obbligatorio avviare almeno un'istanza del modulo \textit{Core}, altrimenti il cluster Akka non verrà avviato.
 
-Per automatizzare l'avvio del sistema è stato creato uno script, situato in \textit{./scripts}, che avvia i moduli del cluster Akka.
+Per automatizzare l'avvio del sistema è stato creato uno script, situato in \textit{./scripts/startup}, che compila, estrae ed avvia i moduli del cluster Akka con impostazioni predefinite.
 
 \section{Avvio del sistema}
 
@@ -787,7 +787,18 @@ Su Windows (Powershell):
 
 Altrimenti, è possibile avviare i singoli moduli manualmente, come descritto nella sezione precedente.
 
-TODO: Specificare i parametri per l'avvio di ogni modulo.
+Di seguito vengono riportati gli argomenti da passare ai moduli per il corretto funzionamento del sistema:
+\begin{lstlisting}[language=bash]
+core <NODE_PORT> <PERSISTENCE_SERVICE_HOST> <PERSISTENCE_SERVICE_PORT>
+control-panel <NODE_PORT> <CITY_WIDTH> <CITY_HEIGHT> <MAP_FILE> <PERSISTENCE_SERVICE_HOST> <PERSISTENCE_SERVICE_PORT>
+river-monitor-main <NODE_PORT> <RESOURCE_NAME> <THRESHOLD> <X_POSITION> <Y_POSITION> <<RESOURCES_TO_CHECK>...>
+flood-sensor-main <NODE_PORT> <RESOURCE_NAME> <X_POSITION> <Y_POSITION>
+view-main <NODE_PORT> <RESOURCE_NAME> <WIDTH> <HEIGHT> <<RESOURCES_TO_CHECK>...>
+air-quality-monitor <NODE_PORT> <RESOURCE_NAME> <X_POSITION> <Y_POSITION> <SENSOR_URI>
+acid-rain-monitor <NODE_PORT> <RESOURCE_NAME> <X_POSITION> <Y_POSITION>
+noise-pollution-monitor <NODE_PORT> <RESOURCE_NAME> <X_POSITION> <Y_POSITION>
+\end{lstlisting}
+
 \section{Conclusioni}
 
 %Recap what you did

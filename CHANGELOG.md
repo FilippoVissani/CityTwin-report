@@ -1,3 +1,10 @@
+## [2.0.22](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.21...2.0.22) (2023-09-15)
+
+
+### Documentation
+
+* move sequence diagram to section Interazioni dei Componenti ([334cac6](https://github.com/FilippoVissani/CityTwin-report/commit/334cac6e1b77eb427e114f82ba06acbc167bf1ad))
+
 ## [2.0.21](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.20...2.0.21) (2023-09-13)
 
 

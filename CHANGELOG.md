@@ -1,3 +1,10 @@
+## [2.0.23](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.22...2.0.23) (2023-09-19)
+
+
+### Bug Fixes
+
+* fix typo ([35e6f3d](https://github.com/FilippoVissani/CityTwin-report/commit/35e6f3d9c98d5ede12d3a8b275921491c6b8850c))
+
 ## [2.0.22](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.21...2.0.22) (2023-09-15)
 
 

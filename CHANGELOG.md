@@ -1,3 +1,10 @@
+## [2.0.24](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.23...2.0.24) (2023-09-19)
+
+
+### Bug Fixes
+
+* fix wrong command ([e23be41](https://github.com/FilippoVissani/CityTwin-report/commit/e23be41ba90eaf37731b2d6f577f691b0cefceab))
+
 ## [2.0.23](https://github.com/FilippoVissani/CityTwin-report/compare/2.0.22...2.0.23) (2023-09-19)
 
 

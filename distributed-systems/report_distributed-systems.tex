@@ -799,7 +799,7 @@ Di seguito viene riportato il process backlog effettuato durante lo sviluppo del
 Per generare gli artefatti è necessario eseguire il seguente comando nella root del progetto:
 
 \begin{lstlisting}
-sbt assembly
+sbt universal:packageBin
 \end{lstlisting}
 
 Gli artefatti generati sono eseguibili nativi per Linux, Mac e Windows compressi in formato zip. Per ogni sotto-progetto viene generato un artefatto con il nome \textit{nome-sottoprogetto-0.1.0.zip}.
